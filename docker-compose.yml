@@ -1,0 +1,14 @@
+version: '3.0'
+services:
+  mongodb:
+    image: mongo:5
+    container_name: freelancercontainermongo
+    volumes:
+      - ./data:/data/db
+      - ./docker-entrypoint-initdb.d/mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro
+
+    ports:
+      - 27017:27017
+    restart: always
+    env_file:
+      - .env

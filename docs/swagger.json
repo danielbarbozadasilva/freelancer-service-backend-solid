@@ -1,0 +1,266 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Api Freelance",
+        "description": "A API foi desenvolvida utilizando os princípios SOLID e TypeScript com NodeJs, ExpressJs e Banco de dados MongoDB. Documentação utilizando o Swagger. Testes unitários utilizando o Jest.",
+        "contact": {
+            "email": "daniel80barboza@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3011/",
+            "description": "Api de teste"
+        }
+    ],
+    "paths": {
+        "/auth": {
+            "post": {
+                "summary": "Logar usuário",
+                "description": "Essa rota é responsável por autenticar o usuário",
+                "tags": [
+                    "Autenticar Usuário"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Auth"
+                            },
+                            "examples": {
+                                "auth": {
+                                    "value": {
+                                        "username": "daniel95barboza",
+                                        "password": "daniel"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid email or password."
+                    },
+                    "201": {
+                        "description": "Successfully authenticated user!"
+                    }
+                }
+            }
+        },
+        "/register": {
+            "post": {
+                "summary": "Criar usuário",
+                "description": "Essa rota é responsável por criar um novo usuário",
+                "tags": [
+                    "Autenticar Usuário"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegisterUser"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": ["Email already exists.", "Username already exists."]
+                    },
+                    "201": {
+                        "description": "User successfully created!"
+                    }
+                }
+            }
+        },
+        "/call": {
+            "get": {
+                "summary": "Listar Chamados",
+                "description": "Essa rota é responsável por listar Chamados",
+                "tags": [
+                    "Chamado"
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Unexpected error."
+                    },
+                    "200": {
+                        "description": "Call successfully listed!"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cadastrar Chamado",
+                "description": "Essa rota é responsável por cadastrar um Chamado",
+                "tags": [
+                    "Chamado"
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateCall"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Unexpected error."
+                    },
+                    "201": {
+                        "description": "Call successfully created!"
+                    }
+                }
+            }
+        },
+        "/call/{callid}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "callid",
+                        "in": "path",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "summary": "Listar Chamado pelo id",
+                "description": "Essa rota é responsável por listar o Chamado pelo id",
+                "tags": [
+                    "Chamado"
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Unexpected error."
+                    },
+                    "200": {
+                        "description": "Called successfully listed!"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Auth": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "required": true
+                    },
+                    "password": {
+                        "type": "string",
+                        "required": true
+                    }
+                }
+            },
+            "RegisterUser": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "required": true,
+                        "example": "Daniel"
+                    },
+                    "cpf": {
+                        "type": "string",
+                        "required": true,
+                        "example": "123.345.567-90"
+                    },
+                    "address": {
+                        "type": "string",
+                        "required": true,
+                        "example": "Rua abc, 123"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "required": true,
+                        "example": "(21)98987-0998"
+                    },
+                    "email": {
+                        "type": "string",
+                        "required": true,
+                        "example": "daniel80dbarboza@gmail.com"
+                    },
+                    "password": {
+                        "type": "string",
+                        "required": true,
+                        "example": "daniel"
+                    },
+                    "birthDate": {
+                        "type": "string",
+                        "required": true,
+                        "example": "09/09/2000"
+                    }
+                }
+            },
+            "CreateCall": {
+                "type": "object",
+                "properties": {
+                    "clientId": {
+                        "type": "string",
+                        "required": true,
+                        "example": "6415f212da63a53a41fec995"
+                    },
+                    "number": {
+                        "type": "string",
+                        "required": true,
+                        "example": "16353421"
+                    },
+                    "subject": {
+                        "type": "string",
+                        "required": true,
+                        "example": "Dúvida sobre produto"
+                    },
+                    "description": {
+                        "type": "string",
+                        "required": true,
+                        "example": "O produto está com a cor diferente do anúncio"
+                    },
+                    "category": {
+                        "type": "string",
+                        "required": true,
+                        "example": "Produtos"
+                    },
+                    "evaluation": {
+                        "type": "number",
+                        "required": true,
+                        "example": 5
+                    },
+                    "files": {
+                        "type": "string",
+                        "required": true,
+                        "format": "binary"
+                    },
+                    "sender": {
+                        "type": "string",
+                        "required": true,
+                        "example": "Daniel Barboza"
+                    },
+                    "message": {
+                        "type": "string",
+                        "required": true,
+                        "example": "O produto está com a cor diferente do anúncio"
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "JWT": {
+            "description": "JWT token",
+            "type": "apiKey",
+            "in": "header",
+            "name": "Authorization"
+        }
+    }
+}

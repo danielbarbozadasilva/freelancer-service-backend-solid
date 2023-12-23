@@ -1,0 +1,6 @@
+{
+  "watch": "api/**/*.ts",
+  "execMap": {
+    "ts": "ts-node"
+  }
+}
