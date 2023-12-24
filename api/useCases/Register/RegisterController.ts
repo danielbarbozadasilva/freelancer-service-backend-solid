@@ -10,15 +10,18 @@ export class RegisterController {
       const salt = Cryptography.createSalt()
 
       await this.registerUseCase.execute({
+        name: request.body.name,
         username: request.body.username,
         email: request.body.email,
-        permissions: request.body.permissions,
-        hash: Cryptography.createHash(request.body.password, salt),
-        salt: salt,
-        img: request.body.img,
+        cpf: request.body.cpf,
+        birthDate: request.body.birthDate,
+        picture: request.file,
         country: request.body.country,
         phone: request.body.phone,
         desc: request.body.desc,
+        permissions: ['client'],
+        hash: Cryptography.createHash(request.body.password, salt),
+        salt: salt,
         isSeller: false
       })
 

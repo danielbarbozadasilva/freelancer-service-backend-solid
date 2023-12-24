@@ -6,14 +6,14 @@ export class SignInUseCase {
 
   async execute(data: SignInDTO) {
     const isValid = await this.signInRepository.verifyCredentials(
-      data.username,
+      data.email,
       data.password
     )
 
     if (!isValid) {
-      throw new Error('Invalid username or password.')
+      throw new Error('Invalid email or password.')
     }
 
-    return this.signInRepository.authenticate(data.username)
+    return this.signInRepository.authenticate(data.email)
   }
 }

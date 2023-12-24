@@ -1,6 +1,13 @@
 export interface IRegisterRequestDTO {
+  name: string
   username: string
   email: string
+  cpf: string
+  birthDate: string
+  picture: any
+  country: string
+  phone: string
+  desc: string
   permissions: string[]
   hash?: string
   salt?: string
@@ -8,9 +15,6 @@ export interface IRegisterRequestDTO {
     token: string,
     date: Date
   },
-  img: string,
-  country: string,
-  phone: string,
-  desc: string,
-  isSeller: boolean
+  isSeller?: boolean
+  files?: {}
 }

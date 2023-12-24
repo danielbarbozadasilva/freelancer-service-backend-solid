@@ -31,7 +31,7 @@
                             "examples": {
                                 "auth": {
                                     "value": {
-                                        "username": "daniel95barboza",
+                                        "email": "daniel95barboza",
                                         "password": "daniel"
                                     }
                                 }
@@ -58,7 +58,7 @@
                 ],
                 "requestBody": {
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
                                 "$ref": "#/components/schemas/RegisterUser"
                             }
@@ -67,7 +67,7 @@
                 },
                 "responses": {
                     "400": {
-                        "description": ["Email already exists.", "Username already exists."]
+                        "description": ["Email already exists.", "Username already exists.", "Cpf already exists."]
                     },
                     "201": {
                         "description": "User successfully created!"
@@ -166,25 +166,10 @@
             "RegisterUser": {
                 "type": "object",
                 "properties": {
-                    "name": {
+                    "username": {
                         "type": "string",
                         "required": true,
-                        "example": "Daniel"
-                    },
-                    "cpf": {
-                        "type": "string",
-                        "required": true,
-                        "example": "123.345.567-90"
-                    },
-                    "address": {
-                        "type": "string",
-                        "required": true,
-                        "example": "Rua abc, 123"
-                    },
-                    "phone": {
-                        "type": "string",
-                        "required": true,
-                        "example": "(21)98987-0998"
+                        "example": "daniel123"
                     },
                     "email": {
                         "type": "string",
@@ -196,11 +181,47 @@
                         "required": true,
                         "example": "daniel"
                     },
+                    "country": {
+                        "type": "string",
+                        "required": true,
+                        "example": "BRASIL"
+                    },
+                    "name": {
+                        "type": "string",
+                        "required": true,
+                        "example": "Daniel"
+                    },
+                    "cpf": {
+                        "type": "string",
+                        "required": true,
+                        "example": "123.345.567-90"
+                    },
                     "birthDate": {
                         "type": "string",
                         "required": true,
-                        "example": "09/09/2000"
+                        "example": "2000-03-01T05:36:40.303Z"
+                    },
+                    "files": {
+                        "type": "string",
+                        "required": false,
+                        "format": "binary"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "required": true,
+                        "example": "(21)98987-0998"
+                    },
+                    "desc": {
+                        "type": "string",
+                        "required": true,
+                        "example": "Desenvolvedor backend"
+                    },
+                    "isSeller": {
+                        "type": "boolean",
+                        "required": true,
+                        "example": false
                     }
+                    
                 }
             },
             "CreateCall": {

@@ -1,4 +1,4 @@
 export interface ISignInRepository {
-  verifyCredentials(username: string, password: string): Promise<boolean>
-  authenticate(username: string): Promise<object>
+  verifyCredentials(email: string, password: string): Promise<boolean>
+  authenticate(email: string): Promise<object>
 }

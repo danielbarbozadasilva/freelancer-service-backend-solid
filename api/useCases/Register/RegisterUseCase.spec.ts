@@ -16,17 +16,19 @@ describe('Register User', () => {
     test('Make sure register the user', async () => {
       const salt = cryptography.createSalt()
       const data = {
-          username: "daniel95barboza",
-          email: "daniel95barboza@gmail.com",
-          password: "123",
-          permissions: ["client"],
-          hash: cryptography.createHash('daniel', salt),
-          salt: salt,
-          img: "",
-          country: "Brasil",
-          phone: "2199999-9999",
-          desc: "teste",
-          isSeller: false,
+        name: "Daniel Silva",
+        username: "daniel936",
+        email: "danielbarboza56@hotmail.com",
+        cpf: "444.444.444-44",
+        birthDate: "2000-03-01T05:36:40.303Z",
+        picture: "",
+        country: "brasil",
+        phone: "(21)99999-9999",
+        desc: "Desenvolvedor web",
+        permissions: ["client"],
+        hash: cryptography.createHash('123', salt),
+        salt: salt,
+        isSeller: false
       }
       const result = await registerUseCase.execute(data as IRegisterRequestDTO)
       expect(result).toBe(true)
@@ -36,17 +38,41 @@ describe('Register User', () => {
       try {
         const salt = cryptography.createSalt()
         const data = {
-          username: "daniel95barboza",
-          email: "daniel95barboza@gmail.com",
-          password: "123",
+          name: "Daniel Silva",
+          username: "daniel116",
+          email: "danielbarboza56@hotmail.com",
+          cpf: "111.111.111-11",
+          birthDate: "2000-03-01T05:36:40.303Z",
+          picture: "",
+          country: "brasil",
+          phone: "(21)99999-9999",
+          desc: "Desenvolvedor web",
           permissions: ["client"],
-          hash: cryptography.createHash('daniel', salt),
+          hash: cryptography.createHash('123', salt),
           salt: salt,
-          img: "",
-          country: "Brasil",
-          phone: "2199999-9999",
-          desc: "teste",
-          isSeller: false,
+          isSeller: false
+      }
+        expect(registerUseCase.execute(data as IRegisterRequestDTO)).toThrow()
+      } catch (error) {}
+    })
+
+    test('Make sure return error if the cpf already exists', async () => {
+      try {
+        const salt = cryptography.createSalt()
+        const data = {
+          name: "Daniel Silva",
+          username: "daniel216",
+          email: "danielbarboza58@hotmail.com",
+          cpf: "333.333.333-33",
+          birthDate: "2000-03-01T05:36:40.303Z",
+          picture: "",
+          country: "brasil",
+          phone: "(21)99999-9999",
+          desc: "Desenvolvedor web",
+          permissions: ["client"],
+          hash: cryptography.createHash('123', salt),
+          salt: salt,
+          isSeller: false
       }
         expect(registerUseCase.execute(data as IRegisterRequestDTO)).toThrow()
       } catch (error) {}
@@ -56,17 +82,19 @@ describe('Register User', () => {
       try {
         const salt = cryptography.createSalt()
         const data = {
-          username: "daniel95barboza",
-          email: "daniel95barboza@gmail.com",
-          password: "123",
+          name: "Daniel Silva",
+          username: "daniel936",
+          email: "danielbarboza59@hotmail.com",
+          cpf: "222.222.222-22",
+          birthDate: "2000-03-01T05:36:40.303Z",
+          picture: "files-1703438562446.jpg",
+          country: "brasil",
+          phone: "(21)99999-9999",
+          desc: "Desenvolvedor web",
           permissions: ["client"],
-          hash: cryptography.createHash('daniel', salt),
+          hash: cryptography.createHash('123', salt),
           salt: salt,
-          img: "",
-          country: "Brasil",
-          phone: "2199999-9999",
-          desc: "teste",
-          isSeller: false,
+          isSeller: false
       }
         expect(registerUseCase.execute(data as IRegisterRequestDTO)).toThrow()
       } catch (error) {}

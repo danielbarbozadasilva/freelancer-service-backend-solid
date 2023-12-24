@@ -13,8 +13,8 @@ describe('SignIn User', () => {
   describe('SignIn User', () => {
     test('Make sure that the user signin', async () => {
       const data = {
-        username: 'daniel80barboza',
-        password: 'daniel'
+        email: 'daniel80barboza@gmail.com',
+        password: '123'
       }
       const resultData = await signInUseCase.execute(data)
       expect(resultData).toHaveProperty('data._id')
@@ -23,8 +23,8 @@ describe('SignIn User', () => {
     test('Make sure returns error if credentials are invalid', async () => {
       try {
         const data = {
-          username: 'daniel10barboza',
-          password: 'daniel'
+          email: 'daniel80dddbarboza@gmail.com',
+          password: '123'
         }
         expect(signInUseCase.execute(data)).toThrow()
       } catch (error) {}

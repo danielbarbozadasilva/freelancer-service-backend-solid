@@ -4,16 +4,16 @@ import jwt from 'jsonwebtoken'
 import Cryptography from '../../utils/cryptography'
 
 export class SignInRepository implements ISignInRepository {
-  async verifyCredentials(username: string, password: string): Promise<boolean> {
-    const result = await clientSchema.findOne({ username })
+  async verifyCredentials(email: string, password: string): Promise<boolean> {
+    const result = await clientSchema.findOne({ email })
     if (!!result) {
       return Cryptography.validatePassword(password, result.salt, result.hash)
     }
     return false
   }
 
-  async authenticate(username: string): Promise<object> {
-    const result = await clientSchema.findOne({ username })
+  async authenticate(email: string): Promise<object> {
+    const result = await clientSchema.findOne({ email })
     const data = {
       _id: result._id,
       username: result.username,

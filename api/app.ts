@@ -5,6 +5,7 @@ import swaggerUi from 'swagger-ui-express'
 import swaggerDocs from '../docs/swagger.json'
 import bodyParser from 'body-parser'
 import cors from 'cors'
+import 'express-async-errors'
 
 const app = express()
 
