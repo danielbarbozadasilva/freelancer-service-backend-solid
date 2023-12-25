@@ -47,7 +47,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"daniel95barboza\",\n    \"password\": \"123\"\n}",
+							"raw": "{\n    \"email\": \"daniel80barboza@gmail.com\",\n    \"password\": \"123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -263,7 +263,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"isSeller\": true,\r\n    \"userId\": \"657f13cfc2311d6aac6e0d95\",\r\n    \"to\": \"657f6e7b82ee85e39b6e0f18\"\r\n}",
+							"raw": "{\r\n    \"isSeller\": true,\r\n    \"userId\": \"65883a7bc89918015e25e52e\",\r\n    \"to\": \"65883ab3c89918015e25e532\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
