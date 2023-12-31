@@ -13,7 +13,7 @@ describe('List all users', () => {
   describe('List all users', () => {
     test('Ensure all users are listed', async () => {
       const result = await listAllUsersUseCase.execute()
-      expect(result).toBe(true)
+      expect(result[0]).toHaveProperty('_id')
     })
   })
 })

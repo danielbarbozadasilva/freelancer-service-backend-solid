@@ -17,7 +17,7 @@ describe('Register User', () => {
       const salt = cryptography.createSalt()
       const data = {
         name: "Daniel Silva",
-        username: "daniel936",
+        username: "daniel789",
         email: "danielbarboza56@hotmail.com",
         cpf: "444.444.444-44",
         birthDate: "2000-03-01T05:36:40.303Z",

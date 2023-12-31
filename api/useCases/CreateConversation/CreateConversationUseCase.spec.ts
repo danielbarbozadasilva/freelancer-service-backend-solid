@@ -1,103 +1,32 @@
-// import { registerUseCase } from './index'
-// import { createConnection, closeConnection } from '../../database/client'
-// import { IRegisterRequestDTO } from './CreateConversationDTO'
-// import cryptography from '../../utils/cryptography'
+import { createConversationUseCase } from './index'
+import { createConnection, closeConnection } from '../../database/client'
+import { ICreateConversationRequestDTO } from './CreateConversationDTO'
 
-// describe('Register User', () => {
-//   beforeAll(() => {
-//     createConnection()
-//   })
+describe('Create conversation', () => {
+  beforeAll(() => {
+    createConnection()
+  })
 
-//   afterAll(async () => {
-//     await closeConnection()
-//   })
+  afterAll(async () => {
+    await closeConnection()
+  })
 
-//   describe('Register User', () => {
-//     test('Make sure register the user', async () => {
-//       const salt = cryptography.createSalt()
-//       const data = {
-//         name: "Daniel Silva",
-//         username: "daniel936",
-//         email: "danielbarboza56@hotmail.com",
-//         cpf: "444.444.444-44",
-//         birthDate: "2000-03-01T05:36:40.303Z",
-//         picture: "",
-//         country: "brasil",
-//         phone: "(21)99999-9999",
-//         desc: "Desenvolvedor web",
-//         permissions: ["client"],
-//         hash: cryptography.createHash('123', salt),
-//         salt: salt,
-//         isSeller: false
-//       }
-//       const result = await registerUseCase.execute(data as IRegisterRequestDTO)
-//       expect(result).toBe(true)
-//     })
-
-//     test('Make sure return error if the email already exists', async () => {
-//       try {
-//         const salt = cryptography.createSalt()
-//         const data = {
-//           name: "Daniel Silva",
-//           username: "daniel116",
-//           email: "danielbarboza56@hotmail.com",
-//           cpf: "111.111.111-11",
-//           birthDate: "2000-03-01T05:36:40.303Z",
-//           picture: "",
-//           country: "brasil",
-//           phone: "(21)99999-9999",
-//           desc: "Desenvolvedor web",
-//           permissions: ["client"],
-//           hash: cryptography.createHash('123', salt),
-//           salt: salt,
-//           isSeller: false
-//       }
-//         expect(registerUseCase.execute(data as IRegisterRequestDTO)).toThrow()
-//       } catch (error) {}
-//     })
-
-//     test('Make sure return error if the cpf already exists', async () => {
-//       try {
-//         const salt = cryptography.createSalt()
-//         const data = {
-//           name: "Daniel Silva",
-//           username: "daniel216",
-//           email: "danielbarboza58@hotmail.com",
-//           cpf: "333.333.333-33",
-//           birthDate: "2000-03-01T05:36:40.303Z",
-//           picture: "",
-//           country: "brasil",
-//           phone: "(21)99999-9999",
-//           desc: "Desenvolvedor web",
-//           permissions: ["client"],
-//           hash: cryptography.createHash('123', salt),
-//           salt: salt,
-//           isSeller: false
-//       }
-//         expect(registerUseCase.execute(data as IRegisterRequestDTO)).toThrow()
-//       } catch (error) {}
-//     })
-
-//     test('Make sure return error if the username already exists', async () => {
-//       try {
-//         const salt = cryptography.createSalt()
-//         const data = {
-//           name: "Daniel Silva",
-//           username: "daniel936",
-//           email: "danielbarboza59@hotmail.com",
-//           cpf: "222.222.222-22",
-//           birthDate: "2000-03-01T05:36:40.303Z",
-//           picture: "files-1703438562446.jpg",
-//           country: "brasil",
-//           phone: "(21)99999-9999",
-//           desc: "Desenvolvedor web",
-//           permissions: ["client"],
-//           hash: cryptography.createHash('123', salt),
-//           salt: salt,
-//           isSeller: false
-//       }
-//         expect(registerUseCase.execute(data as IRegisterRequestDTO)).toThrow()
-//       } catch (error) {}
-//     })
-//   })
-// })
+  describe('Create conversation', () => {
+    test('Make sure create conversation', async () => {
+      const data = {
+        isSeller: true,
+        userId: "65883a7bc89918015e25e52e",
+        to: "65883ab3c89918015e25e532",
+        readBySeller: false,
+        readByBuyer: false,
+        id: '123',
+        sellerId: '123',
+        buyerId: '123',
+        lastMessage: ''
+      }
+      
+      const result = await createConversationUseCase.execute(data as ICreateConversationRequestDTO)
+      expect(result).toBe(true)
+    })
+  })
+})

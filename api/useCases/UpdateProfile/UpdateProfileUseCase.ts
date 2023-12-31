@@ -1,4 +1,3 @@
-import { User } from '../../entities/User'
 import { IUserRepository } from '../../repositories/IUsersRepository'
 import { IUpdateProfileRequestDTO } from './UpdateProfileDTO'
 

@@ -16,7 +16,8 @@ describe('Delete User', () => {
       const result = await deleteUserUseCase.execute(id)
       expect(result).toBe(true)
     })
-    test('Make sure delete the user', async () => {
+    
+    test('Make sure return error if the id not exists', async () => {
       const id: string = '65883a7bc89918015e25e52f'
       const result = await deleteUserUseCase.execute(id)
       expect(result).toBe(false)

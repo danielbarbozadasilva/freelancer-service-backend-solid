@@ -65,6 +65,6 @@ export class UserDBRepository implements IUserRepository {
 
   async deleteUser(id: string): Promise<any> {
     const result = await clientSchema.findByIdAndDelete(id)
-    return result
+    return !!result
   }
 }

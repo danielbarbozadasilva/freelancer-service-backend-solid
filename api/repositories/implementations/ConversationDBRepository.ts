@@ -12,7 +12,7 @@ export class ConversationDBRepository implements ICreateConversationRepository {
       readByBuyer: dataUser.readByBuyer,
       lastMessage: dataUser.lastMessage
     })
-
+    
     return !!resultDB
   }
 }
