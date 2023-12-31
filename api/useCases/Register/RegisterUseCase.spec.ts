@@ -18,7 +18,7 @@ describe('Register User', () => {
       const data = {
         name: "Daniel Silva",
         username: "daniel789",
-        email: "danielbarboza56@hotmail.com",
+        email: "danielbarboza11@hotmail.com",
         cpf: "444.444.444-44",
         birthDate: "2000-03-01T05:36:40.303Z",
         picture: "",
@@ -40,7 +40,7 @@ describe('Register User', () => {
         const data = {
           name: "Daniel Silva",
           username: "daniel116",
-          email: "danielbarboza56@hotmail.com",
+          email: "danielbarboza11@hotmail.com",
           cpf: "111.111.111-11",
           birthDate: "2000-03-01T05:36:40.303Z",
           picture: "",
@@ -63,7 +63,7 @@ describe('Register User', () => {
           name: "Daniel Silva",
           username: "daniel216",
           email: "danielbarboza58@hotmail.com",
-          cpf: "333.333.333-33",
+          cpf: "444.444.444-44",
           birthDate: "2000-03-01T05:36:40.303Z",
           picture: "",
           country: "brasil",
@@ -83,7 +83,7 @@ describe('Register User', () => {
         const salt = cryptography.createSalt()
         const data = {
           name: "Daniel Silva",
-          username: "daniel936",
+          username: "daniel789",
           email: "danielbarboza59@hotmail.com",
           cpf: "222.222.222-22",
           birthDate: "2000-03-01T05:36:40.303Z",

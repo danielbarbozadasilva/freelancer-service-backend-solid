@@ -13,7 +13,7 @@ describe('SignIn User', () => {
   describe('SignIn User', () => {
     test('Make sure that the user signin', async () => {
       const data = {
-        email: 'daniel80barboza@gmail.com',
+        email: 'danielbarboza56@hotmail.com',
         password: '123'
       }
       const resultData = await signInUseCase.execute(data)

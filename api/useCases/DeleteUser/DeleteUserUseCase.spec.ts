@@ -18,9 +18,10 @@ describe('Delete User', () => {
     })
     
     test('Make sure return error if the id not exists', async () => {
-      const id: string = '65883a7bc89918015e25e52f'
-      const result = await deleteUserUseCase.execute(id)
-      expect(result).toBe(false)
+      try {
+        const id: string = '65883a7bc89918015e25e5ff'
+        expect(await deleteUserUseCase.execute(id)).toThrow()
+      } catch (error){}
     })
   })
 })

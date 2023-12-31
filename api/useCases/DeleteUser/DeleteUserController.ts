@@ -10,7 +10,7 @@ export class DeleteUserController {
       await this.deleteUserUseCase.execute(idUser)
 
       return response
-        .status(201)
+        .status(200)
         .send({ message: 'User deleted!' })
     } catch (error) {
       return response

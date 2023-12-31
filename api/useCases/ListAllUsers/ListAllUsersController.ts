@@ -10,8 +10,8 @@ export class ListAllUsersController {
      const result = await this.listAllUsersUseCase.execute()
 
       return response
-        .status(201)
-        .send({ message: 'Users successfully listed!', data: result })
+      .status(200)
+      .send({ message: 'Users successfully listed!', data: result })
 
     } catch (error) {
       return response

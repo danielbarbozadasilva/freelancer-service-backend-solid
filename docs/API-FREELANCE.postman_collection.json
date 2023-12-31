@@ -238,99 +238,8 @@
 			]
 		},
 		{
-			"name": "conversation",
+			"name": "category",
 			"item": [
-				{
-					"name": "conversation.create",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbEBnbWFpbC5jb20iLCJuYW1lIjoiRGFuaWVsIEJhcmJvemEiLCJ0eXBlIjoxLCJpYXQiOjE2NTQ0ODI5MjIsImV4cCI6MTY2MzQ4MjkyMn0.wwm5ffUkQjtISWJqQhxKy2xQ_VQfbOxJoV6QbN561h4",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "token",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"isSeller\": true,\r\n    \"userId\": \"65883a7bc89918015e25e52e\",\r\n    \"to\": \"65883ab3c89918015e25e532\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3011/conversation",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3011",
-							"path": [
-								"conversation"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "conversation.listAll",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbEBnbWFpbC5jb20iLCJuYW1lIjoiRGFuaWVsIEJhcmJvemEiLCJ0eXBlIjoxLCJpYXQiOjE2NTQ0ODI5MjIsImV4cCI6MTY2MzQ4MjkyMn0.wwm5ffUkQjtISWJqQhxKy2xQ_VQfbOxJoV6QbN561h4",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "token",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"isSeller\": true,\r\n    \"userId\": \"657f13cfc2311d6aac6e0d95\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3011/conversation",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3011",
-							"path": [
-								"conversation"
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "category.listById",
 					"request": {
@@ -353,7 +262,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3011/category/6320f577156b47ff1082586e",
+							"raw": "http://localhost:3011/category/6591ac0ef9877e3170d90c3e",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -361,7 +270,42 @@
 							"port": "3011",
 							"path": [
 								"category",
-								"6320f577156b47ff1082586e"
+								"6591ac0ef9877e3170d90c3e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category.listAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbEBnbWFpbC5jb20iLCJuYW1lIjoiRGFuaWVsIEJhcmJvemEiLCJ0eXBlIjoxLCJpYXQiOjE2NTQ0ODI5MjIsImV4cCI6MTY2MzQ4MjkyMn0.wwm5ffUkQjtISWJqQhxKy2xQ_VQfbOxJoV6QbN561h4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3011/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3011",
+							"path": [
+								"category"
 							]
 						}
 					},
@@ -403,18 +347,18 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "asdasdasdasd",
+									"value": "Desenvolver código1",
 									"type": "text"
 								},
 								{
-									"key": "code",
-									"value": "12531642142335131",
+									"key": "description",
+									"value": "Desenvolver código",
 									"type": "text"
 								},
 								{
 									"key": "files",
 									"type": "file",
-									"src": "/C:/Users/pc01/Downloads/Logo para consultor de moedas e investimentos digitais verde tecnológico (1).png"
+									"src": "/C:/Users/pc-02/Downloads/ilya-pavlov-OqtafYT5kTw-unsplash.jpg"
 								}
 							]
 						},
@@ -468,23 +412,23 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Smartphonesddddd",
+									"value": "Desenvolver códigof",
 									"type": "text"
 								},
 								{
-									"key": "code",
-									"value": "12531642142335131",
+									"key": "description",
+									"value": "Desenvolver códigof",
 									"type": "text"
 								},
 								{
 									"key": "files",
 									"type": "file",
-									"src": "/C:/Users/pc01/Pictures/maxresdefault.jpg"
+									"src": "/C:/Users/pc-02/Downloads/mark-cruz-VW2oU66mwbc-unsplash.jpg"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3011/category/63cabf4eb2f75d39dc221a60",
+							"raw": "http://localhost:3011/category/6591ac0ef9877e3170d90c3e",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -492,7 +436,7 @@
 							"port": "3011",
 							"path": [
 								"category",
-								"63cabf4eb2f75d39dc221a60"
+								"6591ac0ef9877e3170d90c3e"
 							]
 						}
 					},
@@ -545,7 +489,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3011/category/63cabf4eb2f75d39dc221a60",
+							"raw": "http://localhost:3011/category/6591ac0ef9877e3170d90c3e",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -553,7 +497,31 @@
 							"port": "3011",
 							"path": [
 								"category",
-								"63cabf4eb2f75d39dc221a60"
+								"6591ac0ef9877e3170d90c3e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "conversation",
+			"item": [
+				{
+					"name": "conversation.create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3011/conversation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3011",
+							"path": [
+								"conversation"
 							]
 						}
 					},

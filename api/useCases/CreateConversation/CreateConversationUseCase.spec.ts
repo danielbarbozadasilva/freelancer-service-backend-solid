@@ -19,10 +19,10 @@ describe('Create conversation', () => {
         to: "65883ab3c89918015e25e532",
         readBySeller: false,
         readByBuyer: false,
-        id: '123',
         sellerId: '123',
         buyerId: '123',
-        lastMessage: ''
+        lastMessage: 'ddddd',
+        id: '111111'
       }
       
       const result = await createConversationUseCase.execute(data as ICreateConversationRequestDTO)
