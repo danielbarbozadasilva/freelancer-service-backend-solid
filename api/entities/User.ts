@@ -1,5 +1,7 @@
+import { ObjectId } from "mongoose";
+
 export class User {
-  public _id?: string
+  public _id?: ObjectId;
   public name?: string
   public username?: string
   public email?: string

@@ -1,6 +1,6 @@
 export class Category {
-    public _id?: string
-    public category?: {
+  public _id?: string;
+  public category?: {
       name?: string
       description?: string
       picture?: any
