@@ -513,6 +513,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isSeller\": true,\r\n    \"userId\": \"65883a7bc89918015e25e52e\",\r\n    \"to\": \"65883ab3c89918015e25e532\",\r\n    \"readBySeller\": false,\r\n    \"readByBuyer\": false,\r\n    \"sellerId\": \"222\",\r\n    \"buyerId\": \"3333\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:3011/conversation",
 							"protocol": "http",
@@ -522,6 +531,99 @@
 							"port": "3011",
 							"path": [
 								"conversation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conversation.listAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isSeller\": true,\r\n    \"userId\": \"65883a7bc89918015e25e52e\",\r\n    \"to\": \"65883ab3c89918015e25e532\",\r\n    \"readBySeller\": false,\r\n    \"readByBuyer\": false,\r\n    \"sellerId\": \"222\",\r\n    \"buyerId\": \"3333\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3011/conversation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3011",
+							"path": [
+								"conversation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conversation.listById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isSeller\": true,\r\n    \"userId\": \"65883a7bc89918015e25e52e\",\r\n    \"to\": \"65883ab3c89918015e25e532\",\r\n    \"readBySeller\": false,\r\n    \"readByBuyer\": false,\r\n    \"sellerId\": \"222\",\r\n    \"buyerId\": \"3333\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3011/conversation/single/658951d2e4e3a44b66725296",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3011",
+							"path": [
+								"conversation",
+								"single",
+								"658951d2e4e3a44b66725296"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "conversation.update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isSeller\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3011/conversation/658951d2e4e3a44b66725296",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3011",
+							"path": [
+								"conversation",
+								"658951d2e4e3a44b66725296"
 							]
 						}
 					},
