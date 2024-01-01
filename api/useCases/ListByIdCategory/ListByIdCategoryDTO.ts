@@ -1,5 +1,5 @@
 export interface ICategoryRequestDTO {
-  _id: string
+  _id?: string
   id?: string
   name?: string
   description?: string

@@ -84,37 +84,37 @@ db.categoryschemas.insert([
     _id: ObjectId("6591ac0ef9877e3170d90c3e"),
     name: "Desenhar o seu website",
     description: "Desenhar o seu website",
-    picture: "files-1704045582411.jpg"
+    picture: "files-1704052453981.jpg"
   },
   {
     _id: ObjectId("6591ac25f9877e3170d90c40"),
     name: "Escrever o seu conteúdo",
     description: "Escrever o seu conteúdo",
-    picture: "files-1704045582411.jpg"
+    picture: "files-1704052453981.jpg"
   },
   {
     _id: ObjectId("6591ac32f9877e3170d90c42"),
     name: "Melhorar o seu SEO",
     description: "Melhorar o seu SEO",
-    picture: "files-1704045582411.jpg"
+    picture: "files-1704052453981.jpg"
   },
   {
     _id: ObjectId("6591ac3bf9877e3170d90c44"),
     name: "Desenhar o seu logotipo",
     description: "Desenhar o seu logotipo",
-    picture: "files-1704045582411.jpg"
+    picture: "files-1704052453981.jpg"
   },
   {
     _id: ObjectId("6591ac44f9877e3170d90c46"),
     name: "Criar o seu vídeo",
     description: "Criar o seu vídeo",
-    picture: "files-1704045582411.jpg"
+    picture: "files-1704052453981.jpg"
   },
   {
     _id: ObjectId("6591ac5bf9877e3170d90c48"),
     name: "Desenvolver código",
     description: "Desenvolver código",
-    picture: "files-1704045582411.jpg"
+    picture: "files-1704052453981.jpg"
   }
 ])
 
