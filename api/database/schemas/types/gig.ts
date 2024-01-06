@@ -1,12 +1,13 @@
 import { Document } from 'mongoose'
 
 export interface GigInterface extends Document {
+  _id: string
   userId: string
   title: string
   desc: string
   totalStars: number
   starNumber: number
-  cat: string
+  category: string
   price: number
   cover: string
   images: string[]

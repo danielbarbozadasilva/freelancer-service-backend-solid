@@ -8,5 +8,5 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   },
-  "include": ["api/**/*.ts"]
+  "include": ["api/**/*.ts", "api/utils/exceptions/errors.handler.ts"]
 }

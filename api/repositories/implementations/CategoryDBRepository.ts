@@ -17,9 +17,9 @@ export class CategoryDBRepository implements ICategoryRepository{
     const resultDB = await categorySchema.updateOne(
       {_id: dataCategory._id },
       {
-        name: dataCategory.category.name,
-        description: dataCategory.category.description,
-        picture: dataCategory.category.picture,
+        name: dataCategory.name,
+        description: dataCategory.description,
+        picture: dataCategory.picture,
     })
 
     return !!resultDB
@@ -30,17 +30,17 @@ export class CategoryDBRepository implements ICategoryRepository{
     return !!result
   }
 
-  async findByIdCategory(id: string): Promise<any> {
+  async findByIdCategory(id: string): Promise<Category> {
     const result = await categorySchema.findById(id)
     return result
   }
 
-  async listAllCategories(): Promise<any> {
+  async listAllCategories(): Promise<Category[]> {
     const result = await categorySchema.find({})
     return result
   }
 
-  async verifyIdCategoryExists(id: string): Promise<any> {
+  async verifyIdCategoryExists(id: string): Promise<boolean> {
     const result = await categorySchema.findById(id)
     return !!result
   }

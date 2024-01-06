@@ -15,13 +15,13 @@ describe('Update Category', () => {
     test('Make sure update category', async () => {
       const data = {
         _id: '6591ac25f9877e3170d90c40',
-        category: {
-          name: 'Desenvolver código',
-          description: 'Desenvolver código',
-          picture: 'files-1704045582411.jpg',
-        }
+        name: 'Desenvolver código',
+        description: 'Desenvolver código',
+        picture: 'files-1704045582411.jpg'
       }
-      const result = await updateCategoryUseCase.execute(data as ICategoryRequestDTO)
+      const result = await updateCategoryUseCase.execute(
+        data as ICategoryRequestDTO
+      )
       expect(result).toBe(true)
     })
 
@@ -29,14 +29,14 @@ describe('Update Category', () => {
       try {
         const data = {
           _id: '6591ac0ef9877e3170d90cff',
-          category: {
-            name: 'Desenvolver código',
-            description: 'Desenvolver código',
-            picture: 'files-1704045582411.jpg',
-          }
+          name: 'Desenvolver código',
+          description: 'Desenvolver código',
+          picture: 'files-1704045582411.jpg'
         }
-        expect(await updateCategoryUseCase.execute(data as ICategoryRequestDTO)).toThrow()
-      } catch (error){}
+        expect(
+          await updateCategoryUseCase.execute(data as ICategoryRequestDTO)
+        ).toThrow()
+      } catch (error) {}
     })
   })
 })

@@ -8,11 +8,9 @@ export class UpdateCategoryController {
     try {
       await this.updateCategoryUseCase.execute({
         _id: request.params.id,
-        category: {
-          name: request.body.name,
-          description: request.body.description,
-          picture: request.file
-        }     
+        name: request.body.name,
+        description: request.body.description,
+        picture: request.file.originalname,
        })
 
       return response

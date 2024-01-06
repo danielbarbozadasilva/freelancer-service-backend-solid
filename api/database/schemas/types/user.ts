@@ -3,7 +3,7 @@ import { Document } from 'mongoose'
 export interface UserInterface extends Document {
   username: string
   email: string
-  permissions: string[]
+  picture: string[]
   hash: string
   salt: string
   recovery: {

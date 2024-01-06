@@ -43,10 +43,6 @@ const usersSchema = new Schema(
       type: String,
       required: false
     },
-    permissions: {
-      type: Array,
-      default: ['client']
-    },
     hash: String,
     salt: String,
     recovery: {

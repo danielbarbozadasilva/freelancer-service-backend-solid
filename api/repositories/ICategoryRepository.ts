@@ -6,5 +6,5 @@ export interface ICategoryRepository {
   deleteCategory(id: string): Promise<boolean>
   verifyIdCategoryExists(id: string): Promise<boolean>
   findByIdCategory(id: string): Promise<Category>
-  listAllCategories(): Promise<Category>
+  listAllCategories(): Promise<Category[]>
 }

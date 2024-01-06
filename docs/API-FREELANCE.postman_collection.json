@@ -55,13 +55,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3011/auth",
+							"raw": "http://localhost:3011/v1/auth",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3011",
 							"path": [
+								"v1",
 								"auth"
 							]
 						}
@@ -113,13 +114,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3011/logout",
+							"raw": "http://localhost:3011/v1/logout",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3011",
 							"path": [
+								"v1",
 								"logout"
 							]
 						}
@@ -222,13 +224,14 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3011/register",
+							"raw": "http://localhost:3011/v1/register",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3011",
 							"path": [
+								"v1",
 								"register"
 							]
 						}
@@ -240,42 +243,6 @@
 		{
 			"name": "category",
 			"item": [
-				{
-					"name": "category.listById",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbEBnbWFpbC5jb20iLCJuYW1lIjoiRGFuaWVsIEJhcmJvemEiLCJ0eXBlIjoxLCJpYXQiOjE2NTQ0ODI5MjIsImV4cCI6MTY2MzQ4MjkyMn0.wwm5ffUkQjtISWJqQhxKy2xQ_VQfbOxJoV6QbN561h4",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "token",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:3011/category/6591ac0ef9877e3170d90c3e",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3011",
-							"path": [
-								"category",
-								"6591ac0ef9877e3170d90c3e"
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "category.listAll",
 					"request": {
@@ -298,14 +265,52 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3011/category",
+							"raw": "http://localhost:3011/v1/category",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3011",
 							"path": [
+								"v1",
 								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category.listById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbEBnbWFpbC5jb20iLCJuYW1lIjoiRGFuaWVsIEJhcmJvemEiLCJ0eXBlIjoxLCJpYXQiOjE2NTQ0ODI5MjIsImV4cCI6MTY2MzQ4MjkyMn0.wwm5ffUkQjtISWJqQhxKy2xQ_VQfbOxJoV6QbN561h4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3011/v1/category/6591ac0ef9877e3170d90c3e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3011",
+							"path": [
+								"v1",
+								"category",
+								"6591ac0ef9877e3170d90c3e"
 							]
 						}
 					},
@@ -334,6 +339,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg4M2E3YmM4OTkxODAxNWUyNWU1MmUiLCJ1c2VybmFtZSI6ImRhbmllbDkzNSIsImVtYWlsIjoiZGFuaWVsODBiYXJib3phQGdtYWlsLmNvbSIsInBlcm1pc3Npb25zIjpbImNsaWVudCJdLCJpYXQiOjE3MDQxNDY1NDEsImV4cCI6MTAwMTcwNDE0NjU0MH0.aRdzrx2VM27YIUE8_aDi4Y8q2s_Uagq_cc-vmO9352M",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -363,13 +378,14 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3011/category",
+							"raw": "http://localhost:3011/v1/category",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3011",
 							"path": [
+								"v1",
 								"category"
 							]
 						}
@@ -399,6 +415,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg4M2E3YmM4OTkxODAxNWUyNWU1MmUiLCJ1c2VybmFtZSI6ImRhbmllbDkzNSIsImVtYWlsIjoiZGFuaWVsODBiYXJib3phQGdtYWlsLmNvbSIsInBlcm1pc3Npb25zIjpbImNsaWVudCJdLCJpYXQiOjE3MDQxNDY1NDEsImV4cCI6MTAwMTcwNDE0NjU0MH0.aRdzrx2VM27YIUE8_aDi4Y8q2s_Uagq_cc-vmO9352M",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -428,13 +454,14 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3011/category/6591ac0ef9877e3170d90c3e",
+							"raw": "http://localhost:3011/v1/category/6591ac0ef9877e3170d90c3e",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3011",
 							"path": [
+								"v1",
 								"category",
 								"6591ac0ef9877e3170d90c3e"
 							]
@@ -465,6 +492,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg4M2E3YmM4OTkxODAxNWUyNWU1MmUiLCJ1c2VybmFtZSI6ImRhbmllbDkzNSIsImVtYWlsIjoiZGFuaWVsODBiYXJib3phQGdtYWlsLmNvbSIsInBlcm1pc3Npb25zIjpbImNsaWVudCJdLCJpYXQiOjE3MDQxNDY1NDEsImV4cCI6MTAwMTcwNDE0NjU0MH0.aRdzrx2VM27YIUE8_aDi4Y8q2s_Uagq_cc-vmO9352M",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
@@ -489,13 +526,14 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3011/category/6591ac0ef9877e3170d90c3e",
+							"raw": "http://localhost:3011/v1/category/6591ac0ef9877e3170d90c3e",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3011",
 							"path": [
+								"v1",
 								"category",
 								"6591ac0ef9877e3170d90c3e"
 							]
@@ -511,8 +549,24 @@
 				{
 					"name": "conversation.create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg4M2E3YmM4OTkxODAxNWUyNWU1MmUiLCJ1c2VybmFtZSI6ImRhbmllbDkzNSIsImVtYWlsIjoiZGFuaWVsODBiYXJib3phQGdtYWlsLmNvbSIsInBlcm1pc3Npb25zIjpbImNsaWVudCJdLCJpYXQiOjE3MDQxNDY1NDEsImV4cCI6MTAwMTcwNDE0NjU0MH0.aRdzrx2VM27YIUE8_aDi4Y8q2s_Uagq_cc-vmO9352M",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"isSeller\": true,\r\n    \"userId\": \"65883a7bc89918015e25e52e\",\r\n    \"to\": \"65883ab3c89918015e25e532\",\r\n    \"readBySeller\": false,\r\n    \"readByBuyer\": false,\r\n    \"sellerId\": \"222\",\r\n    \"buyerId\": \"3333\"\r\n}",
@@ -523,13 +577,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3011/conversation",
+							"raw": "http://localhost:3011/v1/conversation",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3011",
 							"path": [
+								"v1",
 								"conversation"
 							]
 						}
@@ -542,8 +597,24 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg4M2E3YmM4OTkxODAxNWUyNWU1MmUiLCJ1c2VybmFtZSI6ImRhbmllbDkzNSIsImVtYWlsIjoiZGFuaWVsODBiYXJib3phQGdtYWlsLmNvbSIsInBlcm1pc3Npb25zIjpbImNsaWVudCJdLCJpYXQiOjE3MDQxNDY1NDEsImV4cCI6MTAwMTcwNDE0NjU0MH0.aRdzrx2VM27YIUE8_aDi4Y8q2s_Uagq_cc-vmO9352M",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"isSeller\": true,\r\n    \"userId\": \"65883a7bc89918015e25e52e\",\r\n    \"to\": \"65883ab3c89918015e25e532\",\r\n    \"readBySeller\": false,\r\n    \"readByBuyer\": false,\r\n    \"sellerId\": \"222\",\r\n    \"buyerId\": \"3333\"\r\n}",
@@ -554,13 +625,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3011/conversation",
+							"raw": "http://localhost:3011/v1/conversation",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3011",
 							"path": [
+								"v1",
 								"conversation"
 							]
 						}
@@ -573,8 +645,24 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg4M2E3YmM4OTkxODAxNWUyNWU1MmUiLCJ1c2VybmFtZSI6ImRhbmllbDkzNSIsImVtYWlsIjoiZGFuaWVsODBiYXJib3phQGdtYWlsLmNvbSIsInBlcm1pc3Npb25zIjpbImNsaWVudCJdLCJpYXQiOjE3MDQxNDY1NDEsImV4cCI6MTAwMTcwNDE0NjU0MH0.aRdzrx2VM27YIUE8_aDi4Y8q2s_Uagq_cc-vmO9352M",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"isSeller\": true,\r\n    \"userId\": \"65883a7bc89918015e25e52e\",\r\n    \"to\": \"65883ab3c89918015e25e532\",\r\n    \"readBySeller\": false,\r\n    \"readByBuyer\": false,\r\n    \"sellerId\": \"222\",\r\n    \"buyerId\": \"3333\"\r\n}",
@@ -585,16 +673,24 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3011/conversation/single/658951d2e4e3a44b66725296",
+							"raw": "http://localhost:3011/v1/conversation/single/658951d2e4e3a44b66725296",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3011",
 							"path": [
+								"v1",
 								"conversation",
 								"single",
 								"658951d2e4e3a44b66725296"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -603,8 +699,24 @@
 				{
 					"name": "conversation.update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg4M2E3YmM4OTkxODAxNWUyNWU1MmUiLCJ1c2VybmFtZSI6ImRhbmllbDkzNSIsImVtYWlsIjoiZGFuaWVsODBiYXJib3phQGdtYWlsLmNvbSIsInBlcm1pc3Npb25zIjpbImNsaWVudCJdLCJpYXQiOjE3MDQxNDY1NDEsImV4cCI6MTAwMTcwNDE0NjU0MH0.aRdzrx2VM27YIUE8_aDi4Y8q2s_Uagq_cc-vmO9352M",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"isSeller\": true\r\n}",
@@ -615,15 +727,450 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3011/conversation/658951d2e4e3a44b66725296",
+							"raw": "http://localhost:3011/v1/conversation/658951d2e4e3a44b66725296",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3011",
 							"path": [
+								"v1",
 								"conversation",
 								"658951d2e4e3a44b66725296"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "gigs",
+			"item": [
+				{
+					"name": "gigs.listAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbEBnbWFpbC5jb20iLCJuYW1lIjoiRGFuaWVsIEJhcmJvemEiLCJ0eXBlIjoxLCJpYXQiOjE2NTQ0ODI5MjIsImV4cCI6MTY2MzQ4MjkyMn0.wwm5ffUkQjtISWJqQhxKy2xQ_VQfbOxJoV6QbN561h4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3011/v1/gig?userId=65883ab3c89918015e25e532&category=6591ac5bf9877e3170d90c48&min&max&search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3011",
+							"path": [
+								"v1",
+								"gig"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "65883ab3c89918015e25e532"
+								},
+								{
+									"key": "category",
+									"value": "6591ac5bf9877e3170d90c48"
+								},
+								{
+									"key": "min",
+									"value": null
+								},
+								{
+									"key": "max",
+									"value": null
+								},
+								{
+									"key": "search",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gigs.listById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbEBnbWFpbC5jb20iLCJuYW1lIjoiRGFuaWVsIEJhcmJvemEiLCJ0eXBlIjoxLCJpYXQiOjE2NTQ0ODI5MjIsImV4cCI6MTY2MzQ4MjkyMn0.wwm5ffUkQjtISWJqQhxKy2xQ_VQfbOxJoV6QbN561h4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3011/v1/gig/659802bcfed9f7066576ca79",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3011",
+							"path": [
+								"v1",
+								"gig",
+								"659802bcfed9f7066576ca79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gigs.create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg4M2E3YmM4OTkxODAxNWUyNWU1MmUiLCJ1c2VybmFtZSI6ImRhbmllbDkzNSIsImVtYWlsIjoiZGFuaWVsODBiYXJib3phQGdtYWlsLmNvbSIsInBlcm1pc3Npb25zIjpbImNsaWVudCJdLCJpYXQiOjE3MDQxNDY1NDEsImV4cCI6MTAwMTcwNDE0NjU0MH0.aRdzrx2VM27YIUE8_aDi4Y8q2s_Uagq_cc-vmO9352M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userId",
+									"value": "65883ab3c89918015e25e532",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "Desenvolvedor Full Stack",
+									"type": "text"
+								},
+								{
+									"key": "desc",
+									"value": "Experiência em desenvolvimento web full stack",
+									"type": "text"
+								},
+								{
+									"key": "totalStars",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "starNumber",
+									"value": "4.5",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "6591ac5bf9877e3170d90c48",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "cover",
+									"value": "nenhuma",
+									"type": "text"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/C:/Users/pc-02/Desktop/freelance-service-backend-solid/api/utils/files/image/files-1704456755430.jpg"
+								},
+								{
+									"key": "shortTitle",
+									"value": "Dev Full Stack",
+									"type": "text"
+								},
+								{
+									"key": "shortDesc",
+									"value": "Desenvolvimento web full stack",
+									"type": "text"
+								},
+								{
+									"key": "deliveryTime",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "revisionNumber",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "features",
+									"value": "Desenvolvimento web,APIs RESTful,React,Node.js,Express",
+									"type": "text"
+								},
+								{
+									"key": "sales",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3011/v1/gig",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3011",
+							"path": [
+								"v1",
+								"gig"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gigs.update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg4M2E3YmM4OTkxODAxNWUyNWU1MmUiLCJ1c2VybmFtZSI6ImRhbmllbDkzNSIsImVtYWlsIjoiZGFuaWVsODBiYXJib3phQGdtYWlsLmNvbSIsInBlcm1pc3Npb25zIjpbImNsaWVudCJdLCJpYXQiOjE3MDQxNDY1NDEsImV4cCI6MTAwMTcwNDE0NjU0MH0.aRdzrx2VM27YIUE8_aDi4Y8q2s_Uagq_cc-vmO9352M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userId",
+									"value": "65883ab3c89918015e25e532",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "Desenvolvedor Full Stack",
+									"type": "text"
+								},
+								{
+									"key": "desc",
+									"value": "Experiência em desenvolvimento web full stack",
+									"type": "text"
+								},
+								{
+									"key": "totalStars",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "starNumber",
+									"value": "4.5",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "6591ac5bf9877e3170d90c48",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "cover",
+									"value": "nenhuma1",
+									"type": "text"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/C:/Users/pc-02/Desktop/freelance-service-backend-solid/api/utils/files/image/files-1704052453989.jpg"
+								},
+								{
+									"key": "shortTitle",
+									"value": "Dev Full Stack",
+									"type": "text"
+								},
+								{
+									"key": "shortDesc",
+									"value": "Desenvolvimento web full stack",
+									"type": "text"
+								},
+								{
+									"key": "deliveryTime",
+									"value": "7",
+									"type": "text"
+								},
+								{
+									"key": "revisionNumber",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "features",
+									"value": "Desenvolvimento web,APIs RESTful,React,Node.js,Express",
+									"type": "text"
+								},
+								{
+									"key": "sales",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3011/v1/gig/659802bcfed9f7066576ca79",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3011",
+							"path": [
+								"v1",
+								"gig",
+								"659802bcfed9f7066576ca79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gigs.delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg4M2E3YmM4OTkxODAxNWUyNWU1MmUiLCJ1c2VybmFtZSI6ImRhbmllbDkzNSIsImVtYWlsIjoiZGFuaWVsODBiYXJib3phQGdtYWlsLmNvbSIsInBlcm1pc3Npb25zIjpbImNsaWVudCJdLCJpYXQiOjE3MDQxNDY1NDEsImV4cCI6MTAwMTcwNDE0NjU0MH0.aRdzrx2VM27YIUE8_aDi4Y8q2s_Uagq_cc-vmO9352M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:3011/v1/gig/659802bcfed9f7066576ca79",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3011",
+							"path": [
+								"v1",
+								"gig",
+								"659802bcfed9f7066576ca79"
 							]
 						}
 					},

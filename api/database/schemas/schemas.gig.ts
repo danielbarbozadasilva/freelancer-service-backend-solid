@@ -4,7 +4,8 @@ import { GigInterface } from './types/gig'
 const gigSchema = new Schema(
   {
     userId: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: 'userschemas',
       required: true,
     },
     title: {
@@ -23,8 +24,9 @@ const gigSchema = new Schema(
       type: Number,
       default: 0,
     },
-    cat: {
-      type: String,
+    category: {
+      type: Schema.Types.ObjectId,
+      ref: 'categorySchemas',
       required: true,
     },
     price: {
