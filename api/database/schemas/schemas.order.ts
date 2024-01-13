@@ -3,13 +3,9 @@ import { OrderInterface } from './types/order'
 
 const orderSchema = new Schema(
   {
-    gigId: {
+    productId: {
       type: String,
       required: true,
-    },
-    img: {
-      type: String,
-      required: false,
     },
     title: {
       type: String,
@@ -19,9 +15,10 @@ const orderSchema = new Schema(
       type: Number,
       required: true,
     },
-    sellerId: {
-      type: String,
-      required: true,
+    userId: { 
+      type: Schema.Types.ObjectId, 
+      ref: 'userschemas', 
+      required: true 
     },
     buyerId: {
       type: String,
@@ -41,4 +38,4 @@ const orderSchema = new Schema(
   }
 );
 
-export default model<OrderInterface>('orderSchemas', orderSchema)
+export default model<OrderInterface>('orderschemas', orderSchema)

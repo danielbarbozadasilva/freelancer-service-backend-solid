@@ -14,6 +14,7 @@ export interface UserInterface extends Document {
   country: String,
   phone: String,
   desc: String,
-  isSeller: Boolean
+  isSeller: Boolean,
+  permissions: string[]
 }
 

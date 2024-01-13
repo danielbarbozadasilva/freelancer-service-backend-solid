@@ -16,8 +16,8 @@ describe('SignIn User', () => {
         email: 'danielbarboza56@hotmail.com',
         password: '123'
       }
-      const resultData = await signInUseCase.execute(data)
-      expect(resultData).toHaveProperty('data._id')
+      const resultData:any = await signInUseCase.execute(data)
+      expect(resultData.data).toHaveProperty('id')
     })
 
     test('Make sure returns error if credentials are invalid', async () => {

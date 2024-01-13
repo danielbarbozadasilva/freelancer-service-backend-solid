@@ -1,8 +1,8 @@
 import { formatAddressImage } from "../../utils/utils.file"
 
 export interface ICategoryRequestDTO {
-  id?: string
   _id?: string
+  id?: string
   name?: string
   description?: string
   picture?: string[]

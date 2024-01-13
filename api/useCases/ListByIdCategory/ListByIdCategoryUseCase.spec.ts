@@ -3,8 +3,8 @@ import { createConnection, closeConnection } from '../../database/client'
 import { ICategoryRequestDTO } from './ListByIdCategoryDTO'
 
 describe('List by id Categories', () => {
-  beforeAll(async() => {
-    await createConnection()
+  beforeAll(() => {
+    createConnection()
   })
 
   afterAll(async () => {

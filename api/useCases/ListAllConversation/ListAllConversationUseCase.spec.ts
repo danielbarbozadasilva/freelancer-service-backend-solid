@@ -13,7 +13,7 @@ describe('List all conversations', () => {
   describe('List all conversations', () => {
     test('Make sure list all conversations', async () => {
       const result = await listAllConversationUseCase.execute()
-      expect(result).toBe(true)
+      expect(result[0]._id).not.toBe(null);
     })
   })
 })

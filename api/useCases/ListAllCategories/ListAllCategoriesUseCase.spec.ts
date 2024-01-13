@@ -13,7 +13,7 @@ describe('List All Categories', () => {
 
   describe('List All Categories', () => {
     test('Make sure list all categories', async () => {
-      const result: ICategoryRequestDTO = await listAllCategoriesUseCase.execute()
+      const result: any = await listAllCategoriesUseCase.execute()
       expect(result[0]._id).not.toBe(null);
     })
   })

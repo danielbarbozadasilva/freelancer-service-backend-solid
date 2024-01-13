@@ -4,14 +4,16 @@ import { MessageInterface } from './types/message'
 const messageSchema = new Schema(
   {
     conversationId: {
-      type: String,
-      required: true
+      type: Schema.Types.ObjectId,
+      ref: 'conversationschemas',
+      required: true,
     },
     userId: {
-      type: String,
-      required: true
+      type: Schema.Types.ObjectId,
+      ref: 'userschemas',
+      required: true,
     },
-    desc: {
+    description: {
       type: String,
       required: true
     }
@@ -21,4 +23,4 @@ const messageSchema = new Schema(
   }
 )
 
-export default model<MessageInterface>('messageSchemas', messageSchema)
+export default model<MessageInterface>('messageschemas', messageSchema)

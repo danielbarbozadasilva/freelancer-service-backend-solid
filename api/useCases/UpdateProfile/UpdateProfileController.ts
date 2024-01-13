@@ -24,11 +24,11 @@ export class UpdateProfileController {
         permissions: ['client'],
         hash: Cryptography.createHash(request.body.password, salt),
         salt: salt,
-        isSeller: false
+        isSeller: true
       })
 
       return response
-        .status(201)
+        .status(200)
         .send({ message: 'User successfully updated!' })
     } catch (error) {
       return response

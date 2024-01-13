@@ -33,4 +33,4 @@ const conversationSchema = new Schema(
   }
 )
 
-export default model<ConversationInterface>('conversationSchemas', conversationSchema)
+export default model<ConversationInterface>('conversationschemas', conversationSchema)

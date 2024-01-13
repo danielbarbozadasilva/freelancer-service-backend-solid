@@ -12,7 +12,7 @@ export class SignInController {
       })
 
       return response
-        .status(201)
+        .status(200)
         .send({ message: 'Successfully authenticated user!', data: result })
     } catch (error) {
       return response

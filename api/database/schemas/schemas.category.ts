@@ -21,4 +21,4 @@ const categorySchema = new Schema(
   }
 )
 
-export default model<CategoryInterface>('categorySchemas', categorySchema)
+export default model<CategoryInterface>('categoryschemas', categorySchema)

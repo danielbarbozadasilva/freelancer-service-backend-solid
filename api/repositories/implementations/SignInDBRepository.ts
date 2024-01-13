@@ -20,6 +20,7 @@ export class SignInRepository implements ISignInRepository {
       username: result.username,
       email: result.email,
       isSeller: result.isSeller,
+      permissions: result.permissions,
       picture: formatAddressImage(result.picture[0])
     }
     const token = jwt.sign(

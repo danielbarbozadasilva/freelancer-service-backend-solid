@@ -82,31 +82,31 @@ db.createCollection("categoryschemas")
 db.categoryschemas.insert([
   {
     _id: ObjectId("6591ac0ef9877e3170d90c3e"),
-    name: "Desenhar o seu website",
+    name: "Desenhar website",
     description: "Desenhar o seu website",
     picture: "files-1704052453986.jpg"
   },
   {
     _id: ObjectId("6591ac25f9877e3170d90c40"),
-    name: "Escrever o seu conteúdo",
+    name: "Escrever conteúdo",
     description: "Escrever o seu conteúdo",
     picture: "files-1704052453982.jpg"
   },
   {
     _id: ObjectId("6591ac32f9877e3170d90c42"),
-    name: "Melhorar o seu SEO",
+    name: "Melhorar SEO",
     description: "Melhorar o seu SEO",
     picture: "files-1704052453981.jpg"
   },
   {
     _id: ObjectId("6591ac3bf9877e3170d90c44"),
-    name: "Desenhar o seu logotipo",
+    name: "Desenhar logotipo",
     description: "Desenhar o seu logotipo",
     picture: "files-1704052453984.jpg"
   },
   {
     _id: ObjectId("6591ac44f9877e3170d90c46"),
-    name: "Criar o seu vídeo",
+    name: "Criar vídeo",
     description: "Criar o seu vídeo",
     picture: "files-1704052453985.jpg"
   },
@@ -118,25 +118,20 @@ db.categoryschemas.insert([
   }
 ])
 
-db.createCollection("gigschemas")
-db.gigschemas.insert([
+db.createCollection("productschemas")
+db.productschemas.insert([
   {
-    _id: ObjectId("659802bcfed9f7066576ca79"),
+    _id: ObjectId("659802bcfed9f7066576ca77"),
     userId: ObjectId("65883ab3c89918015e25e532"),
     title: "Desenvolvedor Full Stack",
-    desc: "Experiência em desenvolvimento web full stack",
-    totalStars: 5,
-    starNumber: 4.5,
+    description: "Experiência em desenvolvimento web full stack",
     category: ObjectId("6591ac5bf9877e3170d90c48"),
     price: 50,
-    cover: "files-1704052453982.jpg",
+    promotion: 50,
     images: [
       "files-1704052453982.jpg"
     ],
-    shortTitle: "Dev Full Stack",
-    shortDesc: "Desenvolvimento web full stack",
     deliveryTime: 7,
-    revisionNumber: 2,
     features: [
       "Desenvolvimento web",
       "APIs RESTful",
@@ -144,7 +139,63 @@ db.gigschemas.insert([
       "Node.js", 
       "Express"
     ],
-    sales: 0
+    sales: 0,
+    rating: [
+      ObjectId("638a22b10ef44976d168711e")
+    ],
+  },
+  {
+    _id: ObjectId("659802bcfed9f7066576ca78"),
+    userId: ObjectId("65883ab3c89918015e25e532"),
+    title: "Desenvolvedor Backend",
+    description: "Experiência em desenvolvimento backend",
+    category: ObjectId("6591ac5bf9877e3170d90c48"),
+    price: 50,
+    promotion: 50,
+    images: [
+      "files-1704052453982.jpg"
+    ],
+    deliveryTime: 7,
+    features: [
+      "Node.js", 
+      "Express"
+    ],
+    sales: 0,
+    rating: [
+      ObjectId("638a236a0ef44976d1687126")
+    ],
+  }
+])
+
+db.createCollection("ratingschemas")
+db.ratingschemas.insert([
+  {
+    _id: ObjectId("638a236a0ef44976d1687126"),
+    name: "João Costa",
+    text: "Gostei bastante.",
+    score: 5,
+    productId: ObjectId("659802bcfed9f7066576ca78"),
+    userId: ObjectId("65883a7bc89918015e25e52f")
+  },
+   {
+    _id: ObjectId("638a22b10ef44976d168711e"),
+    name: "Marcos Silva",
+    text: "Simplismente perfeito.",
+    score: 4,
+    productId: ObjectId("659802bcfed9f7066576ca77"),
+    userId: ObjectId("65883a7bc89918015e25e52f")
+  }
+])
+
+db.createCollection("messageschemas")
+db.messageschemas.insert([
+  {
+    _id: ObjectId("65a1ad68bf2d29fd7c43ba50"),
+    conversationId: ObjectId("658951d2e4e3a44b66725296"),
+    userId: ObjectId("65883ab3c89918015e25e532"),
+    description: "fdasdfsdfasfsadfsdfdsfs",
+    createdAt: "2024-01-12T21:21:44.607Z",
+    updatedAt: "2024-01-12T21:21:44.607Z"
   }
 ])
 
