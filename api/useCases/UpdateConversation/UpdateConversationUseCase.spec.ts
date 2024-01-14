@@ -14,19 +14,9 @@ describe('Update conversation', () => {
   describe('Update conversation', () => {
     test('Make sure update conversation', async () => {
       const id: string = '658951d2e4e3a44b66725296'
-      const data = {
-        id: '65883a7bc89918015e25e52e65883ab3c89918015e25e532',
-        sellerId: '65883a7bc89918015e25e52e',
-        buyerId: '65883ab3c89918015e25e532',
-        readBySeller: true,
-        readByBuyer: true,
-        isSeller: true
-      }
+      const isSeller: boolean = true
 
-      const result = await updateConversationUseCase.execute(
-        id,
-        data as IUpdateConversationRequestDTO
-      )
+      const result = await updateConversationUseCase.execute(id, isSeller)
       expect(!!result).toBe(true)
     })
   })

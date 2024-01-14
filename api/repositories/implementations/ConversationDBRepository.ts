@@ -26,9 +26,9 @@ export class ConversationDBRepository implements IConversationRepository {
     return resultDB
   }
 
-  async updateConversation(id: string, dataUser: Conversation): Promise<Conversation>{
-    const resultDB = await conversationSchema.findOneAndUpdate({ _id: id },{
-      ...(dataUser.isSeller ? { readBySeller: true } : { readByBuyer: true })
+  async updateConversation(id: string, isSaller: boolean): Promise<Conversation>{
+    const resultDB = await conversationSchema.findOneAndUpdate({ id: id },{
+      ...(isSaller ? { readBySeller: true } : { readByBuyer: true })
     },
     { new: true })
     

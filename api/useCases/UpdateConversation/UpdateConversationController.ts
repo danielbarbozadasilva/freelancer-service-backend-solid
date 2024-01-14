@@ -7,14 +7,9 @@ export class UpdateConversationController {
   async handle(request: Request, response: Response) {
     try {
       const id: string = request.params.id
-      
-      await this.updateConversationUseCase.execute(id, {
-        id: request.body.isSeller ? request.body.userId + request.body.to : request.body.to + request.body.userId,
-        sellerId: request.body.isSeller ? request.body.userId : request.body.to,
-        buyerId: request.body.isSeller ? request.body.to : request.body.userId,
-        readBySeller: request.body.isSeller,
-        readByBuyer: !request.body.isSeller,
-      })
+      console.log('id'+id)
+      console.log('request.body.isSeller'+request.body.isSeller)
+      await this.updateConversationUseCase.execute(id, request.body.isSeller)
 
       return response
         .status(200)

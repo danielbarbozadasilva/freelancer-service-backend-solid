@@ -6,17 +6,20 @@ import { updateConversationController } from '../../useCases/UpdateConversation'
 import authenticationMiddleware from '../../utils/middlewares/middlewares.authentication'
 
 export default (router: Router): void => {
-  router.route('/conversation').post(authenticationMiddleware,(request, response) => {
+  router.route('/conversation').post((request, response) => {
+    authenticationMiddleware(request)
     createConversationController.handle(request, response)
   })
   router.route('/conversation').get((request, response) => {
     authenticationMiddleware(request)
     listAllConversationController.handle(request, response)
   })
-  router.route('/conversation/single/:id').get(authenticationMiddleware, (request, response) => {
+  router.route('/conversation/single/:id').get((request, response) => {
+    authenticationMiddleware(request)
     listByIdConversationController.handle(request, response)
   })
-  router.route('/conversation/:id').put(authenticationMiddleware,(request, response) => {
+  router.route('/conversation/:id').put((request, response) => {
+    authenticationMiddleware(request)
     updateConversationController.handle(request, response)
   })
 }
