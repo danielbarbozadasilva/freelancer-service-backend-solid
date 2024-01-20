@@ -12,7 +12,6 @@ export class CreateProductController {
         description: request.body.description,
         category: request.body.category,
         price: request.body.price,
-        promotion: request.body.promotion,
         images: request.file.originalname,
         deliveryTime: request.body.deliveryTime,
         features: Array.isArray(request.body.features)? request.body.features : request.body.features.split(','),

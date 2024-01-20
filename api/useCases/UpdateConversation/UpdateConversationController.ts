@@ -7,8 +7,6 @@ export class UpdateConversationController {
   async handle(request: Request, response: Response) {
     try {
       const id: string = request.params.id
-      console.log('id'+id)
-      console.log('request.body.isSeller'+request.body.isSeller)
       await this.updateConversationUseCase.execute(id, request.body.isSeller)
 
       return response

@@ -220,6 +220,11 @@
 									"key": "isSeller",
 									"value": "false",
 									"type": "text"
+								},
+								{
+									"key": "permissions",
+									"value": "freelancer",
+									"type": "text"
 								}
 							]
 						},
@@ -754,14 +759,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbEBnbWFpbC5jb20iLCJuYW1lIjoiRGFuaWVsIEJhcmJvemEiLCJ0eXBlIjoxLCJpYXQiOjE2NTQ0ODI5MjIsImV4cCI6MTY2MzQ4MjkyMn0.wwm5ffUkQjtISWJqQhxKy2xQ_VQfbOxJoV6QbN561h4",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [
@@ -776,7 +774,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "http://localhost:3011/v1/product?userId=65883ab3c89918015e25e532&category=6591ac5bf9877e3170d90c48&min&max&search",
+							"raw": "http://localhost:3011/v1/product?userId=65883ab3c89918015e25e532&category=6591ac5bf9877e3170d90c48&search=&offset=0&limit=10",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -796,16 +794,16 @@
 									"value": "6591ac5bf9877e3170d90c48"
 								},
 								{
-									"key": "min",
-									"value": null
-								},
-								{
-									"key": "max",
-									"value": null
-								},
-								{
 									"key": "search",
-									"value": null
+									"value": ""
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "10"
 								}
 							]
 						}
@@ -919,11 +917,6 @@
 									"type": "text"
 								},
 								{
-									"key": "promotion",
-									"value": "100",
-									"type": "text"
-								},
-								{
 									"key": "files",
 									"type": "file",
 									"src": "/C:/Users/pc-02/Downloads/joseph-gonzalez-iFgRcqHznqg-unsplash.jpg"
@@ -1027,11 +1020,6 @@
 								{
 									"key": "price",
 									"value": "50",
-									"type": "text"
-								},
-								{
-									"key": "promotion",
-									"value": "40",
 									"type": "text"
 								},
 								{

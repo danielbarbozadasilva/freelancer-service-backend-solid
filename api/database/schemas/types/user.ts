@@ -13,7 +13,7 @@ export interface UserInterface extends Document {
   img: String,
   country: String,
   phone: String,
-  desc: String,
+  description: String,
   isSeller: Boolean,
   permissions: string[]
 }

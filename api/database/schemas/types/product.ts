@@ -7,9 +7,8 @@ export interface ProductInterface extends Document {
   description: string
   category: string
   price: number
-  promotion: number
   images: string[]
-  deliveryTime: number
+  deliveryTime: string
   features: string[]
   sales: number
   rating: string

@@ -7,7 +7,7 @@ export interface IRegisterRequestDTO {
   picture: any
   country: string
   phone: string
-  desc: string
+  description: string
   permissions: string[]
   hash?: string
   salt?: string

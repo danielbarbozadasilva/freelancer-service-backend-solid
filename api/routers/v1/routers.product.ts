@@ -17,11 +17,9 @@ export default (router: Router): void => {
     updateProductController.handle(request, response)
   })
   router.route('/product').get((request, response) => {
-    authenticationMiddleware(request)
     listAllProductsController.handle(request, response)
   })
   router.route('/product/:id').get((request, response) => {
-    authenticationMiddleware(request)
     listByIdProductController.handle(request, response)
   })
   router.route('/product/:id').delete((request, response) => {

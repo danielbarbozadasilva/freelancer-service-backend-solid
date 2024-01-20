@@ -13,7 +13,8 @@ export class UserDBRepository implements IUserRepository {
       picture: dataUser.picture,
       country: dataUser.country,
       phone: dataUser.phone,
-      desc: dataUser.desc,
+      description: dataUser.description,
+      permissions: dataUser.permissions,
       hash: dataUser.hash,
       salt: dataUser.salt,
       isSeller: dataUser.isSeller
@@ -34,7 +35,8 @@ export class UserDBRepository implements IUserRepository {
       picture: dataUser.picture,
       country: dataUser.country,
       phone: dataUser.phone,
-      desc: dataUser.desc,
+      description: dataUser.description,
+      permissions: dataUser.permissions,
       hash: dataUser.hash,
       salt: dataUser.salt,
       isSeller: dataUser.isSeller

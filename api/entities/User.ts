@@ -10,7 +10,7 @@ export class User {
   public picture?: string
   public country?: string
   public phone?: string
-  public desc?: string
+  public description?: string
   public permissions?: string[]
   public hash?: string
   public salt?: string

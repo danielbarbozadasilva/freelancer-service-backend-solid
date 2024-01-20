@@ -7,9 +7,8 @@ export interface IProductRequestDTO {
   description: string
   category: ObjectId | string
   price: number
-  promotion: number
   images: any
-  deliveryTime: number
+  deliveryTime: string
   features: string[]
   sales: number
   rating?: string

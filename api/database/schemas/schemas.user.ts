@@ -39,7 +39,7 @@ const usersSchema = new Schema(
       type: String,
       required: false
     },
-    desc: {
+    description: {
       type: String,
       required: false
     },

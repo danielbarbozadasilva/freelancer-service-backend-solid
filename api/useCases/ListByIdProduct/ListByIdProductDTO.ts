@@ -8,9 +8,8 @@ export interface IProductRequestDTO {
   description: string
   category: ObjectId | string
   price: number
-  promotion: number
   images: string[]
-  deliveryTime: number
+  deliveryTime: string
   features: string[]
   sales: number
   rating?: string
@@ -24,7 +23,6 @@ export const productDTO = (data: IProductRequestDTO) => {
       description: data.description,
       category: data.category,
       price: data.price,
-      promotion: data.promotion,
       images: formatAddressImage(data.images[0]),
       deliveryTime: data.deliveryTime,
       features: data.features,

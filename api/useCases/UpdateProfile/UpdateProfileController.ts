@@ -20,8 +20,8 @@ export class UpdateProfileController {
         picture: request.file,
         country: request.body.country,
         phone: request.body.phone,
-        desc: request.body.desc,
-        permissions: ['client'],
+        description: request.body.description,
+        permissions: request.body.permissions,
         hash: Cryptography.createHash(request.body.password, salt),
         salt: salt,
         isSeller: true

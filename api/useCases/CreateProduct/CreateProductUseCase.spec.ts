@@ -20,11 +20,10 @@ describe('Create Product', () => {
         description: "Experiência em desenvolvimento web full stack",
         category: Object("6591ac5bf9877e3170d90c48"),
         price: 50,
-        promotion: 50,
         images: [
           "files-1704052453982.jpg"
         ],
-        deliveryTime: 7,
+        deliveryTime: "7 dias",
         features: [
           "Desenvolvimento web",
           "APIs RESTful",

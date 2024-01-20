@@ -1,7 +1,7 @@
 import { model, Schema } from 'mongoose'
 import { ProductInterface } from './types/product'
 
-const productSchema = new Schema(
+const productschemas = new Schema(
   {
     userId: {
       type: Schema.Types.ObjectId,
@@ -25,17 +25,9 @@ const productSchema = new Schema(
       type: Number,
       required: true,
     },
-    promotion: { 
-      type: Number, 
-      default: 0 
-    },
     images: {
       type: [String],
       required: false,
-    },
-    deliveryTime: {
-      type: Number,
-      required: true,
     },
     features: {
       type: [String],
@@ -46,10 +38,8 @@ const productSchema = new Schema(
       default: 0,
     },
     rating: { 
-      type: [{ 
         type: Schema.Types.ObjectId, 
         ref: 'ratingschemas' 
-      }] 
     }
   },
   {
@@ -57,4 +47,4 @@ const productSchema = new Schema(
   }
 );
 
-export default model<ProductInterface>('productschemas', productSchema)
+export default model<ProductInterface>('productschemas', productschemas)
