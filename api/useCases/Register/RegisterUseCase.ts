@@ -8,6 +8,11 @@ export class RegisterUseCase {
   async execute(data: IRegisterRequestDTO) {
     const emailAlreadyExists = await this.userRepository.findByEmail(data.email)
     const userNameAlreadyExists = await this.userRepository.findByUsername(data.username)
+    const userCpfAlreadyExists = await this.userRepository.findByCpf(data.cpf)
+
+    if (userCpfAlreadyExists) {
+      throw new Error('Cpf already exists.')
+    }
 
     if (emailAlreadyExists) {
       throw new Error('Email already exists.')

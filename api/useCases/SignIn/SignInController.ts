@@ -7,12 +7,12 @@ export class SignInController {
   async handle(request: Request, response: Response) {
     try {
       const result = await this.createUserUseCase.execute({
-        username: request.body.username,
+        email: request.body.email,
         password: request.body.password
       })
 
       return response
-        .status(201)
+        .status(200)
         .send({ message: 'Successfully authenticated user!', data: result })
     } catch (error) {
       return response

@@ -1,7 +1,16 @@
+import { ObjectId } from "mongoose";
+
 export class User {
-  public _id?: string
+  public _id?: ObjectId;
+  public name?: string
   public username?: string
   public email?: string
+  public cpf?: string
+  public birthDate?: string
+  public picture?: string
+  public country?: string
+  public phone?: string
+  public description?: string
   public permissions?: string[]
   public hash?: string
   public salt?: string
@@ -9,10 +18,6 @@ export class User {
     token?: String,
     date?: Date
   }
-  public img?: string
-  public country?: string
-  public phone?: string
-  public desc?: string
   public isSeller?: boolean
 
   constructor(props: User) {

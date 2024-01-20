@@ -3,6 +3,10 @@ import { UserInterface } from './types/user'
 
 const usersSchema = new Schema(
   {
+    name: {
+      type: String,
+      required: true
+    },
     username: {
       type: String,
       required: true,
@@ -14,19 +18,18 @@ const usersSchema = new Schema(
       lowerCase: true,
       unique: true
     },
-    permissions: {
-      type: Array,
-      default: ['client']
-    },
-    hash: String,
-    salt: String,
-    recovery: {
-      token: String,
-      date: Date
-    },
-    img: {
+    cpf: {
       type: String,
-      required: false
+      required: true,
+      unique: true
+    },
+    birthDate: { 
+      type: Date, 
+      required: true 
+    },
+    picture: { 
+      type: Array, 
+      default: [] 
     },
     country: {
       type: String,
@@ -36,13 +39,23 @@ const usersSchema = new Schema(
       type: String,
       required: false
     },
-    desc: {
+    description: {
       type: String,
       required: false
+    },
+    hash: String,
+    salt: String,
+    recovery: {
+      token: String,
+      date: Date
     },
     isSeller: {
       type: Boolean,
       default: false
+    },
+    permissions: { 
+      type: Array, 
+      default: [] 
     }
   },
   {

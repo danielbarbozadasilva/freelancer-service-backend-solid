@@ -2,23 +2,26 @@ import { ISignInRepository } from '../ISignInRepository'
 import clientSchema from '../../database/schemas/schemas.user'
 import jwt from 'jsonwebtoken'
 import Cryptography from '../../utils/cryptography'
+import { formatAddressImage } from '../../utils/utils.file'
 
 export class SignInRepository implements ISignInRepository {
-  async verifyCredentials(username: string, password: string): Promise<boolean> {
-    const result = await clientSchema.findOne({ username })
+  async verifyCredentials(email: string, password: string): Promise<boolean> {
+    const result = await clientSchema.findOne({ email })
     if (!!result) {
       return Cryptography.validatePassword(password, result.salt, result.hash)
     }
     return false
   }
 
-  async authenticate(username: string): Promise<object> {
-    const result = await clientSchema.findOne({ username })
+  async authenticate(email: string): Promise<object> {
+    const result = await clientSchema.findOne({ email })
     const data = {
-      _id: result._id,
+      id: result._id,
       username: result.username,
       email: result.email,
-      permissions: result.permissions
+      isSeller: result.isSeller,
+      permissions: result.permissions,
+      picture: formatAddressImage(result.picture[0])
     }
     const token = jwt.sign(
       {
