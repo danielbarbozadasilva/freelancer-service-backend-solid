@@ -89,9 +89,9 @@ db.conversationschemas.insert([
     id: "65883a7bc89918015e25e52e65a5002f9d9b340e62d233b4",
     sellerId: "65883a7bc89918015e25e52e",
     buyerId: "65a5002f9d9b340e62d233b4",
-    readBySeller: true,
+    readBySeller: false,
     readByBuyer: false,
-    lastMessage: "Olá, poderia tirar uma dúvida...",
+    lastMessage: "Ok, obrigado!",
   }
 ])
 
@@ -227,10 +227,18 @@ db.messageschemas.insert([
     _id: ObjectId("65a1ad68bf2d29fd7c43ba50"),
     conversationId: ObjectId("658951d2e4e3a44b66725296"),
     userId: ObjectId("65883ab3c89918015e25e532"),
-    description: "Olá, poderia tirar uma dúvida...",
+    description: "Olá, seu pedido já será entregue...",
     createdAt: "2024-01-12T21:11:44.607Z",
     updatedAt: "2024-01-12T21:11:44.607Z"
-  }
+  },
+  {
+    _id: ObjectId("65acf30bd88db88257bfdd9e"),
+    conversationId: ObjectId("658951d2e4e3a44b66725296"),
+    userId: ObjectId("65a5002f9d9b340e62d233b4"),
+    description: "Ok, obrigado!",
+    createdAt: "2024-01-21T10:33:48.006Z",
+    updatedAt: "2024-01-21T10:33:48.006Z"
+}
 ])
 
 EOF

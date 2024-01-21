@@ -3,7 +3,6 @@ import { IOrderRepository } from '../IOrderRepository'
 import orderSchema from '../../database/schemas/schemas.order'
 import productschemas from '../../database/schemas/schemas.product'
 import Stripe from 'stripe'
-import ErrorGeneric from '../../utils/exceptions/erros.generic-error'
 
 export interface IListOrder {
   isSeller: boolean
@@ -12,7 +11,6 @@ export interface IListOrder {
 
 export class OrderDBRepository implements IOrderRepository {
   async createPaymentIntent(productId: string, buyerId: string): Promise<string> {
-    try {
       const stripe = new Stripe(process.env.STRIPE)
       const product = await productschemas.findById(productId)
 
@@ -35,13 +33,9 @@ export class OrderDBRepository implements IOrderRepository {
       })
 
       return paymentIntent.client_secret
-    } catch (err) {
-      throw new ErrorGeneric(`Internal Server Error! ${err}`)
-    }
   }
 
   async listAllOrders(data: IListOrder): Promise<Order[]> {
-    try {
       const result = await orderSchema.find({
         ...(data.isSeller
           ? { sellerId: data.userId }
@@ -49,13 +43,9 @@ export class OrderDBRepository implements IOrderRepository {
         isCompleted: true
       })
       return result
-    } catch (err) {
-      throw new ErrorGeneric(`Internal Server Error! ${err}`)
-    }
   }
 
   async updateOrder(dataOrder: Order): Promise<boolean> {
-    try {
       const orders = await orderSchema.findOneAndUpdate(
         {
           payment_intent: dataOrder.payment_intent
@@ -67,8 +57,5 @@ export class OrderDBRepository implements IOrderRepository {
         }
       )
       return !!orders
-    } catch (err) {
-      throw new ErrorGeneric(`Internal Server Error! ${err}`)
-    }
   }
 }
