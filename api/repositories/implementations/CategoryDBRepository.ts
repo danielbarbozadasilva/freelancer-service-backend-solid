@@ -36,7 +36,16 @@ export class CategoryDBRepository implements ICategoryRepository{
   }
 
   async listAllCategories(): Promise<Category[]> {
-    const result = await categorySchema.find({})
+    const result = await categorySchema.aggregate([
+      {
+        $lookup: {
+          from: 'productschemas',
+          localField: '_id',
+          foreignField: 'category',
+          as: 'product'
+        }
+      }
+    ])
     return result
   }
 

@@ -10,11 +10,11 @@ export class UpdateCategoryController {
         _id: request.params.id,
         name: request.body.name,
         description: request.body.description,
-        picture: request.file.originalname,
+        picture: request?.file?.originalname,
        })
 
       return response
-        .status(201)
+        .status(200)
         .send({ message: 'Category successfully updated!' })
     } catch (error) {
       return response
