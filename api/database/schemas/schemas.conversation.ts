@@ -8,11 +8,13 @@ const conversationSchema = new Schema(
       required: true,
     },
     sellerId: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: 'userschemas',
       required: true,
     },
     buyerId: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: 'userschemas',
       required: true,
     },
     readBySeller: {

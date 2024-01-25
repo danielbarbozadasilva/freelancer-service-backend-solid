@@ -18,6 +18,8 @@ export class ConversationDBRepository implements IConversationRepository {
 
   async listAllConversation(): Promise<Conversation[]>{
     const resultDB = await conversationSchema.find()
+                                             .populate('sellerId', '-hash -salt')
+                                             .populate('buyerId', '-hash -salt')
     return resultDB
   }
 

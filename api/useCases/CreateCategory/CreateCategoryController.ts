@@ -9,7 +9,7 @@ export class CreateCategoryController {
       await this.createCategoryUseCase.execute({
         name: request.body.name,
         description: request.body.description,
-        picture: request.file,
+        picture: request.file.originalname,
        })
 
       return response

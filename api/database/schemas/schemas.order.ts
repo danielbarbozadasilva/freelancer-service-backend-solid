@@ -4,8 +4,9 @@ import { OrderInterface } from './types/order'
 const orderSchema = new Schema(
   {
     productId: {
-      type: String,
-      required: true,
+      type: Schema.Types.ObjectId, 
+      ref: 'productschemas', 
+      required: true 
     },
     title: {
       type: String,
@@ -25,8 +26,9 @@ const orderSchema = new Schema(
       required: true 
     },
     buyerId: {
-      type: String,
-      required: true,
+      type: Schema.Types.ObjectId, 
+      ref: 'userschemas', 
+      required: true 
     },
     isCompleted: {
       type: Boolean,

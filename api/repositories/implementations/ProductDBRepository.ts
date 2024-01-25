@@ -1,6 +1,6 @@
 import { Product } from '../../entities/Product'
 import { IProductRepository } from '../IProductRepository'
-import productschemas from '../../database/schemas/schemas.freelancer'
+import productschemas from '../../database/schemas/schemas.product'
 import userSchema from '../../database/schemas/schemas.user'
 import mongoose, { ObjectId } from 'mongoose'
 

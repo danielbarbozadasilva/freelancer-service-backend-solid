@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { ListAllCategoriesUseCase } from './ListAllCategoriesUseCase'
-import { categoryDTO } from './ListAllCategoriesDTO'
+import { productByCategoryDTO } from './ListAllCategoriesDTO'
 
 export class ListAllCategoriesController {
   constructor(private listAllCategoriesUseCase: ListAllCategoriesUseCase) {}
@@ -11,7 +11,7 @@ export class ListAllCategoriesController {
       
       return response
         .status(200)
-        .send({ message: 'List all categories successfully!', data: categoryDTO(result) })
+        .send({ message: 'List all categories successfully!', data: productByCategoryDTO(result) })
     } catch (error) {
       return response
         .status(400)
