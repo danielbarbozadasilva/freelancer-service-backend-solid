@@ -32,25 +32,21 @@ function formatarData(data: string): string {
   return dataFormatada;
 }
 
-export const listClientDTO = (data: IListAllUsersRequestDTO[]) => {
-  return data.map((item) => {
-      if (item.permissions[0] !== 'admin') {
+export const listClientDTO = (data: IListAllUsersRequestDTO) => {
+      if (data.permissions[0] !== 'admin') {
         return {
-          id: item._id,
-          name: item.name,
-          username: item.username,
-          email: item.email,
-          cpf: item.cpf,
-          birthDate: formatarData(item.birthDate),
-          picture: formatAddressImage(item.picture[0]),
-          country: item.country,
-          phone: item.phone,
-          description: item.description,
-          permissions: item.permissions,
-          isSeller: item.isSeller,
+          id: data._id,
+          name: data.name,
+          username: data.username,
+          email: data.email,
+          cpf: data.cpf,
+          birthDate: formatarData(data.birthDate),
+          picture: formatAddressImage(data.picture[0]),
+          country: data.country,
+          phone: data.phone,
+          description: data.description,
+          permissions: data.permissions,
+          isSeller: data.isSeller,
         };
       }
-      return null;
-    })
-    .filter((item) => item !== null);
 };

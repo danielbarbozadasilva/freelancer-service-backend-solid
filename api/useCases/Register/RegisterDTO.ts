@@ -15,6 +15,6 @@ export interface IRegisterRequestDTO {
     token: string,
     date: Date
   },
-  isSeller?: boolean
+  isSeller: boolean
   files?: {}
 }

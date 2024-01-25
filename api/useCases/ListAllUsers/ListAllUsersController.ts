@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import Cryptography from '../../utils/cryptography'
 import { ListAllUsersUseCase } from './ListAllUsersUseCase'
+import { listClientDTO } from './ListAllUsersDTO'
 
 export class ListAllUsersController {
   constructor(private listAllUsersUseCase: ListAllUsersUseCase) {}
@@ -11,7 +11,7 @@ export class ListAllUsersController {
 
       return response
       .status(200)
-      .send({ message: 'Users successfully listed!', data: result })
+      .send({ message: 'Users successfully listed!', data: listClientDTO(result) })
 
     } catch (error) {
       return response

@@ -60,13 +60,18 @@ export class UserDBRepository implements IUserRepository {
     return !!result.length
   }
 
-  async listAllUsers(): Promise<any> {
+  async listAllUsers(): Promise<User[]> {
     const result = await clientSchema.find({})
     return result
   }
-
-  async deleteUser(id: string): Promise<any> {
+  
+  async deleteUser(id: string): Promise<boolean> {
     const result = await clientSchema.findByIdAndDelete(id)
     return !!result
+  }
+
+  async listByIdUser(id: string): Promise<User> {
+    const result = await clientSchema.findById(id, { hash: 0, salt: 0, recovery: 0 })
+    return result
   }
 }

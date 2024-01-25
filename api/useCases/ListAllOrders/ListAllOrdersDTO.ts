@@ -1,10 +1,11 @@
 export interface IOrdersRequestDTO {
+  _id?: string
   productId?: string
   title?: string
   price?: number
-  userId?: string
+  userId?: any
   buyerId?: string
-  isSeller?: boolean
+  isSeller?: any
   isCompleted?: boolean
   payment_intent?: string
 }
