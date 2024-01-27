@@ -15,14 +15,14 @@ export class RegisterController {
         email: request.body.email,
         cpf: request.body.cpf,
         birthDate: request.body.birthDate,
-        picture: request.file,
+        picture: request?.file?.originalname,
         country: request.body.country,
         phone: request.body.phone,
         description: request.body.description,
+        isSeller: request.body.isSeller,
         permissions: request.body.permissions,
         hash: Cryptography.createHash(request.body.password, salt),
-        salt: salt,
-        isSeller: false
+        salt: salt
       })
 
       return response

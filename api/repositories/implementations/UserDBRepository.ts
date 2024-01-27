@@ -24,23 +24,39 @@ export class UserDBRepository implements IUserRepository {
   }
 
   async updateProfile(id: string, dataUser: User): Promise<boolean> {
+    const data = {
+        name: dataUser.name,
+        username: dataUser.username,
+        email: dataUser.email,
+        cpf: dataUser.cpf,
+        birthDate: dataUser.birthDate,
+        picture: dataUser.picture,
+        country: dataUser.country,
+        phone: dataUser.phone,
+        description: dataUser.description,
+        permissions: dataUser?.permissions,
+        hash: dataUser?.hash,
+        salt: dataUser?.salt,
+        isSeller: dataUser.isSeller
+    }
+    
+    if (!dataUser?.hash) {
+      delete data.hash;
+      delete data.salt;
+      delete data.permissions;
+    }
     const resultDB = await clientSchema.updateOne(
       {_id: id },
-      {
-      name: dataUser.name,
-      username: dataUser.username,
-      email: dataUser.email,
-      cpf: dataUser.cpf,
-      birthDate: dataUser.birthDate,
-      picture: dataUser.picture,
-      country: dataUser.country,
-      phone: dataUser.phone,
-      description: dataUser.description,
-      permissions: dataUser.permissions,
-      hash: dataUser.hash,
-      salt: dataUser.salt,
-      isSeller: dataUser.isSeller
-    })
+      { ...data })
+
+    return !!resultDB
+  }
+
+  async updateSeller(id: string, isSeller: boolean): Promise<boolean> {
+    const resultDB = await clientSchema.updateOne(
+      {_id: id },
+      { isSeller }
+    )
 
     return !!resultDB
   }

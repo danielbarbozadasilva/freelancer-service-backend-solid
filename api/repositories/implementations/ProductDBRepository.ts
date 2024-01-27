@@ -8,7 +8,7 @@ interface ISearchProduct{
   userId: string
   category: string
   search: string
-  sort: string
+  order: string
   offset: number
   limit: number
 }
@@ -58,7 +58,9 @@ export class ProductDBRepository implements IProductRepository {
 
   async findByIdProduct(id: string): Promise<Product> {
     const result = await productschemas.findById(id)
-    return result
+      .populate('userId', '-hash -salt')
+
+    return result ? result.toObject() : null;
   }
 
   getSort(sortType: string): any{
@@ -122,7 +124,7 @@ export class ProductDBRepository implements IProductRepository {
         },
       },
       {
-        $sort: this.getSort(search.sort),
+        $sort: this.getSort(search.order),
       },
       {
         $facet: {

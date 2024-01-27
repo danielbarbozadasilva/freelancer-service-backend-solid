@@ -9,4 +9,5 @@ export interface IUserRepository {
   deleteUser(idUser: String): Promise<boolean>
   listByIdUser(idUser: String): Promise<User>
   updateProfile(idUser: String, user: User): Promise<boolean>
+  updateSeller(id: string, isSeller: boolean): Promise<boolean>
 }

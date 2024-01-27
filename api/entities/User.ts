@@ -19,6 +19,7 @@ export class User {
     date: Date
   }
   public isSeller: boolean
+  public password?: string
 
   constructor(props: User) {
     Object.assign(this, props)
