@@ -8,24 +8,31 @@ export class UpdateProfileController {
   async handle(request: Request, response: Response) {
     try {
       const salt = Cryptography.createSalt()
-
-      await this.updateProfileUseCase.execute(
-        request.params.id, 
-        {
+      const data = {
         name: request.body.name,
         username: request.body.username,
         email: request.body.email,
         cpf: request.body.cpf,
         birthDate: request.body.birthDate,
-        picture: request.file,
+        picture: request?.file?.originalname,
         country: request.body.country,
         phone: request.body.phone,
         description: request.body.description,
         permissions: request.body.permissions,
-        hash: Cryptography.createHash(request.body.password, salt),
+        hash: request.body?.password? Cryptography.createHash(request.body.password, salt) : null,
         salt: salt,
         isSeller: true
-      })
+      }
+      if (!request.body?.password) {
+        delete data.hash;
+        delete data.salt;
+        delete data.permissions;
+      }
+      
+      await this.updateProfileUseCase.execute(
+        request.params.id, 
+       { ...data } 
+      )
 
       return response
         .status(200)

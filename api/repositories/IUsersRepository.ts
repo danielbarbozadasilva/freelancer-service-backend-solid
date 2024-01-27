@@ -5,7 +5,9 @@ export interface IUserRepository {
   findByUsername(username: string): Promise<boolean>
   findByCpf(cpf: string): Promise<boolean>
   save(user: User): Promise<boolean>
-  listAllUsers(): Promise<User>
+  listAllUsers(): Promise<User[]>
   deleteUser(idUser: String): Promise<boolean>
+  listByIdUser(idUser: String): Promise<User>
   updateProfile(idUser: String, user: User): Promise<boolean>
+  updateSeller(id: string, isSeller: boolean): Promise<boolean>
 }

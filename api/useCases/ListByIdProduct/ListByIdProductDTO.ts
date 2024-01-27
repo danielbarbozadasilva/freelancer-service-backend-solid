@@ -11,7 +11,7 @@ export interface IProductRequestDTO {
   images: string[]
   deliveryTime: string
   features: string[]
-  sales: number
+  sales?: number
   rating?: string
 }
 

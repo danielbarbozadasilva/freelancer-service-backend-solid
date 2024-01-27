@@ -15,6 +15,6 @@ export interface IUpdateProfileRequestDTO {
     token: string,
     date: Date
   },
-  isSeller?: boolean
+  isSeller: boolean
   files?: {}
 }

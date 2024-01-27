@@ -9,6 +9,6 @@ export interface ICreateProductRequestDTO {
   images: any
   deliveryTime: string
   features: string[]
-  sales: number
+  sales?: number
   rating?: string
 }

@@ -10,7 +10,7 @@ export class Product {
    public images: string[]
    public deliveryTime: string
    public features: string[]
-   public sales: number
+   public sales?: number
    public rating?: string
 
   constructor(props: Product) {

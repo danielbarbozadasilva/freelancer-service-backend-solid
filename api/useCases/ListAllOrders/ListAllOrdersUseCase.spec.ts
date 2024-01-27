@@ -13,7 +13,7 @@ describe('List all orders', () => {
 
   describe('List all orders', () => {
     test('Make sure list all orders', async () => {
-      const result: any = await listAllOrdersUseCase.execute({
+      const result: IOrdersRequestDTO[] = await listAllOrdersUseCase.execute({
         userId: Object('65a5002f9d9b340e62d233b4'),
         isSeller: true
       })
