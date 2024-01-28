@@ -6,6 +6,7 @@ import routersV1Category from './v1/routers.category'
 import routersV1Product from './v1/routers.product'
 import routersV1Message from './v1/routers.message'
 import routersV1Orders from './v1/routers.order'
+import routersV1Rating from './v1/routers.rating'
 import { formatError } from '../utils/exceptions/errors.handler'
 
 const version = '1.0'
@@ -25,6 +26,7 @@ export = (app: Router): void => {
   routersV1Product(routesV1)
   routersV1Message(routesV1)
   routersV1Orders(routesV1)
+  routersV1Rating(routesV1)
 
   app.use('/v1', routesV1)
 
