@@ -17,7 +17,7 @@ export class RatingDBRepository implements IRatingRepository {
 
   async updateRating(dataRating: Rating): Promise<boolean> {
     const resultDB = await ratingSchema.updateOne(
-      { _id: dataRating._id },
+      { _id: dataRating.id },
       {
         name: dataRating.name,
         text: dataRating.text,
@@ -35,8 +35,8 @@ export class RatingDBRepository implements IRatingRepository {
     return !!result
   }
 
-  async findByIdRating(id: string): Promise<Rating> {
-    const result = await ratingSchema.findById(id)
+  async findByIdRating(id: string): Promise<Rating[]> {
+    const result = await ratingSchema.find({ productId: id })
     return result
   }
 }

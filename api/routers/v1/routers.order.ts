@@ -1,9 +1,7 @@
 import { Router } from 'express'
 import { listAllOrdersController } from '../../useCases/ListAllOrders'
 import { updateProductController } from '../../useCases/UpdateProduct'
-import { listByIdProductController } from '../../useCases/ListByIdProduct'
 import { createProductController } from '../../useCases/CreateProduct'
-import { deleteProductController} from '../../useCases/DeleteProduct'
 import authenticationMiddleware from '../../utils/middlewares/middlewares.authentication'
 
 export default (router: Router): void => {

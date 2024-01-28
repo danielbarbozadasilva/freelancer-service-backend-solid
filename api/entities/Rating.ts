@@ -2,6 +2,7 @@ import { ObjectId } from "mongoose";
 
 export class Rating {
    public _id?: ObjectId | string
+   public id?: ObjectId | string
    public name: string
    public text: string
    public score: string

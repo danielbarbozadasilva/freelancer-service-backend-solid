@@ -7,11 +7,11 @@ export class DeleteRatingController {
   async handle(request: Request, response: Response) {
     try {
       const id: string = request.params.id
-      const result = await this.deleteRatingUseCase.execute(id)
+      await this.deleteRatingUseCase.execute(id)
 
       return response
       .status(200)
-      .send({ message: 'Rating deleted successfully!', data: result })
+      .send({ message: 'Rating deleted successfully!' })
     } catch (error) {
       return response
         .status(400)

@@ -7,6 +7,7 @@ export class UpdateRatingController {
   async handle(request: Request, response: Response) {
     try {
       await this.updateRatingUseCase.execute({
+        id: request.params.id,
         name: request.body.name,
         text: request.body.text,
         score: request.body.score,
