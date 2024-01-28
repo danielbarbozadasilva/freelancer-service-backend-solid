@@ -12,9 +12,9 @@ describe('List user', () => {
 
   describe('List user', () => {
     test('Make sure list by id user', async () => {
-      const id: string = '65883a7bc89918015e25e52e'
+      const id: string = '65a5002f9d9b340e62d233b4'
       const result = await listByIdUserUseCase.execute(id)
-      expect(result).toBe(true)
+      expect(!!result).toBe(true)
     })
     
     test('Make sure return error if the id not exists', async () => {

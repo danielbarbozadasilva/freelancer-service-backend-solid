@@ -142,7 +142,7 @@ export class ProductDBRepository implements IProductRepository {
     return !!result
   }
 
-  async verifyUserIsSeller(userid: string | ObjectId): Promise<any>{
+  async verifyUserIsSeller(userid: string): Promise<any>{
     const result = await userSchema.findById(userid)
     return result?.isSeller
   }

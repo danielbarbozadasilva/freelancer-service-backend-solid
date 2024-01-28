@@ -573,7 +573,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3011/v1/rating/product/659802bcfed9f7066576ca78",
+							"raw": "http://localhost:3011/v1/rating/product/659802bcfed9f7066576ca77",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -583,7 +583,7 @@
 								"v1",
 								"rating",
 								"product",
-								"659802bcfed9f7066576ca78"
+								"659802bcfed9f7066576ca77"
 							]
 						}
 					},
@@ -632,7 +632,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Marcos\",\r\n    \"text\": \"Excelente\",\r\n    \"score\": 5,\r\n    \"productId\":\"659802bcfed9f7066576ca78\",\r\n    \"userId\":\"65883a7bc89918015e25e52f\",\r\n}",
+							"raw": "{\r\n    \"name\": \"Marcos\",\r\n    \"text\": \"Excelente\",\r\n    \"score\": 5,\r\n    \"productId\": \"659802bcfed9f7066576ca78\",\r\n    \"userId\": \"65883a7bc89918015e25e52f\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -697,7 +697,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Marcos\",\r\n    \"text\": \"Excelente\",\r\n    \"score\": 5,\r\n    \"productId\":\"659802bcfed9f7066576ca78\",\r\n    \"userId\":\"65883a7bc89918015e25e52f\",\r\n}",
+							"raw": "{\r\n    \"name\": \"Marcos\",\r\n    \"text\": \"Excelente\",\r\n    \"score\": 5,\r\n    \"productId\": \"659802bcfed9f7066576ca78\",\r\n    \"userId\": \"65883a7bc89918015e25e52f\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1148,7 +1148,7 @@
 								},
 								{
 									"key": "title",
-									"value": "Desenvolvedor Web",
+									"value": "Desenvolvedor Webddddd",
 									"type": "text"
 								},
 								{
@@ -1169,7 +1169,7 @@
 								{
 									"key": "files",
 									"type": "file",
-									"src": "/C:/Users/pc-02/Downloads/joseph-gonzalez-iFgRcqHznqg-unsplash.jpg"
+									"src": "/C:/Users/pc-02/Downloads/files-1704052453990.jpg"
 								},
 								{
 									"key": "deliveryTime",
@@ -1726,6 +1726,192 @@
 								"v1",
 								"client",
 								"65a5002f9d9b340e62d233b4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "order.listAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbEBnbWFpbC5jb20iLCJuYW1lIjoiRGFuaWVsIEJhcmJvemEiLCJ0eXBlIjoxLCJpYXQiOjE2NTQ0ODI5MjIsImV4cCI6MTY2MzQ4MjkyMn0.wwm5ffUkQjtISWJqQhxKy2xQ_VQfbOxJoV6QbN561h4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"65883ab3c89918015e25e532\",\r\n    \"isSeller\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3011/v1/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3011",
+							"path": [
+								"v1",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order.createPaymentIntent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg4M2E3YmM4OTkxODAxNWUyNWU1MmUiLCJ1c2VybmFtZSI6ImRhbmllbDkzNSIsImVtYWlsIjoiZGFuaWVsODBiYXJib3phQGdtYWlsLmNvbSIsInBlcm1pc3Npb25zIjpbImNsaWVudCJdLCJpYXQiOjE3MDQxNDY1NDEsImV4cCI6MTAwMTcwNDE0NjU0MH0.aRdzrx2VM27YIUE8_aDi4Y8q2s_Uagq_cc-vmO9352M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"buyerId\": \"65a5002f9d9b340e62d233b4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3011/v1/order/create-payment-intent/659802bcfed9f7066576ca78",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3011",
+							"path": [
+								"v1",
+								"order",
+								"create-payment-intent",
+								"659802bcfed9f7066576ca78"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order.update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg4M2E3YmM4OTkxODAxNWUyNWU1MmUiLCJ1c2VybmFtZSI6ImRhbmllbDkzNSIsImVtYWlsIjoiZGFuaWVsODBiYXJib3phQGdtYWlsLmNvbSIsInBlcm1pc3Npb25zIjpbImNsaWVudCJdLCJpYXQiOjE3MDQxNDY1NDEsImV4cCI6MTAwMTcwNDE0NjU0MH0.aRdzrx2VM27YIUE8_aDi4Y8q2s_Uagq_cc-vmO9352M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_intent\": 12321322\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3011/v1/order/65b60ca19588bfeca46e5c26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3011",
+							"path": [
+								"v1",
+								"order",
+								"65b60ca19588bfeca46e5c26"
 							]
 						}
 					},

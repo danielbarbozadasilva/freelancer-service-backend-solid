@@ -12,9 +12,9 @@ describe('List by id rating', () => {
 
   describe('List by id rating', () => {
     test('Make sure list by id rating', async () => {
-      const id: string = '638a236a0ef44976d1687126'
+      const id: string = '659802bcfed9f7066576ca77'
       const result = await listByIdRatingUseCase.execute(id)
-      expect(result._id).not.toBe(null);
+      expect(result[0]._id).not.toBe(null);
     })
   })
 })

@@ -245,6 +245,23 @@ db.messageschemas.insert([
 }
 ])
 
+db.createCollection("orderschemas")
+db.orderschemas.insert([
+  {
+    _id: ObjectId("65b60ca19588bfeca46e5c26"),
+    productId: ObjectId("659802bcfed9f7066576ca78"),
+    title: "Desenvolvedor Full Stack",
+    price: 200,
+    userId: ObjectId("65883ab3c89918015e25e532"),
+    buyerId: ObjectId("65a5002f9d9b340e62d233b4"),
+    isCompleted: false,
+    isSeller: true,
+    payment_intent: "12321322",
+    createdAt: "2024-01-21T10:33:48.006Z",
+    updatedAt: "2024-01-21T10:33:48.006Z"
+  }
+])
+
 
 
 EOF

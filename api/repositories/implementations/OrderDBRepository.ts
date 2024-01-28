@@ -10,29 +10,29 @@ export interface IListOrder {
 }
 
 export class OrderDBRepository implements IOrderRepository {
-  async createPaymentIntent(productId: string, buyerId: string): Promise<string> {
-      const stripe = new Stripe(process.env.STRIPE)
-      const product = await productschemas.findById(productId)
+  async createPaymentIntent(productId: string, buyerId: string): Promise<any> {
+      // const stripe = new Stripe(process.env.STRIPE)
+      // const product = await productschemas.findById(productId)
 
-      const paymentIntent = await stripe.paymentIntents.create({
-        amount: product.price * 100,
-        currency: 'usd',
-        automatic_payment_methods: {
-          enabled: true
-        }
-      })
+      // const paymentIntent = await stripe.paymentIntents.create({
+      //   amount: product.price * 100,
+      //   currency: 'usd',
+      //   automatic_payment_methods: {
+      //     enabled: true
+      //   }
+      // })
 
-      await orderSchema.create({
-        productId: product._id,
-        title: product.title,
-        price: product.price,
-        userId: product.userId,
-        buyerId: buyerId,
-        isCompleted: false,
-        payment_intent: paymentIntent.id
-      })
+      // await orderSchema.create({
+      //   productId: product._id,
+      //   title: product.title,
+      //   price: product.price,
+      //   userId: product.userId,
+      //   buyerId: buyerId,
+      //   isCompleted: false,
+      //   payment_intent: paymentIntent.id
+      // })
 
-      return paymentIntent.client_secret
+      // return paymentIntent.client_secret
   }
 
   async listAllOrders(data: IListOrder): Promise<Order[]> {
@@ -46,6 +46,7 @@ export class OrderDBRepository implements IOrderRepository {
   }
 
   async updateOrder(dataOrder: Order): Promise<boolean> {
+    console.log(dataOrder.payment_intent);
       const orders = await orderSchema.findOneAndUpdate(
         {
           payment_intent: dataOrder.payment_intent

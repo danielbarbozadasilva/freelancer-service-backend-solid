@@ -14,11 +14,10 @@ describe('Create Product', () => {
   describe('Create Product', () => {
     test('Make sure create Product', async () => {
       const data = {
-        _id: Object("659802bcfed9f7066576ca77"),
         userId: Object("65883ab3c89918015e25e532"),
         title: "Desenvolvedor Full Stack",
         description: "Experiência em desenvolvimento web full stack",
-        category: Object("6591ac5bf9877e3170d90c48"),
+        category: "6591ac5bf9877e3170d90c48",
         price: 50,
         images: [
           "files-1704052453982.jpg"

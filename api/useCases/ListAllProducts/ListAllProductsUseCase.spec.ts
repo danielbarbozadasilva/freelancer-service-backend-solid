@@ -1,6 +1,5 @@
 import { listAllProductsUseCase } from './index'
 import { createConnection, closeConnection } from '../../database/client'
-import { IProductRequestDTO } from './ListAllProductsDTO'
 
 describe('List All Products', () => {
   beforeAll(() => {
