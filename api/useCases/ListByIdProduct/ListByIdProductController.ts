@@ -12,7 +12,7 @@ export class ListByIdProductController {
 
       return response
       .status(200)
-      .send({ message: 'List product successfully!', data: productDTO(result) })
+      .send({ message: 'List product successfully!', data: productDTO(result as any) })
     } catch (error) {
       return response
         .status(400)

@@ -192,7 +192,8 @@ db.productschemas.insert([
     category: ObjectId("6591ac5bf9877e3170d90c48"),
     price: 1550,
     images: [
-      "files-1704052453991.jpg"
+      "files-1704052453991.jpg",
+      "files-1704052453990.jpg"
     ],
     deliveryTime: "25 dias",
     features: [
