@@ -2,7 +2,7 @@ import { Product } from '../../entities/Product'
 import { IProductRepository } from '../IProductRepository'
 import productschemas from '../../database/schemas/schemas.product'
 import userSchema from '../../database/schemas/schemas.user'
-import mongoose, { ObjectId } from 'mongoose'
+import mongoose from 'mongoose'
 
 interface ISearchProduct{
   userId: string
@@ -58,7 +58,8 @@ export class ProductDBRepository implements IProductRepository {
 
   async findByIdProduct(id: string): Promise<Product> {
     const result = await productschemas.findById(id)
-      .populate('userId', '-hash -salt')
+    .populate('userId', '-hash -salt')
+    .populate('category')
 
     return result ? result.toObject() : null;
   }
@@ -79,7 +80,17 @@ export class ProductDBRepository implements IProductRepository {
   }
 
   async listAllProducts(search: ISearchProduct): Promise<Product[]> {
-    const categoryId = search.category ? new mongoose.Types.ObjectId(search.category) : null;
+    let matchStage: any = {
+      $or: [{ 'title': { $regex: search.search, $options: 'i' } }]
+    };
+  
+    if (search.category) {
+      const categoryId = new mongoose.Types.ObjectId(search.category);
+      matchStage = {
+        ...matchStage,
+        'category._id': categoryId
+      };
+    }
   
     const result = await productschemas.aggregate([
       {
@@ -116,12 +127,7 @@ export class ProductDBRepository implements IProductRepository {
         },
       },
       {
-        $match: {
-          $and: [
-            { $or: [{ 'title': { $regex: search.search, $options: 'i' } }] },
-            { 'category._id': categoryId },
-          ],
-        },
+        $match: matchStage,
       },
       {
         $sort: this.getSort(search.order),
@@ -142,7 +148,7 @@ export class ProductDBRepository implements IProductRepository {
     return !!result
   }
 
-  async verifyUserIsSeller(userid: string): Promise<any>{
+  async verifyUserIsSeller(userid: string): Promise<boolean>{
     const result = await userSchema.findById(userid)
     return result?.isSeller
   }

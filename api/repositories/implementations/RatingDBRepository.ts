@@ -35,8 +35,14 @@ export class RatingDBRepository implements IRatingRepository {
     return !!result
   }
 
-  async findByIdRating(id: string): Promise<Rating[]> {
+  async findByIdRating(id: string): Promise<any> {
     const result = await ratingSchema.find({ productId: id })
-    return result
+    let totalScore = 0;
+    result.forEach((rating) => {
+        totalScore += parseInt(rating.score, 10)
+    });
+    const averageScore = result.length > 0 ? totalScore / result.length : 0
+
+    return { result, averageScore }
   }
 }
