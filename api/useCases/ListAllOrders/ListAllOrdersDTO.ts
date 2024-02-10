@@ -1,13 +1,17 @@
+import { ObjectId } from "mongoose"
+
 export interface IOrdersRequestDTO {
-  _id?: string
-  productId?: string
-  title?: string
-  price?: number
-  userId?: any
-  buyerId?: string
-  isSeller?: any
-  isCompleted?: boolean
-  payment_intent?: string
+  _id: ObjectId
+  productId: string
+  title: string
+  price: number
+  userId: any
+  buyerId: string
+  isSeller: any
+  isCompleted: boolean
+  payment_intent: string
+  createdAt: Date
+  updatedAt: Date
 }
 
 export const ordersDTO = (data: IOrdersRequestDTO[]) => {

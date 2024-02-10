@@ -1,6 +1,7 @@
 import { Conversation } from '../../entities/Conversation'
 import { IConversationRepository } from '../IConversationRepository'
 import conversationSchema from '../../database/schemas/schemas.conversation'
+import mongoose from 'mongoose'
 
 export class ConversationDBRepository implements IConversationRepository {
   async save(dataUser: Conversation): Promise<boolean> {
@@ -12,30 +13,43 @@ export class ConversationDBRepository implements IConversationRepository {
       readByBuyer: dataUser.readByBuyer,
       lastMessage: dataUser.lastMessage
     })
-    
+
     return !!resultDB
   }
 
-  async listAllConversation(): Promise<Conversation[]>{
-    const resultDB = await conversationSchema.find()
+  async listAllConversation(data: { userId: string, isSeller: boolean }): Promise<Conversation[]> {
+    let filter = {};
+    
+    if (data.isSeller) {
+      filter = { sellerId: data.userId }
+    } else {
+      filter = { buyerId: data.userId }
+    }
+
+    const resultDB = await conversationSchema.find(filter)
                                              .populate('sellerId', '-hash -salt')
                                              .populate('buyerId', '-hash -salt')
-    return resultDB
+    return resultDB    
+
   }
 
-  async getSingleConversation(id: string): Promise<Conversation>{
+  async getSingleConversation(id: string): Promise<Conversation> {
     const resultDB = await conversationSchema.findById(id)
     return resultDB
   }
 
-  async updateConversation(id: string, isSaller: boolean): Promise<Conversation>{
-    const resultDB = await conversationSchema.findOneAndUpdate({ id: id },{
-      ...(isSaller ? { readBySeller: true } : { readByBuyer: true })
-    },
-    { new: true })
-    
+  async updateConversation(
+    id: string,
+    isSaller: boolean
+  ): Promise<Conversation> {
+    const resultDB = await conversationSchema.findOneAndUpdate(
+      { id: id },
+      {
+        ...(isSaller ? { readBySeller: true } : { readByBuyer: true })
+      },
+      { new: true }
+    )
+
     return resultDB
   }
-
-
 }

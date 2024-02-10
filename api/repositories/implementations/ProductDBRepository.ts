@@ -4,7 +4,7 @@ import productschemas from '../../database/schemas/schemas.product'
 import userSchema from '../../database/schemas/schemas.user'
 import mongoose from 'mongoose'
 
-interface ISearchProduct{
+interface ISearchProduct {
   userId: string
   category: string
   search: string
@@ -25,13 +25,16 @@ export class ProductDBRepository implements IProductRepository {
       deliveryTime: dataProduct.deliveryTime,
       features: dataProduct.features,
       sales: dataProduct.sales,
-      rating: dataProduct.rating,
+      rating: dataProduct.rating
     })
 
     return !!resultDB
   }
 
   async updateProduct(dataProduct: Product): Promise<boolean> {
+    const productDB: Product = await productschemas.findOne({
+      _id: dataProduct._id
+    })
     const resultDB = await productschemas.updateOne(
       { _id: dataProduct._id },
       {
@@ -40,14 +43,17 @@ export class ProductDBRepository implements IProductRepository {
         description: dataProduct.description,
         category: dataProduct.category,
         price: dataProduct.price,
-        images: dataProduct.images,
+        images: dataProduct.images?.length
+        ? productDB?.images
+            .filter((item: string) => item)
+            .concat(dataProduct.images)
+        : productDB.images,
         deliveryTime: dataProduct.deliveryTime,
         features: dataProduct.features,
         sales: dataProduct.sales,
         rating: dataProduct.rating,
       }
     )
-
     return !!resultDB
   }
 
@@ -57,14 +63,15 @@ export class ProductDBRepository implements IProductRepository {
   }
 
   async findByIdProduct(id: string): Promise<Product> {
-    const result = await productschemas.findById(id)
-    .populate('userId', '-hash -salt')
-    .populate('category')
+    const result = await productschemas
+      .findById(id)
+      .populate('userId', '-hash -salt')
+      .populate('category')
 
-    return result ? result.toObject() : null;
+    return result ? result.toObject() : null
   }
 
-  getSort(sortType: string): any{
+  getSort(sortType: string): any {
     switch (sortType) {
       case 'alfabetica_a-z':
         return { title: 1 }
@@ -81,41 +88,41 @@ export class ProductDBRepository implements IProductRepository {
 
   async listAllProducts(search: ISearchProduct): Promise<Product[]> {
     let matchStage: any = {
-      $or: [{ 'title': { $regex: search.search, $options: 'i' } }]
-    };
-  
+      $or: [{ title: { $regex: search.search, $options: 'i' } }]
+    }
+
     if (search.category) {
-      const categoryId = new mongoose.Types.ObjectId(search.category);
+      const categoryId = new mongoose.Types.ObjectId(search.category)
       matchStage = {
         ...matchStage,
         'category._id': categoryId
-      };
+      }
     }
-  
+
     const result = await productschemas.aggregate([
       {
         $lookup: {
           from: 'categoryschemas',
           localField: 'category',
           foreignField: '_id',
-          as: 'category',
-        },
+          as: 'category'
+        }
       },
       {
         $lookup: {
           from: 'ratingschemas',
           localField: 'rating',
           foreignField: '_id',
-          as: 'rating',
-        },
+          as: 'rating'
+        }
       },
       {
         $lookup: {
           from: 'userschemas',
           localField: 'userId',
           foreignField: '_id',
-          as: 'user',
-        },
+          as: 'user'
+        }
       },
       { $unwind: '$category' },
       { $unwind: { path: '$rating', preserveNullAndEmptyArrays: true } },
@@ -123,24 +130,27 @@ export class ProductDBRepository implements IProductRepository {
       {
         $project: {
           'user.hash': 0,
-          'user.salt': 0,
-        },
+          'user.salt': 0
+        }
       },
       {
-        $match: matchStage,
+        $match: matchStage
       },
       {
-        $sort: this.getSort(search.order),
+        $sort: this.getSort(search.order)
       },
       {
         $facet: {
           metadata: [{ $count: 'total' }],
-          data: [{ $skip: Number(search.offset) }, { $limit: Number(search.limit) }],
-        },
-      },
-    ]);
-  
-    return result;
+          data: [
+            { $skip: Number(search.offset) },
+            { $limit: Number(search.limit) }
+          ]
+        }
+      }
+    ])
+
+    return result
   }
 
   async verifyIdProductExists(id: string): Promise<boolean> {
@@ -148,9 +158,8 @@ export class ProductDBRepository implements IProductRepository {
     return !!result
   }
 
-  async verifyUserIsSeller(userid: string): Promise<boolean>{
+  async verifyUserIsSeller(userid: string): Promise<boolean> {
     const result = await userSchema.findById(userid)
     return result?.isSeller
   }
-
 }

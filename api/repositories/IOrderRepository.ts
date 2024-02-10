@@ -7,6 +7,7 @@ export interface IListOrder{
 
 export interface IOrderRepository {
   createPaymentIntent(productId: string, buyerId: string): Promise<string>
-  listAllOrders(data: IListOrder): Promise<Order[]>
+  listAllOrders(): Promise<Order[]>
+  listByIdUserOrders(data: IListOrder): Promise<any>
   updateOrder(order: Order): Promise<boolean>
 }

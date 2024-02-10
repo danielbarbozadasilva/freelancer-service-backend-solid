@@ -6,16 +6,24 @@ export class CreateProductController {
 
   async handle(request: Request, response: Response) {
     try {
+      const image = request.files
+      let dataImage
+      if (Array.isArray(image)) {
+        dataImage = image.map((item) => item.originalname)
+      }
+
       await this.createProductUseCase.execute({
         userId: request.body.userId,
         title: request.body.title,
         description: request.body.description,
         category: request.body.category,
         price: request.body.price,
-        images: request.file.originalname,
+        images: dataImage,
         deliveryTime: request.body.deliveryTime,
-        features: Array.isArray(request.body.features)? request.body.features : request.body.features.split(',')
-       })
+        features: Array.isArray(request.body.features)
+          ? request.body.features
+          : request.body.features.split(',')
+      })
 
       return response
         .status(201)

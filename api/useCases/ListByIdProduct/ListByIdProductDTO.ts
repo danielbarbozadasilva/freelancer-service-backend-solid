@@ -1,5 +1,6 @@
 import { ObjectId } from "mongoose"
 import { formatAddressImage } from "../../utils/utils.file"
+import { formatCurrency, formatarData } from "../../utils/utils.format";
 
 export interface IProductRequestDTO {
   _id?: ObjectId | string;
@@ -29,25 +30,6 @@ interface User {
   permissions: string[];
   isSeller: boolean;
   createdAt: Date;
-}
-
-function formatarData(data: any): string {
-  const dataFormatada = new Date(data).toLocaleDateString('pt-BR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  });
-
-  return dataFormatada;
-}
-
-function formatCurrency(value: number): string {
-  const formattedValue = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  }).format(value);
-
-  return formattedValue;
 }
 
 export const productDTO = (data: IProductRequestDTO) => {

@@ -7,10 +7,7 @@ export class ListAllOrdersController {
 
   async handle(request: Request, response: Response) {
     try {
-      const result = await this.listAllOrdersUseCase.execute({
-        userId: request.body.userId,
-        isSeller: request.body.isSeller
-      })
+      const result = await this.listAllOrdersUseCase.execute()
       return response
         .status(200)
         .send({ message: 'List all orders successfully!', data: ordersDTO(result) })

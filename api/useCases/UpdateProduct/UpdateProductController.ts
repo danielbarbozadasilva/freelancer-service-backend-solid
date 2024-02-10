@@ -6,6 +6,12 @@ export class UpdateProductController {
 
   async handle(request: Request, response: Response) {
     try {
+      const image = request.files
+      let dataImage
+      if (Array.isArray(image)) {
+        dataImage = image.map((item) => item.originalname)
+      }
+
       await this.updateProductUseCase.execute({
         _id: request.params.id,
         userId: request.body.userId,
@@ -13,11 +19,9 @@ export class UpdateProductController {
         description: request.body.description,
         category: request.body.category,
         price: request.body.price,
-        images: request.file.originalname,
+        images: dataImage,
         deliveryTime: request.body.deliveryTime,
         features: Array.isArray(request.body.features)? request.body.features : request.body.features.split(','),
-        sales: request.body.sales,
-        rating: request.body.rating,
       })
       return response.status(200).send({ message: 'Product successfully updated!' })
     } catch (error) {

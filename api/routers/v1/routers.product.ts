@@ -8,11 +8,11 @@ import fileUpload from '../../utils/utils.file'
 import authenticationMiddleware from '../../utils/middlewares/middlewares.authentication'
 
 export default (router: Router): void => {
-  router.route('/product').post(fileUpload.single('files'), (request, response) => {
+  router.route('/product').post(fileUpload.array('files', 5), (request, response) => {
     authenticationMiddleware(request)
     createProductController.handle(request, response)
   })
-  router.route('/product/:id').put(fileUpload.single('files'), (request, response) => {
+  router.route('/product/:id').put(fileUpload.array('files', 5), (request, response) => {
     authenticationMiddleware(request)
     updateProductController.handle(request, response)
   })
