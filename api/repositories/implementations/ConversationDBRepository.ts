@@ -1,10 +1,9 @@
 import { Conversation } from '../../entities/Conversation'
 import { IConversationRepository } from '../IConversationRepository'
 import conversationSchema from '../../database/schemas/schemas.conversation'
-import mongoose from 'mongoose'
 
 export class ConversationDBRepository implements IConversationRepository {
-  async save(dataUser: Conversation): Promise<boolean> {
+  async save(dataUser: Conversation): Promise<Conversation> {
     const resultDB = await conversationSchema.create({
       id: dataUser.id,
       sellerId: dataUser.sellerId,
@@ -14,7 +13,7 @@ export class ConversationDBRepository implements IConversationRepository {
       lastMessage: dataUser.lastMessage
     })
 
-    return !!resultDB
+    return resultDB
   }
 
   async listAllConversation(data: { userId: string, isSeller: boolean }): Promise<Conversation[]> {
@@ -38,10 +37,7 @@ export class ConversationDBRepository implements IConversationRepository {
     return resultDB
   }
 
-  async updateConversation(
-    id: string,
-    isSaller: boolean
-  ): Promise<Conversation> {
+  async updateConversation(id: string, isSaller: boolean): Promise<Conversation> {
     const resultDB = await conversationSchema.findOneAndUpdate(
       { id: id },
       {

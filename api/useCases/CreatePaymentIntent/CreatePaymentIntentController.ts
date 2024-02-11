@@ -6,14 +6,14 @@ export class CreatePaymentIntentController {
 
   async handle(request: Request, response: Response) {
     try {
-      await this.createPaymentIntentUseCase.execute({
+      const data = await this.createPaymentIntentUseCase.execute({
         productId: request.params.id,
         buyerId: request.body.buyerId,
        })
 
       return response
         .status(201)
-        .send({ message: 'Payment intent successfully created!' })
+        .send({ message: 'Payment intent successfully created!', data })
     } catch (error) {
       return response
         .status(400)

@@ -8,6 +8,7 @@ export interface IOrderRequestDTO {
 
 export interface IOrderResultDTO {
   _id: ObjectId
+  description: string
   productId: {
     _id: string
     userId: string
@@ -65,22 +66,14 @@ export const orderDTO = (data: IOrderResultDTO[]) => {
     return {
       _id: item._id,
       title: item.title,
+      description: item.description,
       price: formatCurrency(item.price),
       isCompleted: item.isCompleted,
       isSeller: item.isSeller,
       payment_intent: item.payment_intent,
-      createdAt: formatarDataHora(item.createdAt,),
-      updatedAt: formatarData(item.updatedAt,),
-      product: {
-        title: item.productId.title,
-        description: item.productId.description,
-        category: item.productId.category,
-        price: formatCurrency(item.productId.price),
-        deliveryTime: item.productId.deliveryTime,
-        features: item.productId.features,
-        sales: item.productId.sales,
-        rating: item.productId.rating
-      },
+      createdAt: formatarDataHora(item.createdAt),
+      updatedAt: formatarData(item.updatedAt),
+      product: item.productId,
       user: {
         _id: item.userId._id,
         name: item.userId.name,

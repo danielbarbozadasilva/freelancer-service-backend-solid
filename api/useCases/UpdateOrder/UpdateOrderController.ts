@@ -7,7 +7,7 @@ export class UpdateOrderController {
   async handle(request: Request, response: Response) {
     try {
       await this.updateOrderUseCase.execute({
-        payment_intent: request.body.payment_intent,
+        payment_intent: request.params.id,
        })
 
       return response

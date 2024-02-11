@@ -3,7 +3,7 @@ import { IMessageRepository } from '../IMessageRepository'
 import messageSchema from '../../database/schemas/schemas.message'
 
 export class MessageDBRepository implements IMessageRepository {
-  async createMessage(dataProduct: Message): Promise<boolean> {
+  async createMessage(dataProduct: Message): Promise<Message> {
     const resultDB = await messageSchema.create({
         conversationId: dataProduct.conversationId,
         userId: dataProduct.userId,
@@ -13,7 +13,7 @@ export class MessageDBRepository implements IMessageRepository {
         lastMessage: dataProduct.lastMessage,
     })
 
-    return !!resultDB
+    return resultDB
   }
 
   async getMessages(id: string): Promise<Message[]> {

@@ -7,7 +7,7 @@ export class ListAllConversationController {
   async handle(request: Request, response: Response) {
     try {
       const data = await this.conversationUseCase.execute({
-        isSeller: Boolean(request.params.isSeller),
+        isSeller: JSON.parse(request.params.isSeller),
         userId: request.params.userId
       })
 

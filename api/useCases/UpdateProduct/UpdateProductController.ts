@@ -9,7 +9,7 @@ export class UpdateProductController {
       const image = request.files
       let dataImage
       if (Array.isArray(image)) {
-        dataImage = image.map((item) => item.originalname)
+        dataImage = image.map((item) => item.filename)
       }
 
       await this.updateProductUseCase.execute({

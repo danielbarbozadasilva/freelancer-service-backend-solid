@@ -6,7 +6,7 @@ export class CreateConversationController {
 
   async handle(request: Request, response: Response) {
     try {
-      await this.createConversationUseCase.execute({
+      const result = await this.createConversationUseCase.execute({
         id: request.body.isSeller ? request.body.userId + request.body.to : request.body.to + request.body.userId,
         sellerId: request.body.isSeller ? request.body.userId : request.body.to,
         buyerId: request.body.isSeller ? request.body.to : request.body.userId,
@@ -16,7 +16,7 @@ export class CreateConversationController {
 
       return response
         .status(201)
-        .send({ message: 'Conversation successfully created!' })
+        .send({ message: 'Conversation successfully created!', data: result })
     } catch (error) {
       return response
         .status(400)
