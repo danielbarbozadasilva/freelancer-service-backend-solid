@@ -9,6 +9,7 @@ export class CreatePaymentIntentController {
       const data = await this.createPaymentIntentUseCase.execute({
         productId: request.params.id,
         buyerId: request.body.buyerId,
+        description: request.body.description,
        })
 
       return response

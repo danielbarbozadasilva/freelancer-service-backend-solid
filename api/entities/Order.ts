@@ -7,6 +7,8 @@ export class Order {
   public price: number
   public userId: string
   public buyerId: string
+  public status: string
+  public description: string
   public isCompleted: boolean
   public isSeller: boolean
   public payment_intent: string

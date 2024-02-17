@@ -8,7 +8,7 @@ export class Product {
    public category: ObjectId | string
    public price: number
    public images: string[]
-   public deliveryTime: string
+   public deliveryTime: number
    public features: string[]
    public sales?: number
    public rating?: string

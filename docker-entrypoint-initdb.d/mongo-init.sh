@@ -19,7 +19,7 @@ db.userschemas.insert([
   {
     _id: ObjectId("65883a7bc89918015e25e52f"),
     name: "Admin",
-    username: "admin946",
+    username: "admin",
     email: "danielbarboza56@hotmail.com",
     cpf: "999.111.333-33",
     birthDate: "2000-03-01T05:36:40.303Z",
@@ -35,8 +35,8 @@ db.userschemas.insert([
   },
   {
     _id: ObjectId("65a5002f9d9b340e62d233b4"),
-    name: "Cliente",
-    username: "cliente222",
+    name: "Marcos Junior",
+    username: "marcos123",
     email: "danielbarboza58@hotmail.com",
     cpf: "222.444.555-11",
     birthDate: "2000-03-01T05:36:40.303Z",
@@ -53,7 +53,7 @@ db.userschemas.insert([
   {
     _id: ObjectId("65883a7bc89918015e25e52e"),
     name: "Daniel Silva",
-    username: "freelancer935",
+    username: "daniel123",
     email: "daniel80barboza@gmail.com",
     cpf: "333.333.333-33",
     birthDate: "2000-03-01T05:36:40.303Z",
@@ -70,7 +70,7 @@ db.userschemas.insert([
   {
     _id: ObjectId("65883ab3c89918015e25e532"),
     name: "Daniel Barboza",
-    username: "freelancer123",
+    username: "daniel098",
     email: "daniel95barboza@gmail.com",
     cpf: "111.222.333-33",
     birthDate: "2001-03-01T05:36:40.404Z",
@@ -151,7 +151,7 @@ db.productschemas.insert([
     images: [
       "files-1704052453990.jpg"
     ],
-    deliveryTime: "30 dias",
+    deliveryTime: 30,
     features: [
       "Desenvolvimento web",
       "Nodejs", 
@@ -173,7 +173,7 @@ db.productschemas.insert([
     images: [
       "files-1704052453982.jpg"
     ],
-    deliveryTime: "15 dias",
+    deliveryTime: 15,
     features: [
       "WordPress",
       "Adobe Photoshop CS5",
@@ -195,7 +195,7 @@ db.productschemas.insert([
       "files-1704052453991.jpg",
       "files-1704052453990.jpg"
     ],
-    deliveryTime: "25 dias",
+    deliveryTime: 25,
     features: [
       "ReactNative",
       "Flutter",
@@ -252,13 +252,14 @@ db.orderschemas.insert([
     _id: ObjectId("65b60ca19588bfeca46e5c26"),
     productId: ObjectId("659802bcfed9f7066576ca78"),
     title: "Site WordPress",
-    description: "Gostaria de um website para o meu negócio de confeitaria, o site deve ser desenvolvido utilizando WordPress.",
+    description: "Site no formato onepage para confeitaria especializada em bolos e salgados.",
+    status: "Finalizada",
     price: 200,
     userId: ObjectId("65883ab3c89918015e25e532"),
     buyerId: ObjectId("65a5002f9d9b340e62d233b4"),
     isCompleted: true,
     isSeller: true,
-    payment_intent: "none",
+    payment_intent: "pi_3OjgfsDlLXsk0gPs10nWI7hP",
     createdAt: "2024-01-21T10:33:48.006Z",
     updatedAt: "2024-01-21T10:33:48.006Z"
   }

@@ -3,15 +3,14 @@ import { IOrderRepository } from '../IOrderRepository'
 import orderSchema from '../../database/schemas/schemas.order'
 import productschemas from '../../database/schemas/schemas.product'
 import Stripe from 'stripe'
-import { IOrderResultDTO } from '../../useCases/ListByIdUserOrder/ListByIdUserOrderDTO'
 
-export interface IListOrder {
+interface IListOrder {
   isSeller: boolean
   userId: string
 }
 
 export class OrderDBRepository implements IOrderRepository {
-  async createPaymentIntent(productId: string, buyerId: string): Promise<any> {
+  async createPaymentIntent(productId: string, buyerId: string, description: string): Promise<any> {
     const stripe = new Stripe(process.env.STRIPE)
     const product = await productschemas.findById(productId)
     const paymentIntent = await stripe.paymentIntents.create({
@@ -25,7 +24,8 @@ export class OrderDBRepository implements IOrderRepository {
     await orderSchema.create({
       productId: product._id,
       title: product.title,
-      description: 'Em andamento',
+      description: description,
+      status: 'Em andamento',
       price: product.price,
       userId: product.userId,
       buyerId: buyerId,
@@ -37,7 +37,43 @@ export class OrderDBRepository implements IOrderRepository {
   }
 
   async listAllOrders(): Promise<Order[]> {
-    const result = await orderSchema.find({})
+    const result = await orderSchema.aggregate([
+      {
+        $lookup: {
+          from: 'productschemas',
+          localField: 'productId',
+          foreignField: '_id',
+          as: 'product'
+        }
+      },
+      {
+        $lookup: {
+          from: 'userschemas',
+          localField: 'buyerId',
+          foreignField: '_id',
+          as: 'buyer'
+        }
+      },
+      {
+        $lookup: {
+          from: 'userschemas',
+          localField: 'userId',
+          foreignField: '_id',
+          as: 'user'
+        }
+      },
+      { $unwind: { path: '$product', preserveNullAndEmptyArrays: true } },
+      { $unwind: { path: '$buyer', preserveNullAndEmptyArrays: true } },
+      { $unwind: { path: '$user', preserveNullAndEmptyArrays: true } },
+      {
+        $project: {
+          'user.hash': 0,
+          'user.salt': 0,
+          'buyer.hash': 0,
+          'buyer.salt': 0,
+        }
+      }
+    ])
     return result
   }
 
@@ -56,18 +92,25 @@ export class OrderDBRepository implements IOrderRepository {
     return result
   }
 
-  async updateOrder(dataOrder: Order): Promise<boolean> {
-    const orders = await orderSchema.findOneAndUpdate(
+  async updateOrder(dataOrder: Order): Promise<any> {
+    await orderSchema.findOneAndUpdate(
       {
         payment_intent: dataOrder.payment_intent,
       },
       {
         $set: {
           isCompleted: true,
-          description: 'Finalizada'
+          status: 'Finalizada'
         }
       }
     )
-    return !!orders
+
+    const result = await orderSchema
+      .find({ payment_intent: dataOrder.payment_intent })
+      .populate('userId', '-hash -salt')
+      .populate('buyerId', '-hash -salt')
+      .populate('productId')
+
+    return result?.length? result[0] : result
   }
 }

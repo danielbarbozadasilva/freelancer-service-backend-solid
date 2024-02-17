@@ -5,7 +5,7 @@ export interface ICreateProductRequestDTO {
   category: string
   price: number
   images: any
-  deliveryTime: string
+  deliveryTime: number
   features: string[]
   sales?: number
   rating?: string

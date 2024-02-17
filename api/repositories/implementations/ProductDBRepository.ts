@@ -118,19 +118,39 @@ export class ProductDBRepository implements IProductRepository {
       },
       {
         $lookup: {
+          from: 'orderschemas',
+          localField: '_id',
+          foreignField: 'productId',
+          as: 'orders'
+        }
+      },
+      {
+        $lookup: {
+          from: 'userschemas',
+          localField: 'orders.buyerId',
+          foreignField: '_id',
+          as: 'client'
+        }
+      },
+      {
+        $lookup: {
           from: 'userschemas',
           localField: 'userId',
           foreignField: '_id',
           as: 'user'
         }
       },
-      { $unwind: '$category' },
+      { $unwind: { path: '$category', preserveNullAndEmptyArrays: true } },
       { $unwind: { path: '$rating', preserveNullAndEmptyArrays: true } },
-      { $unwind: '$user' },
+      { $unwind: { path: '$user', preserveNullAndEmptyArrays: true } },
+      { $unwind: { path: '$orders', preserveNullAndEmptyArrays: true } },
+      { $unwind: { path: '$client', preserveNullAndEmptyArrays: true } },
       {
         $project: {
           'user.hash': 0,
-          'user.salt': 0
+          'user.salt': 0,
+          'client.hash': 0,
+          'client.salt': 0,
         }
       },
       {

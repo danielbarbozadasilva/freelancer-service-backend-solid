@@ -173,7 +173,7 @@
 								},
 								{
 									"key": "email",
-									"value": "josed@gmail.com",
+									"value": "daniel80barboza@gmail.com",
 									"type": "text"
 								},
 								{
@@ -204,7 +204,7 @@
 								{
 									"key": "files",
 									"type": "file",
-									"src": "/C:/Users/pc-02/Downloads/1111.jpeg"
+									"src": "/C:/Users/pc-02/Downloads/IMG_20240207_161957010.jpg"
 								},
 								{
 									"key": "phone",
@@ -868,7 +868,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"isSeller\": true,\r\n    \"userId\": \"65883a7bc89918015e25e52e\",\r\n    \"to\": \"65883ab3c89918015e25e532\",\r\n    \"readBySeller\": false,\r\n    \"readByBuyer\": false,\r\n    \"sellerId\": \"222\",\r\n    \"buyerId\": \"3333\"\r\n}",
+							"raw": "{\r\n    \"isSeller\": false,\r\n    \"userId\": \"65a5002f9d9b340e62d233b4\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -876,7 +876,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3011/v1/conversation",
+							"raw": "http://localhost:3011/v1/conversation/userid/65a5002f9d9b340e62d233b4/isseller/false",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -884,7 +884,11 @@
 							"port": "3011",
 							"path": [
 								"v1",
-								"conversation"
+								"conversation",
+								"userid",
+								"65a5002f9d9b340e62d233b4",
+								"isseller",
+								"false"
 							]
 						}
 					},
@@ -1020,7 +1024,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "http://localhost:3011/v1/product?userId=65883ab3c89918015e25e532&category=&search=&offset=0&limit=1000&order",
+							"raw": "http://localhost:3011/v1/product?search=&offset=0&limit=1000",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1033,11 +1037,13 @@
 							"query": [
 								{
 									"key": "userId",
-									"value": "65883ab3c89918015e25e532"
+									"value": "65883ab3c89918015e25e532",
+									"disabled": true
 								},
 								{
 									"key": "category",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "search",
@@ -1053,7 +1059,8 @@
 								},
 								{
 									"key": "order",
-									"value": null
+									"value": null,
+									"disabled": true
 								}
 							]
 						}
@@ -1275,7 +1282,7 @@
 								{
 									"key": "files",
 									"type": "file",
-									"src": "/C:/Users/pc-02/Downloads/joseph-gonzalez-iFgRcqHznqg-unsplash.jpg"
+									"src": "/C:/Users/pc-02/Downloads/IMG_20240207_161935460.jpg"
 								},
 								{
 									"key": "deliveryTime",
@@ -1291,11 +1298,17 @@
 									"key": "sales",
 									"value": "0",
 									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3011/v1/product/659d2ed15f92db58033fd0ed",
+							"raw": "http://localhost:3011/v1/product/659802bcfed9f7066576ca79",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1304,7 +1317,7 @@
 							"path": [
 								"v1",
 								"product",
-								"659d2ed15f92db58033fd0ed"
+								"659802bcfed9f7066576ca79"
 							]
 						}
 					},
@@ -1405,7 +1418,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "http://localhost:3011/v1/message/658951d2e4e3a44b66725296",
+							"raw": "http://localhost:3011/v1/message/65c92741fba2cacdf39fed4a",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1414,7 +1427,7 @@
 							"path": [
 								"v1",
 								"message",
-								"658951d2e4e3a44b66725296"
+								"65c92741fba2cacdf39fed4a"
 							]
 						}
 					},
@@ -1770,7 +1783,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3011/v1/order/create-payment-intent/659802bcfed9f7066576ca78",
+							"raw": "http://localhost:3011/v1/order",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1778,9 +1791,7 @@
 							"port": "3011",
 							"path": [
 								"v1",
-								"order",
-								"create-payment-intent",
-								"659802bcfed9f7066576ca78"
+								"order"
 							]
 						}
 					},
@@ -1812,7 +1823,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"isSeller\": true\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1820,7 +1831,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3011/v1/order/65883ab3c89918015e25e532",
+							"raw": "http://localhost:3011/v1/order/65883ab3c89918015e25e532/isSeller/true",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1829,7 +1840,9 @@
 							"path": [
 								"v1",
 								"order",
-								"65883ab3c89918015e25e532"
+								"65883ab3c89918015e25e532",
+								"isSeller",
+								"true"
 							]
 						}
 					},

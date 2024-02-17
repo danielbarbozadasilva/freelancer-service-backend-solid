@@ -5,6 +5,6 @@ export class CreatePaymentIntentUseCase {
   constructor(private categoryRepository: IOrderRepository) {}
 
   async execute(data: ICreatePaymentIntentRequestDTO) {
-    return this.categoryRepository.createPaymentIntent(data.productId, data.buyerId)
+    return this.categoryRepository.createPaymentIntent(data.productId, data.buyerId, data.description)
   }
 }
