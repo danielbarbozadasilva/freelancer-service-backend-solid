@@ -8,7 +8,7 @@ export interface IListAllUsersRequestDTO {
   email: string
   cpf: string
   birthDate: string
-  picture: string[]
+  picture: string
   country: string
   phone: string
   description: string
@@ -42,7 +42,7 @@ export const listClientDTO = (data: IListAllUsersRequestDTO[]) => {
           email: item.email,
           cpf: item.cpf,
           birthDate: formatarData(item.birthDate),
-          picture: formatAddressImage(item.picture[0]),
+          picture: formatAddressImage(item.picture),
           country: item.country,
           phone: item.phone,
           description: item.description,

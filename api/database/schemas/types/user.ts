@@ -7,7 +7,7 @@ export interface UserInterface extends Document {
   email: string
   cpf: string
   birthDate: string
-  picture: string[]
+  picture: string
   country: string
   phone: string
   description: string

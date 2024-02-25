@@ -7,7 +7,7 @@ export class User {
   public email: string
   public cpf: string
   public birthDate: string
-  public picture: string[]
+  public picture: string
   public country: string
   public phone: string
   public description: string

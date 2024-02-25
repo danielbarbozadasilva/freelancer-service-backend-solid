@@ -28,8 +28,8 @@ const usersSchema = new Schema(
       required: true 
     },
     picture: { 
-      type: Array, 
-      default: [] 
+      type: String, 
+      required: true 
     },
     country: {
       type: String,
