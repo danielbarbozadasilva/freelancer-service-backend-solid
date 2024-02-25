@@ -1,7 +1,7 @@
 import { Order } from '../entities/Order'
 
 export interface IListOrder{
-  isSeller?: boolean
+  isSeller?: any
   userId?: string
 }
 

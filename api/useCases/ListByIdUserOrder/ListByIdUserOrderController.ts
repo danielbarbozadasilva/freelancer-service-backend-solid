@@ -9,7 +9,7 @@ export class ListByIdOrderController {
     try {
       const result = await this.listByIdOrderUseCase.execute({
         userId: request.params.id,
-        isSeller: Boolean(request.params.isSeller)
+        isSeller: request.params.isSeller
       })
 
       return response

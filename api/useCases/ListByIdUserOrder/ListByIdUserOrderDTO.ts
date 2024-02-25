@@ -3,7 +3,7 @@ import { formatCurrency, formatarData, formatarDataHora } from '../../utils/util
 
 export interface IOrderRequestDTO {
   userId: string
-  isSeller: boolean
+  isSeller: any
 }
 
 export interface IOrderResultDTO {

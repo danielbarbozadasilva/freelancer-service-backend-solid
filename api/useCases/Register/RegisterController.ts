@@ -7,20 +7,19 @@ export class RegisterController {
 
   async handle(request: Request, response: Response) {
     try {
-      const salt = Cryptography.createSalt()
-
+      const salt = Cryptography.createSalt()      
       const result = await this.registerUseCase.execute({
         name: request.body.name,
         username: request.body.username,
         email: request.body.email,
         cpf: request.body.cpf,
         birthDate: request.body.birthDate,
-        picture: request?.file?.originalname,
+        picture: request?.file?.filename,
         country: request.body.country,
         phone: request.body.phone,
         description: request.body.description,
         isSeller: request.body.isSeller,
-        permissions: request.body.permissions,
+        permissions: request.body.isSeller === 'true' ? ['freelancer'] : ['client'],
         hash: Cryptography.createHash(request.body.password, salt),
         salt: salt
       })

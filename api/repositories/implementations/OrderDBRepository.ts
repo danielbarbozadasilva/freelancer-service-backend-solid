@@ -3,6 +3,7 @@ import { IOrderRepository } from '../IOrderRepository'
 import orderSchema from '../../database/schemas/schemas.order'
 import productschemas from '../../database/schemas/schemas.product'
 import Stripe from 'stripe'
+import mongoose from 'mongoose'
 
 interface IListOrder {
   isSeller: boolean
@@ -78,18 +79,22 @@ export class OrderDBRepository implements IOrderRepository {
   }
 
   async listByIdUserOrders(data: IListOrder): Promise<any> {
+    const { userId, isSeller } = data;
+    
+    let query: any = { isCompleted: true };    
+    if (isSeller == true) {
+      query.userId = new mongoose.Types.ObjectId(userId);
+    } else {
+      query.buyerId = new mongoose.Types.ObjectId(userId);
+    }
+    
     const result = await orderSchema
-      .find({
-        ...(data.isSeller
-          ? { sellerId: data.userId }
-          : { buyerId: data.userId }),
-        isCompleted: true
-      })
+      .find(query)
       .populate('userId', '-hash -salt')
       .populate('buyerId', '-hash -salt')
-      .populate('productId')
+      .populate('productId');
 
-    return result
+    return result;
   }
 
   async updateOrder(dataOrder: Order): Promise<any> {
