@@ -9,7 +9,7 @@ export class RegisterController {
     try {
       const salt = Cryptography.createSalt()
 
-      await this.registerUseCase.execute({
+      const result = await this.registerUseCase.execute({
         name: request.body.name,
         username: request.body.username,
         email: request.body.email,
@@ -24,10 +24,10 @@ export class RegisterController {
         hash: Cryptography.createHash(request.body.password, salt),
         salt: salt
       })
-
+      
       return response
         .status(201)
-        .send({ message: 'User successfully created!' })
+        .send({ message: 'User successfully created!', data: result })
     } catch (error) {
       return response
         .status(400)

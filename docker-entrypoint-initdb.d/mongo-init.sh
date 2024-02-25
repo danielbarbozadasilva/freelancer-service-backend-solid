@@ -19,7 +19,7 @@ db.userschemas.insert([
   {
     _id: ObjectId("65883a7bc89918015e25e52f"),
     name: "Admin",
-    username: "admin946",
+    username: "admin",
     email: "danielbarboza56@hotmail.com",
     cpf: "999.111.333-33",
     birthDate: "2000-03-01T05:36:40.303Z",
@@ -30,12 +30,13 @@ db.userschemas.insert([
     permissions: ["admin"],
     hash: "3178ade22cc1303f74030d7de78d79f2c155ead698e8cfe4d9faa2f98cb31d15373a47fe939f136b9cb4934cf68a45cda7dc921ee0646a0b3ada696d8057024a61ae043571737dae65f032994cdd8b9a7aa25cac0a6dbb484cd19230a9434e2a8f8f785e9ea569f4835e2d43a3948f317f6fb1420ca66ff465a79aa60ff60a652f100d965ad7137485190f4b9d45b4e6dfdab648c15d91f4f172375e2f7f4fbb65d9aff12b2f2cd9282c136da071e2568fbc3a549547b462ae79b57ac91ebcfccf8df22b4941f02da5da4dd63fabf40daa29f5e8e0b65417b5d859df7ddcd6fc336697b2b4b28adcdbc451fce4f7fb819356ba60e76433a9e41b6f4b33b4c9f5562b352356717e46d0198515ea095100d556510263a76c207d359c75c1730ae4d275cec3eca020fe36d78c8a6768a1d0d4a8d5e740d43606596eedf3cfcd2e5055c04f88cb16f5b2c0ab328140d26ba144c2acf3d90f5936a0f85593aba19d9bbb8b13e4d80252ebc8a6d3b6e70229ae6000056bbf4e05447832902005c5d45f39ea1a7197f1004419c3e04ea3fb78df1152378052da28c9589b2b015cc09728324e7e30e7a04ea3b725949899284dd59fc9ff3bd2b80148924cb9d8d0f262aa0ba7a2b00dced86dd63699d13edab68b1a348d0e6b411ddc1d4c78c0df2a3623db0d9c79aeff68f9c467a761022e8746e1dedd05808378a1829451295824db2f",
     salt: "20a4a0a78f18ab5b5359c251f6a1502f",
-    isSeller: false
+    isSeller: false,
+    createdAt: "2023-01-28T06:39:34.330+00:00"
   },
   {
     _id: ObjectId("65a5002f9d9b340e62d233b4"),
-    name: "Cliente",
-    username: "cliente222",
+    name: "Marcos Junior",
+    username: "marcos123",
     email: "danielbarboza58@hotmail.com",
     cpf: "222.444.555-11",
     birthDate: "2000-03-01T05:36:40.303Z",
@@ -46,39 +47,42 @@ db.userschemas.insert([
     permissions: ["client"],
     hash: "3178ade22cc1303f74030d7de78d79f2c155ead698e8cfe4d9faa2f98cb31d15373a47fe939f136b9cb4934cf68a45cda7dc921ee0646a0b3ada696d8057024a61ae043571737dae65f032994cdd8b9a7aa25cac0a6dbb484cd19230a9434e2a8f8f785e9ea569f4835e2d43a3948f317f6fb1420ca66ff465a79aa60ff60a652f100d965ad7137485190f4b9d45b4e6dfdab648c15d91f4f172375e2f7f4fbb65d9aff12b2f2cd9282c136da071e2568fbc3a549547b462ae79b57ac91ebcfccf8df22b4941f02da5da4dd63fabf40daa29f5e8e0b65417b5d859df7ddcd6fc336697b2b4b28adcdbc451fce4f7fb819356ba60e76433a9e41b6f4b33b4c9f5562b352356717e46d0198515ea095100d556510263a76c207d359c75c1730ae4d275cec3eca020fe36d78c8a6768a1d0d4a8d5e740d43606596eedf3cfcd2e5055c04f88cb16f5b2c0ab328140d26ba144c2acf3d90f5936a0f85593aba19d9bbb8b13e4d80252ebc8a6d3b6e70229ae6000056bbf4e05447832902005c5d45f39ea1a7197f1004419c3e04ea3fb78df1152378052da28c9589b2b015cc09728324e7e30e7a04ea3b725949899284dd59fc9ff3bd2b80148924cb9d8d0f262aa0ba7a2b00dced86dd63699d13edab68b1a348d0e6b411ddc1d4c78c0df2a3623db0d9c79aeff68f9c467a761022e8746e1dedd05808378a1829451295824db2f",
     salt: "20a4a0a78f18ab5b5359c251f6a1502f",
-    isSeller: false
+    isSeller: false,
+    createdAt: "2020-01-28T06:39:34.330+00:00"
   },
   {
     _id: ObjectId("65883a7bc89918015e25e52e"),
     name: "Daniel Silva",
-    username: "freelancer935",
+    username: "daniel123",
     email: "daniel80barboza@gmail.com",
     cpf: "333.333.333-33",
     birthDate: "2000-03-01T05:36:40.303Z",
     picture: "files-1704052453988.jpg",
     country: "brasil",
     phone: "(21)99999-9999",
-    description: "Desenvolvedor web",
+    description: "Escritor, Tradutor, Redator, Especialista em SEO, Gestor de Tráfego e Marketing Digital.",
     permissions: ["freelancer"],
     hash: "3178ade22cc1303f74030d7de78d79f2c155ead698e8cfe4d9faa2f98cb31d15373a47fe939f136b9cb4934cf68a45cda7dc921ee0646a0b3ada696d8057024a61ae043571737dae65f032994cdd8b9a7aa25cac0a6dbb484cd19230a9434e2a8f8f785e9ea569f4835e2d43a3948f317f6fb1420ca66ff465a79aa60ff60a652f100d965ad7137485190f4b9d45b4e6dfdab648c15d91f4f172375e2f7f4fbb65d9aff12b2f2cd9282c136da071e2568fbc3a549547b462ae79b57ac91ebcfccf8df22b4941f02da5da4dd63fabf40daa29f5e8e0b65417b5d859df7ddcd6fc336697b2b4b28adcdbc451fce4f7fb819356ba60e76433a9e41b6f4b33b4c9f5562b352356717e46d0198515ea095100d556510263a76c207d359c75c1730ae4d275cec3eca020fe36d78c8a6768a1d0d4a8d5e740d43606596eedf3cfcd2e5055c04f88cb16f5b2c0ab328140d26ba144c2acf3d90f5936a0f85593aba19d9bbb8b13e4d80252ebc8a6d3b6e70229ae6000056bbf4e05447832902005c5d45f39ea1a7197f1004419c3e04ea3fb78df1152378052da28c9589b2b015cc09728324e7e30e7a04ea3b725949899284dd59fc9ff3bd2b80148924cb9d8d0f262aa0ba7a2b00dced86dd63699d13edab68b1a348d0e6b411ddc1d4c78c0df2a3623db0d9c79aeff68f9c467a761022e8746e1dedd05808378a1829451295824db2f",
     salt: "20a4a0a78f18ab5b5359c251f6a1502f",
-    isSeller: true
+    isSeller: true,
+    createdAt: "2021-01-28T06:39:34.330+00:00"
   },
   {
     _id: ObjectId("65883ab3c89918015e25e532"),
     name: "Daniel Barboza",
-    username: "freelancer123",
+    username: "daniel098",
     email: "daniel95barboza@gmail.com",
     cpf: "111.222.333-33",
     birthDate: "2001-03-01T05:36:40.404Z",
     picture: "files-1704052453989.jpg",
     country: "brasil",
     phone: "(21)99999-9999",
-    description: "Desenvolvedor backend",
+    description: "Sou graduado em Tecnologia da informação, com mais de 10 anos de experiência no desenvolvimento de sistemas.",
     permissions: ["freelancer"],
     hash: "d827891175fabfa8c46b5da4e78d4e18d4d13cb9436bd39ea829be4c661b727b8f07c7d81c8f4d046ac33b2d3b588114d214d3f3b906dad9dd147a15bef04e78134b70c1a40de68226463c4d6a06816a8f2ff9a2c908493a6d12dbd7e4e6f074f7acc762cd75458d82e0cc140f03242e5057397902bc3aa4eab4cd50e1ef395d1c965d04bfe668e8a73a5abd3067f2608b33bad41caf0c31144810b6fb00362e5442d89662658cc0ad84305f4ac87e54c231b65d75c06a59da9aa6c4381c53ab6c4035a601d5e953720c2965ee4c6ec2aa1560009d648fe46ce479f4061dd6628cf01356946605a1e01935a4c98a079e80f3935556ef4491d31fe0a9cb02efc1aa7cb6b8d4009e27a87b3b18d6d0113c2ba28a8de2c8f82379eedecb3b37d8e8064c5c8c25241fb73d80a365ae64ab518b82709120019a170fcc4be1a48b31d8482517d94319b6d395c830cdada31c602a3c0fd7fdcd90339933db1a6e5e4ee917564dc6f8268df6dc324f60c7bdf0dd2ce5f5ec8600475a960e82103613e8df55f7e15424e547a673e3a5f4faa1ccd4f201d9ec0dbb883e020dd5fd6b63fffcca5c5eb7fdfc4a5b30f0258313197292214c3bea36295fda5429e1703b41ce3d7977167859596a518772eeb4bb0be38553371ca5c3cec1f5e7392edced3faf3971f48cf4e59f24b37037b5180e036d3e74ce22d99be3cceafd0cea3b2ddfe5cf",
     salt: "a9a28c74479228ffc02a7da3ca80ccdc",
-    isSeller: true
+    isSeller: true,
+    createdAt: "2022-01-28T06:39:34.330+00:00"
   }
 ])
 
@@ -87,8 +91,8 @@ db.conversationschemas.insert([
   {
     _id: ObjectId("658951d2e4e3a44b66725296"),
     id: "65883a7bc89918015e25e52e65a5002f9d9b340e62d233b4",
-    sellerId: "65883a7bc89918015e25e52e",
-    buyerId: "65a5002f9d9b340e62d233b4",
+    sellerId: ObjectId("65883ab3c89918015e25e532"),
+    buyerId: ObjectId("65a5002f9d9b340e62d233b4"),
     readBySeller: false,
     readByBuyer: false,
     lastMessage: "Ok, obrigado!",
@@ -147,7 +151,7 @@ db.productschemas.insert([
     images: [
       "files-1704052453990.jpg"
     ],
-    deliveryTime: "30 dias",
+    deliveryTime: 30,
     features: [
       "Desenvolvimento web",
       "Nodejs", 
@@ -169,7 +173,7 @@ db.productschemas.insert([
     images: [
       "files-1704052453982.jpg"
     ],
-    deliveryTime: "15 dias",
+    deliveryTime: 15,
     features: [
       "WordPress",
       "Adobe Photoshop CS5",
@@ -188,15 +192,133 @@ db.productschemas.insert([
     category: ObjectId("6591ac5bf9877e3170d90c48"),
     price: 1550,
     images: [
-      "files-1704052453991.jpg"
+      "files-1704052453991.jpg",
+      "files-1704052453990.jpg"
     ],
-    deliveryTime: "25 dias",
+    deliveryTime: 25,
     features: [
       "ReactNative",
       "Flutter",
       "Tipescript",
     ],
     sales: 70,
+    rating: [],
+  },
+  {
+    _id: ObjectId("65d3330b1910a8d9509197fe"),
+    userId: ObjectId("65883ab3c89918015e25e532"),
+    title: "Desenvolvimento de Apps e Sistemas",
+    description: "Realizo o desenvolvimento de aplicativos mobile e sistemas exclusivo para o seu negócio.",
+    category: ObjectId( "6591ac5bf9877e3170d90c48"),
+    price: 3000,
+    deliveryTime: 40,
+    images: [
+      "files-1708339979587.jpg"
+    ],
+    features: [
+      "Asp.net",
+      "Asp.net core",
+      "Angularjs",
+      "Python"
+    ],
+    sales: 0,
+    rating: [],
+  },
+  {
+    _id: ObjectId("65d337d01910a8d950919866"),
+    userId: ObjectId("65883ab3c89918015e25e532"),
+    title: "Análise de Dados Business Intelligence",
+    description: "Análise de Dados Business Intelligence",
+    category: ObjectId("6591ac5bf9877e3170d90c48"),
+    price: 5000,
+    deliveryTime: 40,
+    images: [
+      "files-1708341200301.jpg"
+    ],
+    features: [
+      "Power BI",
+      "BI Oracle",
+      "Excel",
+      "Python"
+    ],
+    sales: 0,
+    rating: [],
+  },
+   {
+    _id: ObjectId("65d480a976ba50e568f08e54"),
+    userId: ObjectId("65883a7bc89918015e25e52e"),
+    title: "Posts e mídias sociais",
+    description: "Além de trabalhar com campanhas de Google Adwords, Facebook, Instagram Ads e administração de mídias sociais.",
+    category: ObjectId("6591ac25f9877e3170d90c40"),
+    price: 500,
+    deliveryTime: 5,
+    images: [
+      "files-1708425385110.jpg"
+    ],
+    features: [
+      "Google Adwords",
+      "Facebook",
+      "Instagram "
+    ],
+    sales: 0,
+    rating: [],
+  },
+  {
+    _id: ObjectId("65d4823a76ba50e568f08e5e"),
+    userId: ObjectId("65883a7bc89918015e25e52e"),
+    title: "Marketing Digital",
+    description: "Auxilio na divulgação e comercialização de seus produtos ou serviços.",
+    category: ObjectId("6591ac25f9877e3170d90c40"),
+    price: 400,
+    deliveryTime: 10,
+    images: [
+      "files-1708425786479.jpg"
+    ],
+    features: [
+      "E-mail Marketing",
+      "Redes Sociais",
+      "Landing Pages",
+      "Google Analytics"
+    ],
+    sales: 0,
+    rating: [],
+  },
+  {
+    _id: ObjectId("65d4834c76ba50e568f08e68"),
+    userId: ObjectId("65883a7bc89918015e25e52e"),
+    title: "Edição de vídeos",
+    description: "Auxilio na criação e edição de vídeos promocionais para o seu negócio.",
+    category: ObjectId("6591ac44f9877e3170d90c46"),
+    price: 700,
+    deliveryTime: 15,
+    images: [
+      "files-1708429071372.jpg"
+    ],
+    features: [
+      "Premiere",
+      "After Effects",
+      "Illustrator"
+    ],
+    sales: 0,
+    rating: [],
+  },
+  {
+    _id: ObjectId("65d4844a76ba50e568f08e72"),
+    userId: ObjectId("65883a7bc89918015e25e52e"),
+    title: "Produção de Conteúdo",
+    description: "Sou graduado em Letras - Licenciatura (Português). Trabalho a mais de 5 anos na área.",
+    category: ObjectId("6591ac25f9877e3170d90c40"),
+    price: 750,
+    deliveryTime: 15,
+    images: [
+      "files-1708429177924.jpg"
+    ],
+    features: [
+      "Redator",
+      "Marketing digital",
+      "Social media content"
+    ],
+    sales: 0,
     rating: [],
   }
 ])
@@ -239,6 +361,25 @@ db.messageschemas.insert([
     createdAt: "2024-01-21T10:33:48.006Z",
     updatedAt: "2024-01-21T10:33:48.006Z"
 }
+])
+
+db.createCollection("orderschemas")
+db.orderschemas.insert([
+  {
+    _id: ObjectId("65b60ca19588bfeca46e5c26"),
+    productId: ObjectId("659802bcfed9f7066576ca78"),
+    title: "Site WordPress",
+    description: "Site no formato onepage para confeitaria especializada em bolos e salgados.",
+    status: "Finalizada",
+    price: 200,
+    userId: ObjectId("65883ab3c89918015e25e532"),
+    buyerId: ObjectId("65a5002f9d9b340e62d233b4"),
+    isCompleted: true,
+    isSeller: true,
+    payment_intent: "pi_3OjgfsDlLXsk0gPs10nWI7hP",
+    createdAt: "2024-01-21T10:33:48.006Z",
+    updatedAt: "2024-01-21T10:33:48.006Z"
+  }
 ])
 
 

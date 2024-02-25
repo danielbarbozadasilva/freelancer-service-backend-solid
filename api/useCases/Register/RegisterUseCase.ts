@@ -1,9 +1,14 @@
 import { User } from '../../entities/User'
+import { IMailProvider } from '../../providers/IMailProvider'
+import { registerTemplate } from '../../providers/model/register'
 import { IUserRepository } from '../../repositories/IUsersRepository'
 import { IRegisterRequestDTO } from './RegisterDTO'
 
 export class RegisterUseCase {
-  constructor(private userRepository: IUserRepository) {}
+  constructor(
+    private userRepository: IUserRepository,
+    private mailProvider: IMailProvider,
+  ) {}
 
   async execute(data: IRegisterRequestDTO) {
     const emailAlreadyExists = await this.userRepository.findByEmail(data.email)
@@ -23,6 +28,20 @@ export class RegisterUseCase {
     }
 
     const userCreate = new User(data)
+
+    await this.mailProvider.sendMail({
+      to: {
+        name: data.name,
+        email: data.email,
+      },
+      from: {
+        name: 'Equipe Freelancer',
+        email: 'daniel80barboza@gmail.com',
+      },
+      subject: 'Seja bem-vindo à plataforma',
+      body: registerTemplate(data.name)
+    })
+
     return this.userRepository.save(userCreate)
   }
 }

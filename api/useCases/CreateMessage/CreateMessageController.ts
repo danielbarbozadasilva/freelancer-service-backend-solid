@@ -6,7 +6,7 @@ export class CreateMessageController {
 
   async handle(request: Request, response: Response) {
     try {
-      await this.createMessageUseCase.execute({
+      const result = await this.createMessageUseCase.execute({
         conversationId: request.body.conversationId,
         userId: request.body.userId,
         description: request.body.description,
@@ -17,7 +17,7 @@ export class CreateMessageController {
 
       return response
         .status(201)
-        .send({ message: 'Message successfully created!' })
+        .send({ message: 'Message successfully created!', data: result})
     } catch (error) {
       return response
         .status(400)

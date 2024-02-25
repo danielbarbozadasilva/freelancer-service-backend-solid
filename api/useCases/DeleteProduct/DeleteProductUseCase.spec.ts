@@ -18,7 +18,7 @@ describe('Delete Product', () => {
     })
     test('Ensure return error if the id is non-existent', async () => {
       try {
-        const id: string = '659802bcfed9f7066576ca77'
+        const id: string = '659802bcfed9f7066576ca7w'
         expect(await deleteProductUseCase.execute(id)).toThrow()
       } catch (error){}
     })

@@ -7,7 +7,7 @@ export interface IGigRequestDTO {
   category: ObjectId
   price: number
   images: any
-  deliveryTime: string
+  deliveryTime: number
   features: string[]
   sales: number
   rating?: string[]

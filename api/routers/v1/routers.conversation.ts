@@ -10,7 +10,7 @@ export default (router: Router): void => {
     authenticationMiddleware(request)
     createConversationController.handle(request, response)
   })
-  router.route('/conversation').get((request, response) => {
+  router.route('/conversation/userid/:userId/isseller/:isSeller').get((request, response) => {
     authenticationMiddleware(request)
     listAllConversationController.handle(request, response)
   })

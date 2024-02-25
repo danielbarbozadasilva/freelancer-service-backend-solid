@@ -16,7 +16,7 @@ describe('Create category', () => {
       const data = {
         name: 'teste',
         description: 'teste',
-        picture: 'files-1704045582411.jpg',
+        picture: 'files-1704052453981.jpg',
       }
       
       const result = await createCategoryUseCase.execute(data as ICategoryRequestDTO)

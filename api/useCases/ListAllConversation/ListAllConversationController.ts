@@ -6,7 +6,10 @@ export class ListAllConversationController {
 
   async handle(request: Request, response: Response) {
     try {
-      const data = await this.conversationUseCase.execute()
+      const data = await this.conversationUseCase.execute({
+        isSeller: JSON.parse(request.params.isSeller),
+        userId: request.params.userId
+      })
 
       return response
         .status(200)

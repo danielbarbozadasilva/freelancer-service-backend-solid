@@ -25,6 +25,10 @@ const productschemas = new Schema(
       type: Number,
       required: true,
     },
+    deliveryTime: {
+      type: Number,
+      required: true,
+    },
     images: {
       type: [String],
       required: false,

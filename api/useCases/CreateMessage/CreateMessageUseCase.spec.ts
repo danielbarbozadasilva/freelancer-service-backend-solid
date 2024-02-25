@@ -14,16 +14,16 @@ describe('Create Message', () => {
   describe('Create Message', () => {
     test('Make sure create Message', async () => {
       const data = {
-        conversationId: Object('658951d2e4e3a44b66725296'),
-        userId: Object("65883ab3c89918015e25e532"),
-        description: 'fdasdfsdfasfsadfsdfdsfs',
+        conversationId: '658951d2e4e3a44b66725296',
+        userId: '65883ab3c89918015e25e532',
+        description: 'teste',
         readBySeller: true,
         readByBuyer: true,
-        lastMessage: 'fdasdfsdfasfsadfsdfdsfs'
+        lastMessage: 'teste'
       }
 
       const result = await createMessageUseCase.execute(data as ICreateMessageRequestDTO)
-      expect(result).toBe(true)
+      expect(!!result).toBe(true)
     })
   })
 })

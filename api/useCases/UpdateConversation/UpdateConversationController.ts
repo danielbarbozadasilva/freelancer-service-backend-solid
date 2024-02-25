@@ -7,11 +7,11 @@ export class UpdateConversationController {
   async handle(request: Request, response: Response) {
     try {
       const id: string = request.params.id
-      await this.updateConversationUseCase.execute(id, request.body.isSeller)
+      const result = await this.updateConversationUseCase.execute(id, request.body.isSeller)
 
       return response
         .status(200)
-        .send({ message: 'Conversation successfully updated!' })
+        .send({ message: 'Conversation successfully updated!', data: result })
     } catch (error) {
       return response
         .status(400)

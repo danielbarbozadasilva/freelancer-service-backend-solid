@@ -1,13 +1,11 @@
-import { ObjectId } from "mongoose"
-
 export interface ICreateProductRequestDTO {
-  userId: ObjectId
+  userId: string
   title: string
   description: string
-  category: ObjectId
+  category: string
   price: number
   images: any
-  deliveryTime: string
+  deliveryTime: number
   features: string[]
   sales?: number
   rating?: string
