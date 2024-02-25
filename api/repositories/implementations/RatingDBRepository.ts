@@ -45,4 +45,9 @@ export class RatingDBRepository implements IRatingRepository {
 
     return { result, averageScore }
   }
+
+  async verifyIdRatingExists(id: string): Promise<boolean> {
+    const result = await ratingSchema.findById(id)
+    return !!result
+  }
 }

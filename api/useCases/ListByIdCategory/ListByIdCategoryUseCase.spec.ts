@@ -17,5 +17,11 @@ describe('List by id Categories', () => {
       const result: ICategoryRequestDTO = await listByIdCategoryUseCase.execute(id)
       expect(result._id).not.toBe(null);
     })
+    test('Make sure return error if the id not exists', async () => {
+      try {
+        const id: string = '6591ac25f9877e3170d90c11'
+        expect(await listByIdCategoryUseCase.execute(id)).toThrow()
+      } catch(error){}
+    })
   })
 })

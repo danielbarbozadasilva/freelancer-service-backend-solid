@@ -35,6 +35,7 @@ export class ProductDBRepository implements IProductRepository {
     const productDB: Product = await productschemas.findOne({
       _id: dataProduct._id
     })
+        
     const resultDB = await productschemas.updateOne(
       { _id: dataProduct._id },
       {
@@ -98,7 +99,15 @@ export class ProductDBRepository implements IProductRepository {
         'category._id': categoryId
       }
     }
-
+    
+    if (search.userId !== 'undefined') {      
+      const userId = new mongoose.Types.ObjectId(search.userId);
+      matchStage = {
+        ...matchStage,
+        userId: userId
+      };
+    }
+    
     const result = await productschemas.aggregate([
       {
         $lookup: {

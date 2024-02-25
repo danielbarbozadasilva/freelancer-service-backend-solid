@@ -60,7 +60,7 @@ db.userschemas.insert([
     picture: "files-1704052453988.jpg",
     country: "brasil",
     phone: "(21)99999-9999",
-    description: "Desenvolvedor web",
+    description: "Escritor, Tradutor, Redator, Especialista em SEO, Gestor de Tráfego e Marketing Digital.",
     permissions: ["freelancer"],
     hash: "3178ade22cc1303f74030d7de78d79f2c155ead698e8cfe4d9faa2f98cb31d15373a47fe939f136b9cb4934cf68a45cda7dc921ee0646a0b3ada696d8057024a61ae043571737dae65f032994cdd8b9a7aa25cac0a6dbb484cd19230a9434e2a8f8f785e9ea569f4835e2d43a3948f317f6fb1420ca66ff465a79aa60ff60a652f100d965ad7137485190f4b9d45b4e6dfdab648c15d91f4f172375e2f7f4fbb65d9aff12b2f2cd9282c136da071e2568fbc3a549547b462ae79b57ac91ebcfccf8df22b4941f02da5da4dd63fabf40daa29f5e8e0b65417b5d859df7ddcd6fc336697b2b4b28adcdbc451fce4f7fb819356ba60e76433a9e41b6f4b33b4c9f5562b352356717e46d0198515ea095100d556510263a76c207d359c75c1730ae4d275cec3eca020fe36d78c8a6768a1d0d4a8d5e740d43606596eedf3cfcd2e5055c04f88cb16f5b2c0ab328140d26ba144c2acf3d90f5936a0f85593aba19d9bbb8b13e4d80252ebc8a6d3b6e70229ae6000056bbf4e05447832902005c5d45f39ea1a7197f1004419c3e04ea3fb78df1152378052da28c9589b2b015cc09728324e7e30e7a04ea3b725949899284dd59fc9ff3bd2b80148924cb9d8d0f262aa0ba7a2b00dced86dd63699d13edab68b1a348d0e6b411ddc1d4c78c0df2a3623db0d9c79aeff68f9c467a761022e8746e1dedd05808378a1829451295824db2f",
     salt: "20a4a0a78f18ab5b5359c251f6a1502f",
@@ -202,6 +202,123 @@ db.productschemas.insert([
       "Tipescript",
     ],
     sales: 70,
+    rating: [],
+  },
+  {
+    _id: ObjectId("65d3330b1910a8d9509197fe"),
+    userId: ObjectId("65883ab3c89918015e25e532"),
+    title: "Desenvolvimento de Apps e Sistemas",
+    description: "Realizo o desenvolvimento de aplicativos mobile e sistemas exclusivo para o seu negócio.",
+    category: ObjectId( "6591ac5bf9877e3170d90c48"),
+    price: 3000,
+    deliveryTime: 40,
+    images: [
+      "files-1708339979587.jpg"
+    ],
+    features: [
+      "Asp.net",
+      "Asp.net core",
+      "Angularjs",
+      "Python"
+    ],
+    sales: 0,
+    rating: [],
+  },
+  {
+    _id: ObjectId("65d337d01910a8d950919866"),
+    userId: ObjectId("65883ab3c89918015e25e532"),
+    title: "Análise de Dados Business Intelligence",
+    description: "Análise de Dados Business Intelligence",
+    category: ObjectId("6591ac5bf9877e3170d90c48"),
+    price: 5000,
+    deliveryTime: 40,
+    images: [
+      "files-1708341200301.jpg"
+    ],
+    features: [
+      "Power BI",
+      "BI Oracle",
+      "Excel",
+      "Python"
+    ],
+    sales: 0,
+    rating: [],
+  },
+   {
+    _id: ObjectId("65d480a976ba50e568f08e54"),
+    userId: ObjectId("65883a7bc89918015e25e52e"),
+    title: "Posts e mídias sociais",
+    description: "Além de trabalhar com campanhas de Google Adwords, Facebook, Instagram Ads e administração de mídias sociais.",
+    category: ObjectId("6591ac25f9877e3170d90c40"),
+    price: 500,
+    deliveryTime: 5,
+    images: [
+      "files-1708425385110.jpg"
+    ],
+    features: [
+      "Google Adwords",
+      "Facebook",
+      "Instagram "
+    ],
+    sales: 0,
+    rating: [],
+  },
+  {
+    _id: ObjectId("65d4823a76ba50e568f08e5e"),
+    userId: ObjectId("65883a7bc89918015e25e52e"),
+    title: "Marketing Digital",
+    description: "Auxilio na divulgação e comercialização de seus produtos ou serviços.",
+    category: ObjectId("6591ac25f9877e3170d90c40"),
+    price: 400,
+    deliveryTime: 10,
+    images: [
+      "files-1708425786479.jpg"
+    ],
+    features: [
+      "E-mail Marketing",
+      "Redes Sociais",
+      "Landing Pages",
+      "Google Analytics"
+    ],
+    sales: 0,
+    rating: [],
+  },
+  {
+    _id: ObjectId("65d4834c76ba50e568f08e68"),
+    userId: ObjectId("65883a7bc89918015e25e52e"),
+    title: "Edição de vídeos",
+    description: "Auxilio na criação e edição de vídeos promocionais para o seu negócio.",
+    category: ObjectId("6591ac44f9877e3170d90c46"),
+    price: 700,
+    deliveryTime: 15,
+    images: [
+      "files-1708429071372.jpg"
+    ],
+    features: [
+      "Premiere",
+      "After Effects",
+      "Illustrator"
+    ],
+    sales: 0,
+    rating: [],
+  },
+  {
+    _id: ObjectId("65d4844a76ba50e568f08e72"),
+    userId: ObjectId("65883a7bc89918015e25e52e"),
+    title: "Produção de Conteúdo",
+    description: "Sou graduado em Letras - Licenciatura (Português). Trabalho a mais de 5 anos na área.",
+    category: ObjectId("6591ac25f9877e3170d90c40"),
+    price: 750,
+    deliveryTime: 15,
+    images: [
+      "files-1708429177924.jpg"
+    ],
+    features: [
+      "Redator",
+      "Marketing digital",
+      "Social media content"
+    ],
+    sales: 0,
     rating: [],
   }
 ])

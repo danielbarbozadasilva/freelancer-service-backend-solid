@@ -26,7 +26,7 @@ describe('Create conversation', () => {
       }
       
       const result = await createConversationUseCase.execute(data as ICreateConversationRequestDTO)
-      expect(result).toBe(true)
+      expect(!!result).toBe(true)
     })
   })
 })

@@ -2,6 +2,7 @@ import { registerUseCase } from './index'
 import { createConnection, closeConnection } from '../../database/client'
 import { IRegisterRequestDTO } from './RegisterDTO'
 import cryptography from '../../utils/cryptography'
+import Chance from 'chance'
 
 describe('Register User', () => {
   beforeAll(() => {
@@ -14,23 +15,22 @@ describe('Register User', () => {
 
   describe('Register User', () => {
     test('Make sure register the user', async () => {
-      const salt = cryptography.createSalt()
+      const chance = new Chance();
+
       const data = {
         name: "Daniel Silva",
-        username: "daniel789",
-        email: "danielbarboza11@hotmail.com",
-        cpf: "444.444.444-44",
+        username: chance.name(),
+        email: chance.email(),
+        cpf: chance.cpf(),
         birthDate: "2000-03-01T05:36:40.303Z",
-        picture: "",
         country: "brasil",
         phone: "(21)99999-9999",
         description: "Desenvolvedor web",
         permissions: ["client"],
-        hash: cryptography.createHash('123', salt),
-        salt: salt,
+        password: '123',
         isSeller: false
       }
-      const result = await registerUseCase.execute(data as IRegisterRequestDTO)
+      const result = await registerUseCase.execute(data as any)
       expect(result).toBe(true)
     })
 

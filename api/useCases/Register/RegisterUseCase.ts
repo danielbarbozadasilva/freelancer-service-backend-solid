@@ -28,7 +28,6 @@ export class RegisterUseCase {
     }
 
     const userCreate = new User(data)
-    this.userRepository.save(userCreate)
 
     await this.mailProvider.sendMail({
       to: {
@@ -42,5 +41,7 @@ export class RegisterUseCase {
       subject: 'Seja bem-vindo à plataforma',
       body: registerTemplate(data.name)
     })
+
+    return this.userRepository.save(userCreate)
   }
 }

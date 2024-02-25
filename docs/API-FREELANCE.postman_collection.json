@@ -164,69 +164,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "username",
-									"value": "jose172d",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "daniel80barboza@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "123",
-									"type": "text"
-								},
-								{
-									"key": "country",
-									"value": "brasil",
-									"type": "text"
-								},
-								{
-									"key": "name",
-									"value": "Jose Carlos",
-									"type": "text"
-								},
-								{
-									"key": "cpf",
-									"value": "333.222.333-33",
-									"type": "text"
-								},
-								{
-									"key": "birthDate",
-									"value": "20200404",
-									"type": "text"
-								},
-								{
-									"key": "files",
-									"type": "file",
-									"src": "/C:/Users/pc-02/Downloads/IMG_20240207_161957010.jpg"
-								},
-								{
-									"key": "phone",
-									"value": "(21)99999-9999",
-									"type": "text"
-								},
-								{
-									"key": "desc",
-									"value": "Desenvolvedor backend",
-									"type": "text"
-								},
-								{
-									"key": "isSeller",
-									"value": "false",
-									"type": "text"
-								},
-								{
-									"key": "permissions",
-									"value": "freelancer",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Daniel Silva\",\r\n        \"username\": \"daniel171891\",\r\n        \"email\": \"danielbarboza1111@hotmail.com\",\r\n        \"cpf\": \"141.444.444-44\",\r\n        \"birthDate\": \"2000-03-01T05:36:40.303Z\",\r\n        \"country\": \"brasil\",\r\n        \"phone\": \"(21)99999-9999\",\r\n        \"description\": \"Desenvolvedor web\",\r\n        \"permissions\": [\"client\"],\r\n        \"password\": \"123\",\r\n        \"isSeller\": false\r\n      }",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "http://localhost:3011/v1/register",
@@ -1036,11 +980,6 @@
 							],
 							"query": [
 								{
-									"key": "userId",
-									"value": "65883ab3c89918015e25e532",
-									"disabled": true
-								},
-								{
 									"key": "category",
 									"value": "",
 									"disabled": true
@@ -1059,7 +998,12 @@
 								},
 								{
 									"key": "order",
-									"value": null,
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "userId",
+									"value": "65883ab3c89918015e25e532",
 									"disabled": true
 								}
 							]
