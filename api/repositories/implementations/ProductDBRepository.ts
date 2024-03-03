@@ -152,7 +152,6 @@ export class ProductDBRepository implements IProductRepository {
       { $unwind: { path: '$category', preserveNullAndEmptyArrays: true } },
       { $unwind: { path: '$rating', preserveNullAndEmptyArrays: true } },
       { $unwind: { path: '$user', preserveNullAndEmptyArrays: true } },
-      { $unwind: { path: '$orders', preserveNullAndEmptyArrays: true } },
       { $unwind: { path: '$client', preserveNullAndEmptyArrays: true } },
       {
         $project: {

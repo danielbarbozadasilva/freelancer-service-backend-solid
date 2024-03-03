@@ -32,8 +32,8 @@ export class ConversationDBRepository implements IConversationRepository {
 
   }
 
-  async getSingleConversation(id: string): Promise<Conversation> {
-    const resultDB = await conversationSchema.findById(id)
+  async getSingleConversation(data: { userId: string, buyerId: string }): Promise<Conversation[]> {
+    const resultDB = await conversationSchema.find({ sellerId: data.userId, buyerId: data.buyerId })
     return resultDB
   }
 

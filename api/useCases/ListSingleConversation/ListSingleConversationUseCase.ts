@@ -3,7 +3,7 @@ import { IConversationRepository } from '../../repositories/IConversationReposit
 export class ListByIdConversationUseCase {
   constructor(private conversationRepository: IConversationRepository) {}
 
-  async execute(id: string) {
-    return this.conversationRepository.getSingleConversation(id)
+  async execute(data: { userId: string, buyerId: string }) {
+    return this.conversationRepository.getSingleConversation(data)
   }
 }

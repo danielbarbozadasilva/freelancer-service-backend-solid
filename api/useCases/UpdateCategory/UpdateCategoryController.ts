@@ -5,12 +5,13 @@ export class UpdateCategoryController {
   constructor(private updateCategoryUseCase: UpdateCategoryUseCase) {}
 
   async handle(request: Request, response: Response) {
-    try {
+    try {      
+      
       await this.updateCategoryUseCase.execute({
         _id: request.params.id,
         name: request.body.name,
         description: request.body.description,
-        picture: request?.file?.originalname,
+        picture: request?.file?.filename,
        })
 
       return response

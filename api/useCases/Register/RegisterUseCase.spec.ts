@@ -15,20 +15,21 @@ describe('Register User', () => {
 
   describe('Register User', () => {
     test('Make sure register the user', async () => {
-      const chance = new Chance();
+      const chance = new Chance()
 
       const data = {
-        name: "Daniel Silva",
+        name: 'Daniel Silva',
         username: chance.name(),
         email: chance.email(),
         cpf: chance.cpf(),
-        birthDate: "2000-03-01T05:36:40.303Z",
-        country: "brasil",
-        phone: "(21)99999-9999",
-        description: "Desenvolvedor web",
-        permissions: ["client"],
+        birthDate: '2000-03-01T05:36:40.303Z',
+        country: 'brasil',
+        phone: '(21)99999-9999',
+        description: 'Desenvolvedor web',
+        permissions: ['client'],
         password: '123',
-        isSeller: false
+        isSeller: false,
+        picture: 'files-1704052453981.jpg'
       }
       const result = await registerUseCase.execute(data as any)
       expect(result).toBe(true)
@@ -38,20 +39,20 @@ describe('Register User', () => {
       try {
         const salt = cryptography.createSalt()
         const data = {
-          name: "Daniel Silva",
-          username: "daniel116",
-          email: "danielbarboza11@hotmail.com",
-          cpf: "111.111.111-11",
-          birthDate: "2000-03-01T05:36:40.303Z",
-          picture: "",
-          country: "brasil",
-          phone: "(21)99999-9999",
-          description: "Desenvolvedor web",
-          permissions: ["client"],
+          name: 'Daniel Silva',
+          username: 'daniel116',
+          email: 'danielbarboza11@hotmail.com',
+          cpf: '111.111.111-11',
+          birthDate: '2000-03-01T05:36:40.303Z',
+          picture: '',
+          country: 'brasil',
+          phone: '(21)99999-9999',
+          description: 'Desenvolvedor web',
+          permissions: ['client'],
           hash: cryptography.createHash('123', salt),
           salt: salt,
           isSeller: false
-      }
+        }
         expect(registerUseCase.execute(data as IRegisterRequestDTO)).toThrow()
       } catch (error) {}
     })
@@ -60,20 +61,20 @@ describe('Register User', () => {
       try {
         const salt = cryptography.createSalt()
         const data = {
-          name: "Daniel Silva",
-          username: "daniel216",
-          email: "danielbarboza58@hotmail.com",
-          cpf: "444.444.444-44",
-          birthDate: "2000-03-01T05:36:40.303Z",
-          picture: "",
-          country: "brasil",
-          phone: "(21)99999-9999",
-          description: "Desenvolvedor web",
-          permissions: ["client"],
+          name: 'Daniel Silva',
+          username: 'daniel216',
+          email: 'danielbarboza58@hotmail.com',
+          cpf: '444.444.444-44',
+          birthDate: '2000-03-01T05:36:40.303Z',
+          picture: '',
+          country: 'brasil',
+          phone: '(21)99999-9999',
+          description: 'Desenvolvedor web',
+          permissions: ['client'],
           hash: cryptography.createHash('123', salt),
           salt: salt,
           isSeller: false
-      }
+        }
         expect(registerUseCase.execute(data as IRegisterRequestDTO)).toThrow()
       } catch (error) {}
     })
@@ -82,20 +83,20 @@ describe('Register User', () => {
       try {
         const salt = cryptography.createSalt()
         const data = {
-          name: "Daniel Silva",
-          username: "daniel789",
-          email: "danielbarboza59@hotmail.com",
-          cpf: "222.222.222-22",
-          birthDate: "2000-03-01T05:36:40.303Z",
-          picture: "files-1703438562446.jpg",
-          country: "brasil",
-          phone: "(21)99999-9999",
-          description: "Desenvolvedor web",
-          permissions: ["client"],
+          name: 'Daniel Silva',
+          username: 'daniel789',
+          email: 'danielbarboza59@hotmail.com',
+          cpf: '222.222.222-22',
+          birthDate: '2000-03-01T05:36:40.303Z',
+          picture: '',
+          country: 'brasil',
+          phone: '(21)99999-9999',
+          description: 'Desenvolvedor web',
+          permissions: ['client'],
           hash: cryptography.createHash('123', salt),
           salt: salt,
           isSeller: false
-      }
+        }
         expect(registerUseCase.execute(data as IRegisterRequestDTO)).toThrow()
       } catch (error) {}
     })

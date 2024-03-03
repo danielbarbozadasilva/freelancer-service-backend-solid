@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 import { ConversationInterface } from './types/conversation'
 
 const conversationSchema = new Schema(
@@ -35,4 +35,4 @@ const conversationSchema = new Schema(
   }
 )
 
-export default model<ConversationInterface>('conversationschemas', conversationSchema)
+export default mongoose.model<ConversationInterface>('conversationschemas', conversationSchema)

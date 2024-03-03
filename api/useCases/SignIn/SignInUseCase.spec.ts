@@ -14,7 +14,7 @@ describe('SignIn User', () => {
     test('Make sure that the user signin', async () => {
       const data = {
         email: 'danielbarboza56@hotmail.com',
-        password: '123'
+        password: 'daniel'
       }
       const resultData:any = await signInUseCase.execute(data)
       expect(resultData.data).toHaveProperty('id')

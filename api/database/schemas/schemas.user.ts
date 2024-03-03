@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 import { UserInterface } from './types/user'
 
 const usersSchema = new Schema(
@@ -63,4 +63,4 @@ const usersSchema = new Schema(
   }
 )
 
-export default model<UserInterface>('userschemas', usersSchema)
+export default mongoose.model<UserInterface>('userschemas', usersSchema)

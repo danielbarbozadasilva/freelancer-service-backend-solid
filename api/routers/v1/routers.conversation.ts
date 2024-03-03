@@ -14,7 +14,7 @@ export default (router: Router): void => {
     authenticationMiddleware(request)
     listAllConversationController.handle(request, response)
   })
-  router.route('/conversation/single/:id').get((request, response) => {
+  router.route('/conversation/userId/:userId/buyerId/:buyerId').get((request, response) => {
     authenticationMiddleware(request)
     listByIdConversationController.handle(request, response)
   })

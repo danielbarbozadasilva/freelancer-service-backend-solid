@@ -11,7 +11,11 @@ interface IListOrder {
 }
 
 export class OrderDBRepository implements IOrderRepository {
-  async createPaymentIntent(productId: string, buyerId: string, description: string): Promise<any> {
+  async createPaymentIntent(
+    productId: string,
+    buyerId: string,
+    description: string
+  ): Promise<any> {
     const stripe = new Stripe(process.env.STRIPE)
     const product = await productschemas.findById(productId)
     const paymentIntent = await stripe.paymentIntents.create({
@@ -33,7 +37,7 @@ export class OrderDBRepository implements IOrderRepository {
       isCompleted: false,
       payment_intent: paymentIntent.id
     })
-   
+
     return paymentIntent.client_secret
   }
 
@@ -71,41 +75,53 @@ export class OrderDBRepository implements IOrderRepository {
           'user.hash': 0,
           'user.salt': 0,
           'buyer.hash': 0,
-          'buyer.salt': 0,
+          'buyer.salt': 0
         }
       }
     ])
+    
     return result
   }
 
   async listByIdUserOrders(data: IListOrder): Promise<any> {
-    const { userId, isSeller } = data;
-    
-    let query: any = { isCompleted: true };    
+    const { userId, isSeller } = data
+
+    let query: any = { isCompleted: true }
     if (isSeller == true) {
-      query.userId = new mongoose.Types.ObjectId(userId);
+      query.userId = new mongoose.Types.ObjectId(userId)
     } else {
-      query.buyerId = new mongoose.Types.ObjectId(userId);
+      query.buyerId = new mongoose.Types.ObjectId(userId)
     }
-    
+
     const result = await orderSchema
       .find(query)
       .populate('userId', '-hash -salt')
       .populate('buyerId', '-hash -salt')
-      .populate('productId');
+      .populate('productId')
 
-    return result;
+    return result
   }
 
   async updateOrder(dataOrder: Order): Promise<any> {
-    await orderSchema.findOneAndUpdate(
+    const resultOrder = await orderSchema.findOneAndUpdate(
       {
-        payment_intent: dataOrder.payment_intent,
+        payment_intent: dataOrder.payment_intent
       },
       {
         $set: {
           isCompleted: true,
           status: 'Finalizada'
+        }
+      }
+    )
+    const dataProduct = await productschemas.findOne({ _id: resultOrder.productId })
+    await productschemas.updateOne(
+      {
+        _id: resultOrder.productId
+      },
+      {
+        $set: {
+          sales: dataProduct.sales + 1,
         }
       }
     )
@@ -116,6 +132,6 @@ export class OrderDBRepository implements IOrderRepository {
       .populate('buyerId', '-hash -salt')
       .populate('productId')
 
-    return result?.length? result[0] : result
+    return result?.length ? result[0] : result
   }
 }

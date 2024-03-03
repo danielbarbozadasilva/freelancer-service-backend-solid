@@ -6,8 +6,9 @@ export class ListByIdConversationController {
 
   async handle(request: Request, response: Response) {
     try {
-      const id: string = request.params.id
-      const data = await this.listByIdConversationUseCase.execute(id)
+      const userId: string = request.params.userId
+      const buyerId: string = request.params.buyerId
+      const data = await this.listByIdConversationUseCase.execute({ userId, buyerId })
 
       return response
       .status(200)

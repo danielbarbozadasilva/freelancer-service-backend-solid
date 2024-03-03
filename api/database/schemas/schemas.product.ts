@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 import { ProductInterface } from './types/product'
 
 const productschemas = new Schema(
@@ -51,4 +51,4 @@ const productschemas = new Schema(
   }
 );
 
-export default model<ProductInterface>('productschemas', productschemas)
+export default mongoose.model<ProductInterface>('productschemas', productschemas)

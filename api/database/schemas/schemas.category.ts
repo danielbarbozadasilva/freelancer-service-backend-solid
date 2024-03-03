@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 import { CategoryInterface } from './types/category'
 
 const categorySchema = new Schema(
@@ -21,4 +21,4 @@ const categorySchema = new Schema(
   }
 )
 
-export default model<CategoryInterface>('categoryschemas', categorySchema)
+export default mongoose.model<CategoryInterface>('categoryschemas', categorySchema)

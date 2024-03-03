@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 import { OrderInterface } from './types/order'
 
 const orderSchema = new Schema(
@@ -48,4 +48,4 @@ const orderSchema = new Schema(
   }
 );
 
-export default model<OrderInterface>('orderschemas', orderSchema)
+export default mongoose.model<OrderInterface>('orderschemas', orderSchema)

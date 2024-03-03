@@ -8,20 +8,21 @@ export class UpdateProfileController {
   async handle(request: Request, response: Response) {
     try {
       const salt = Cryptography.createSalt()
+      
       const data = {
         name: request.body.name,
         username: request.body.username,
         email: request.body.email,
         cpf: request.body.cpf,
         birthDate: request.body.birthDate,
-        picture: request?.file?.originalname,
+        picture: request?.file?.filename,
         country: request.body.country,
         phone: request.body.phone,
         description: request.body.description,
         permissions: request.body.permissions,
-        hash: request.body?.password? Cryptography.createHash(request.body.password, salt) : null,
+        isSeller: request.body.isSeller,
+        hash: request.body?.password ? Cryptography.createHash(request.body.password, salt) : null,
         salt: salt,
-        isSeller: true
       }
       if (!request.body?.password) {
         delete data.hash;

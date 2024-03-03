@@ -7,7 +7,7 @@ import { IRegisterRequestDTO } from './RegisterDTO'
 export class RegisterUseCase {
   constructor(
     private userRepository: IUserRepository,
-    private mailProvider: IMailProvider,
+    private mailProvider: IMailProvider
   ) {}
 
   async execute(data: IRegisterRequestDTO) {
@@ -18,30 +18,28 @@ export class RegisterUseCase {
     if (userCpfAlreadyExists) {
       throw new Error('Cpf already exists.')
     }
-
     if (emailAlreadyExists) {
       throw new Error('Email already exists.')
     }
-
     if (userNameAlreadyExists) {
       throw new Error('Username already exists.')
     }
 
     const userCreate = new User(data)
 
+    await this.userRepository.save(userCreate)
+
     await this.mailProvider.sendMail({
       to: {
         name: data.name,
-        email: data.email,
+        email: data.email
       },
       from: {
         name: 'Equipe Freelancer',
-        email: 'daniel80barboza@gmail.com',
+        email: 'daniel80barboza@gmail.com'
       },
       subject: 'Seja bem-vindo à plataforma',
       body: registerTemplate(data.name)
     })
-
-    return this.userRepository.save(userCreate)
   }
 }

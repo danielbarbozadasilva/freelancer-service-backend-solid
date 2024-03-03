@@ -328,7 +328,7 @@ db.ratingschemas.insert([
   {
     _id: ObjectId("638a236a0ef44976d1687126"),
     name: "João Costa",
-    text: "A criação de um site alavancou o meu negócio. Recomento a todos, o profissional é excelente.",
+    text: "A criação de um site alavancou o meu negócio.",
     score: 5,
     productId: ObjectId("659802bcfed9f7066576ca78"),
     userId: ObjectId("65883a7bc89918015e25e52f")
@@ -336,7 +336,7 @@ db.ratingschemas.insert([
    {
     _id: ObjectId("638a22b10ef44976d168711e"),
     name: "Marcos Silva",
-    text: "A API ficou ótima, atendeu as minhas espectativas. O profissional utilizou de boas práticas de programação. Código limpo.",
+    text: "Atendeu as minhas espectativas.",
     score: 4,
     productId: ObjectId("659802bcfed9f7066576ca77"),
     userId: ObjectId("65883a7bc89918015e25e52f")
@@ -367,13 +367,13 @@ db.createCollection("orderschemas")
 db.orderschemas.insert([
   {
     _id: ObjectId("65b60ca19588bfeca46e5c26"),
-    productId: "659802bcfed9f7066576ca78",
+    productId: ObjectId("659802bcfed9f7066576ca78"),
     title: "Site WordPress",
     description: "Site no formato onepage para confeitaria especializada em bolos e salgados.",
     status: "Finalizada",
     price: 200,
-    userId: "65883ab3c89918015e25e532",
-    buyerId: "65a5002f9d9b340e62d233b4",
+    userId: ObjectId("65883ab3c89918015e25e532"),
+    buyerId: ObjectId("65a5002f9d9b340e62d233b4"),
     isCompleted: true,
     isSeller: true,
     payment_intent: "pi_3OjgfsDlLXsk0gPs10nWI7hP",

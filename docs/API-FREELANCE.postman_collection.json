@@ -47,7 +47,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"daniel80barboza@gmail.com\",\n    \"password\": \"123\"\n}",
+							"raw": "{\n    \"email\": \"daniel80barboza@gmail.com\",\n    \"password\": \"daniel\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -64,65 +64,6 @@
 							"path": [
 								"v1",
 								"auth"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "auth.logout",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbEBnbWFpbC5jb20iLCJuYW1lIjoiRGFuaWVsIEJhcmJvemEiLCJ0eXBlIjoxLCJpYXQiOjE2NTQ0ODI5MjIsImV4cCI6MTY2MzQ4MjkyMn0.wwm5ffUkQjtISWJqQhxKy2xQ_VQfbOxJoV6QbN561h4",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\": \"daniel95barboza@gmail.com\",\n    \"password\": \"daniel\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3011/v1/logout",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3011",
-							"path": [
-								"v1",
-								"logout"
 							]
 						}
 					},
@@ -872,7 +813,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3011/v1/conversation/single/658951d2e4e3a44b66725296",
+							"raw": "http://localhost:3011/v1/conversation/userId/65883ab3c89918015e25e532/buyerId/65a5002f9d9b340e62d233b4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -881,8 +822,10 @@
 							"path": [
 								"v1",
 								"conversation",
-								"single",
-								"658951d2e4e3a44b66725296"
+								"userId",
+								"65883ab3c89918015e25e532",
+								"buyerId",
+								"65a5002f9d9b340e62d233b4"
 							],
 							"query": [
 								{
@@ -1099,7 +1042,7 @@
 								},
 								{
 									"key": "title",
-									"value": "Desenvolvedor Webddddd",
+									"value": "Desenvolvedor Web",
 									"type": "text"
 								},
 								{
@@ -1120,7 +1063,7 @@
 								{
 									"key": "files",
 									"type": "file",
-									"src": "/C:/Users/pc-02/Downloads/files-1704052453990.jpg"
+									"src": "/C:/Users/pc-02/Downloads/IMG_20240207_161952041.jpg"
 								},
 								{
 									"key": "deliveryTime",

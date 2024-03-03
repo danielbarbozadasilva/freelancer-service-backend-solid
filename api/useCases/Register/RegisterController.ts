@@ -7,7 +7,7 @@ export class RegisterController {
 
   async handle(request: Request, response: Response) {
     try {
-      const salt = Cryptography.createSalt()      
+      const salt = Cryptography.createSalt()
       const result = await this.registerUseCase.execute({
         name: request.body.name,
         username: request.body.username,
@@ -19,11 +19,11 @@ export class RegisterController {
         phone: request.body.phone,
         description: request.body.description,
         isSeller: request.body.isSeller,
-        permissions: request.body.isSeller === 'true' ? ['freelancer'] : ['client'],
+        permissions: request.body.isSeller ? ['freelancer'] : ['client'],
         hash: Cryptography.createHash(request.body.password, salt),
         salt: salt
       })
-      
+
       return response
         .status(201)
         .send({ message: 'User successfully created!', data: result })

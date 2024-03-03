@@ -1,287 +1,1353 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-        "title": "Api Freelance",
-        "description": "A API foi desenvolvida utilizando os princípios SOLID e TypeScript com NodeJs, ExpressJs e Banco de dados MongoDB. Documentação utilizando o Swagger. Testes unitários utilizando o Jest.",
-        "contact": {
-            "email": "daniel80barboza@gmail.com"
-        },
-        "version": "1.0.0"
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Api Freelance",
+    "description": "A API foi desenvolvida utilizando os princípios SOLID e TypeScript com NodeJs, ExpressJs e Banco de dados MongoDB. Documentação utilizando o Swagger. Testes unitários utilizando o Jest.",
+    "contact": {
+      "email": "daniel80barboza@gmail.com"
     },
-    "servers": [
-        {
-            "url": "http://localhost:3011/",
-            "description": "Api de teste"
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3011/v1",
+      "description": "Api de teste"
+    }
+  ],
+
+  "paths": {
+    "/auth": {
+      "post": {
+        "summary": "Logar usuário",
+        "description": "Essa rota é responsável por autenticar o usuário",
+        "tags": [
+          "Autenticação"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auth"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid email or password."
+          },
+          "200": {
+            "description": "Successfully authenticated user!"
+          }
         }
-    ],
-    "paths": {
-        "/auth": {
-            "post": {
-                "summary": "Logar usuário",
-                "description": "Essa rota é responsável por autenticar o usuário",
-                "tags": [
-                    "Autenticar Usuário"
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/Auth"
-                            },
-                            "examples": {
-                                "auth": {
-                                    "value": {
-                                        "email": "daniel95barboza",
-                                        "password": "daniel"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "400": {
-                        "description": "Invalid email or password."
-                    },
-                    "201": {
-                        "description": "Successfully authenticated user!"
-                    }
-                }
-            }
-        },
-        "/register": {
-            "post": {
-                "summary": "Criar usuário",
-                "description": "Essa rota é responsável por criar um novo usuário",
-                "tags": [
-                    "Autenticar Usuário"
-                ],
-                "requestBody": {
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "$ref": "#/components/schemas/RegisterUser"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "400": {
-                        "description": ["Email already exists.", "Username already exists.", "Cpf already exists."]
-                    },
-                    "201": {
-                        "description": "User successfully created!"
-                    }
-                }
-            }
-        },
-        "/call": {
-            "get": {
-                "summary": "Listar Chamados",
-                "description": "Essa rota é responsável por listar Chamados",
-                "tags": [
-                    "Chamado"
-                ],
-                "responses": {
-                    "400": {
-                        "description": "Unexpected error."
-                    },
-                    "200": {
-                        "description": "Call successfully listed!"
-                    }
-                }
-            },
-            "post": {
-                "summary": "Cadastrar Chamado",
-                "description": "Essa rota é responsável por cadastrar um Chamado",
-                "tags": [
-                    "Chamado"
-                ],
-                "requestBody": {
-                    "content": {
-                        "multipart/form-data": {
-                            "schema": {
-                                "$ref": "#/components/schemas/CreateCall"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "400": {
-                        "description": "Unexpected error."
-                    },
-                    "201": {
-                        "description": "Call successfully created!"
-                    }
-                }
-            }
-        },
-        "/call/{callid}": {
-            "get": {
-                "parameters": [
-                    {
-                        "name": "token",
-                        "in": "header",
-                        "type": "string",
-                        "required": true
-                    },
-                    {
-                        "name": "callid",
-                        "in": "path",
-                        "type": "integer",
-                        "required": true
-                    }
-                ],
-                "summary": "Listar Chamado pelo id",
-                "description": "Essa rota é responsável por listar o Chamado pelo id",
-                "tags": [
-                    "Chamado"
-                ],
-                "responses": {
-                    "400": {
-                        "description": "Unexpected error."
-                    },
-                    "200": {
-                        "description": "Called successfully listed!"
-                    }
-                }
-            }
-        }
+      }
     },
-    "components": {
-        "schemas": {
-            "Auth": {
+    "/register": {
+      "post": {
+        "tags": [
+          "Autenticação"
+        ],
+        "summary": "Registrar",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
                 "type": "object",
-                "properties": {
-                    "email": {
-                        "type": "string",
-                        "required": true
-                    },
-                    "password": {
-                        "type": "string",
-                        "required": true
-                    }
-                }
-            },
-            "RegisterUser": {
-                "type": "object",
-                "properties": {
-                    "username": {
-                        "type": "string",
-                        "required": true,
-                        "example": "daniel123"
-                    },
-                    "email": {
-                        "type": "string",
-                        "required": true,
-                        "example": "daniel80dbarboza@gmail.com"
-                    },
-                    "password": {
-                        "type": "string",
-                        "required": true,
-                        "example": "daniel"
-                    },
-                    "country": {
-                        "type": "string",
-                        "required": true,
-                        "example": "BRASIL"
-                    },
-                    "name": {
-                        "type": "string",
-                        "required": true,
-                        "example": "Daniel"
-                    },
-                    "cpf": {
-                        "type": "string",
-                        "required": true,
-                        "example": "123.345.567-90"
-                    },
-                    "birthDate": {
-                        "type": "string",
-                        "required": true,
-                        "example": "2000-03-01T05:36:40.303Z"
-                    },
-                    "files": {
-                        "type": "string",
-                        "required": false,
-                        "format": "binary"
-                    },
-                    "phone": {
-                        "type": "string",
-                        "required": true,
-                        "example": "(21)98987-0998"
-                    },
-                    "desc": {
-                        "type": "string",
-                        "required": true,
-                        "example": "Desenvolvedor backend"
-                    },
-                    "isSeller": {
-                        "type": "boolean",
-                        "required": true,
-                        "example": false
-                    }
-                    
-                }
-            },
-            "CreateCall": {
-                "type": "object",
-                "properties": {
-                    "clientId": {
-                        "type": "string",
-                        "required": true,
-                        "example": "6415f212da63a53a41fec995"
-                    },
-                    "number": {
-                        "type": "string",
-                        "required": true,
-                        "example": "16353421"
-                    },
-                    "subject": {
-                        "type": "string",
-                        "required": true,
-                        "example": "Dúvida sobre produto"
-                    },
-                    "description": {
-                        "type": "string",
-                        "required": true,
-                        "example": "O produto está com a cor diferente do anúncio"
-                    },
-                    "category": {
-                        "type": "string",
-                        "required": true,
-                        "example": "Produtos"
-                    },
-                    "evaluation": {
-                        "type": "number",
-                        "required": true,
-                        "example": 5
-                    },
-                    "files": {
-                        "type": "string",
-                        "required": true,
-                        "format": "binary"
-                    },
-                    "sender": {
-                        "type": "string",
-                        "required": true,
-                        "example": "Daniel Barboza"
-                    },
-                    "message": {
-                        "type": "string",
-                        "required": true,
-                        "example": "O produto está com a cor diferente do anúncio"
-                    }
-                }
+                "$ref": "#/components/schemas/Register_User"
+              }
             }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Cpf already exists.\nEmail already exists.\nUsername already exists."
+          },
+          "201": {
+            "description": "User successfully created!"
+          }
         }
+      }
+    },
+    "/category": {
+      "get": {
+        "summary": "Listar categorias",
+        "description": "Essa rota lista categorias",
+        "tags": [
+          "Categoria"
+        ],
+        "responses": {
+          "200": {
+            "description": "List all categories successfully!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List_Categories"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unexpected error."
+          }
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "type": "string",
+            "description": "token",
+            "required": true
+          }
+        ],
+        "summary": "Cadastrar categoria",
+        "description": "Essa rota cadastra uma categoria",
+        "tags": [
+          "Categoria"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "teste"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "teste"
+                  },
+                  "files": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Category successfully created!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List_Categories"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unexpected error."
+          }
+        }
+      }
+    },
+    "/category/{id}": {
+      "get": {
+        "summary": "Listar categoria pelo Id",
+        "description": "Essa rota lista uma categoria",
+        "tags": [
+          "Categoria"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id da categoria",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List category successfully!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List_Categories"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Essa categoria não existe!"
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualizar categoria",
+        "description": "Essa rota atualiza uma categoria",
+        "tags": [
+          "Categoria"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "type": "string",
+            "description": "token",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id da categoria",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Desenvolver códigof"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Desenvolver códigof"
+                  },
+                  "files": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Category successfully updated!"
+          },
+          "400": {
+            "description": "Essa categoria não existe!"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Excluir categoria",
+        "description": "Essa rota exclui uma categoria",
+        "tags": [
+          "Categoria"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "type": "string",
+            "description": "token",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id da categoria",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Category deleted successfully!"
+          },
+          "400": {
+            "description": "Essa categoria não existe!"
+          }
+        }
+      }
+    },
+    "/rating/product/659802bcfed9f7066576ca77": {
+      "get": {
+        "tags": [
+          "rating"
+        ],
+        "summary": "rating.listById",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rating": {
+      "post": {
+        "tags": [
+          "rating"
+        ],
+        "summary": "rating.create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "Marcos",
+                  "text": "Excelente",
+                  "score": 5,
+                  "productId": "659802bcfed9f7066576ca78",
+                  "userId": "65883a7bc89918015e25e52f"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/rating/638a236a0ef44976d1687126": {
+      "put": {
+        "tags": [
+          "rating"
+        ],
+        "summary": "Atualizar avaliação",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "Marcos",
+                  "text": "Excelente",
+                  "score": 5,
+                  "productId": "659802bcfed9f7066576ca78",
+                  "userId": "65883a7bc89918015e25e52f"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "rating"
+        ],
+        "summary": "rating.delete",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/conversation": {
+      "post": {
+        "tags": [
+          "conversation"
+        ],
+        "summary": "conversation.create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "isSeller": true,
+                  "userId": "65883a7bc89918015e25e52e",
+                  "to": "65883ab3c89918015e25e532",
+                  "readBySeller": false,
+                  "readByBuyer": false,
+                  "sellerId": "222",
+                  "buyerId": "3333"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/conversation/userid/65a5002f9d9b340e62d233b4/isseller/false": {
+      "get": {
+        "tags": [
+          "conversation"
+        ],
+        "summary": "conversation.listAll",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/conversation/userId/65883ab3c89918015e25e532/buyerId/65a5002f9d9b340e62d233b4": {
+      "get": {
+        "tags": [
+          "conversation"
+        ],
+        "summary": "conversation.listById",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/conversation/65883a7bc89918015e25e52e65883ab3c89918015e25e532": {
+      "put": {
+        "tags": [
+          "conversation"
+        ],
+        "summary": "conversation.update",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "isSeller": true
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/product": {
+      "get": {
+        "tags": [
+          "product"
+        ],
+        "summary": "product.listAll",
+        "security": [
+          {
+            "noauthAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "0"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "1000"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "product"
+        ],
+        "summary": "product.create",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "example": "65883ab3c89918015e25e532"
+                  },
+                  "title": {
+                    "type": "string",
+                    "example": "Desenvolvedor Webddddd"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Experiência em Desenvolvedor Web"
+                  },
+                  "category": {
+                    "type": "string",
+                    "example": "6591ac5bf9877e3170d90c48"
+                  },
+                  "price": {
+                    "type": "integer",
+                    "example": "110"
+                  },
+                  "files": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "deliveryTime": {
+                    "type": "integer",
+                    "example": "7"
+                  },
+                  "features": {
+                    "type": "string",
+                    "example": "Desenvolvimento web,APIs RESTful,React,Node.js,Express"
+                  },
+                  "sales": {
+                    "type": "integer",
+                    "example": "0"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/product/659802bcfed9f7066576ca79": {
+      "get": {
+        "tags": [
+          "product"
+        ],
+        "summary": "product.listById",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "product"
+        ],
+        "summary": "product.update",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "example": "65883ab3c89918015e25e532"
+                  },
+                  "title": {
+                    "type": "string",
+                    "example": "Desenvolvedor Full Stackffff"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Experiência em desenvolvimento web full stack"
+                  },
+                  "category": {
+                    "type": "string",
+                    "example": "6591ac5bf9877e3170d90c48"
+                  },
+                  "price": {
+                    "type": "integer",
+                    "example": "50"
+                  },
+                  "files": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "deliveryTime": {
+                    "type": "integer",
+                    "example": "7"
+                  },
+                  "features": {
+                    "type": "string",
+                    "example": "Desenvolvimento web,APIs RESTful,React,Node.js,Express"
+                  },
+                  "sales": {
+                    "type": "integer",
+                    "example": "0"
+                  },
+                  "rating": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/product/659d2ed15f92db58033fd0ed": {
+      "delete": {
+        "tags": [
+          "product"
+        ],
+        "summary": "product.delete",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/product/recommended": {
+      "get": {
+        "tags": [
+          "product"
+        ],
+        "summary": "product.listRecommended",
+        "security": [
+          {
+            "noauthAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/message": {
+      "get": {
+        "tags": [
+          "message"
+        ],
+        "summary": "message.listAll",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/message/65883a7bc89918015e25e52e/65883ab3c89918015e25e532": {
+      "get": {
+        "tags": [
+          "message"
+        ],
+        "summary": "message.listById",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/message/65883a7bc89918015e25e52e/to/65883ab3c89918015e25e532": {
+      "post": {
+        "tags": [
+          "message"
+        ],
+        "summary": "message.create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "text": "Oi, tudo bem?"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/message/65883a7bc89918015e25e52e": {
+      "put": {
+        "tags": [
+          "message"
+        ],
+        "summary": "message.update",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "text": "Oi, tudo bem?"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "message"
+        ],
+        "summary": "message.delete",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/client": {
+      "get": {
+        "tags": [
+          "client"
+        ],
+        "summary": "client.listAll",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/client/65883a7bc89918015e25e52e": {
+      "get": {
+        "tags": [
+          "client"
+        ],
+        "summary": "client.listById",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/order": {
+      "get": {
+        "tags": [
+          "order"
+        ],
+        "summary": "order.listAll",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "order"
+        ],
+        "summary": "order.create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "productId": "659802bcfed9f7066576ca79",
+                  "userId": "65883a7bc89918015e25e52e",
+                  "quantity": 2,
+                  "total": 100
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/order/65883a7bc89918015e25e52e": {
+      "get": {
+        "tags": [
+          "order"
+        ],
+        "summary": "order.listById",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Auth": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "required": true,
+            "example": "teste@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "required": true,
+            "example": "teste"
+          }
+        }
+      },
+      "List_Auth": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "required": true
+          },
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "email": {
+            "type": "string",
+            "required": true
+          },
+          "cpf": {
+            "type": "string",
+            "required": true
+          },
+          "type": {
+            "type": "integer",
+            "required": true
+          }
+        }
+      },
+      "List_Categories": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "required": true
+          },
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "picture": {
+            "type": "string",
+            "required": true
+          },
+          "product": {
+            "type": "array",
+            "required": false
+          }
+        }
+      },
+      "Register_User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "required": true,
+            "example": "teste"
+          },
+          "username": {
+            "type": "string",
+            "required": true,
+            "example": "teste001"
+          },
+          "email": {
+            "type": "string",
+            "required": true,
+            "example": "teste@gmail.com"
+          },
+          "cpf": {
+            "type": "string",
+            "required": true,
+            "example": "141.444.444-44"
+          },
+          "birthDate": {
+            "type": "date",
+            "required": true,
+            "example": "2000-03-01T05:36:40.303Z"
+          },
+          "files": {
+            "type": "string",
+            "required": true,
+            "format": "binary"
+          },
+          "country": {
+            "type": "string",
+            "required": true,
+            "example": "brasil"
+          },
+          "phone": {
+            "type": "string",
+            "required": true,
+            "example": "(21)99999-9999"
+          },
+          "description": {
+            "type": "string",
+            "required": true,
+            "example": "Desenvolvedor web"
+          },
+          "password": {
+            "type": "string",
+            "required": true,
+            "example": "teste"
+          },
+          "isSeller": {
+            "type": "boolean",
+            "required": true,
+            "example": false
+          }
+        }
+      }
     },
     "securityDefinitions": {
-        "JWT": {
-            "description": "JWT token",
-            "type": "apiKey",
-            "in": "header",
-            "name": "Authorization"
-        }
+      "JWT": {
+        "description": "JWT token",
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization"
+      }
     }
+  }
 }

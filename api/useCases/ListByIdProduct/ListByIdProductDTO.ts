@@ -34,14 +34,9 @@ interface User {
 
 export const productDTO = (data: IProductRequestDTO) => {
     let arrayImagesProduct = [];
-    let arrayImagesclient = [];
 
     data.images.map((item)=>{
       arrayImagesProduct.push(formatAddressImage(item))
-    })
-
-    data.userId.picture.map((item)=>{
-      arrayImagesclient.push(formatAddressImage(item))
     })
 
     return {
@@ -53,7 +48,7 @@ export const productDTO = (data: IProductRequestDTO) => {
         email: data.userId.email,
         cpf: data.userId.cpf,
         birthDate: formatarData(data.userId.birthDate),
-        picture: arrayImagesclient,
+        picture: formatAddressImage(data.userId.picture),
         country: data.userId.country,
         phone: data.userId.phone,
         description:data.userId.description,

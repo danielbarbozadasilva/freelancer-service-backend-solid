@@ -23,7 +23,7 @@ export class UserDBRepository implements IUserRepository {
     return resultDB
   }
 
-  async updateProfile(id: string, dataUser: User): Promise<boolean> {
+  async updateProfile(id: string, dataUser: User): Promise<boolean> {  
     const data = {
         name: dataUser.name,
         username: dataUser.username,

@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 import { MessageInterface } from './types/message'
 
 const messageSchema = new Schema(
@@ -23,4 +23,4 @@ const messageSchema = new Schema(
   }
 )
 
-export default model<MessageInterface>('messageschemas', messageSchema)
+export default mongoose.model<MessageInterface>('messageschemas', messageSchema)

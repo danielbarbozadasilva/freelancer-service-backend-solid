@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 import { RatingInterface } from './types/rating'
 
 const ratingSchema = new Schema(
@@ -12,4 +12,4 @@ const ratingSchema = new Schema(
   { timestamps: true }
 )
 
-export default model<RatingInterface>('ratingschemas', ratingSchema)
+export default mongoose.model<RatingInterface>('ratingschemas', ratingSchema)
