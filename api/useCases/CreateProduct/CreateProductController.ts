@@ -27,7 +27,7 @@ export class CreateProductController {
 
       return response
         .status(201)
-        .send({ message: 'Product successfully created!' })
+        .send({ message: 'Service successfully created!' })
     } catch (error) {
       return response
         .status(400)

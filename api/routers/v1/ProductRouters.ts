@@ -4,8 +4,8 @@ import { updateProductController } from '../../useCases/UpdateProduct'
 import { listByIdProductController } from '../../useCases/ListByIdProduct'
 import { createProductController } from '../../useCases/CreateProduct'
 import { deleteProductController} from '../../useCases/DeleteProduct'
-import fileUpload from '../../utils/utils.file'
-import authenticationMiddleware from '../../utils/middlewares/middlewares.authentication'
+import fileUpload from '../../utils/file'
+import authenticationMiddleware from '../../utils/middlewares/AuthenticationMiddleware'
 
 export default (router: Router): void => {
   router.route('/product').post(fileUpload.array('files', 5), (request, response) => {

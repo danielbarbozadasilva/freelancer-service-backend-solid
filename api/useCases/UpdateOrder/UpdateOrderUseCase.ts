@@ -11,7 +11,7 @@ export class UpdateOrderUseCase {
   ) {}
 
   async execute(data: any) {
-    const result = new Order(data)
+    const result = new Order(data)    
     const response: OrderData = await this.orderRepository.updateOrder(result)
     const recipients = [
       {

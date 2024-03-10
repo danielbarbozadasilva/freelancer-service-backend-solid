@@ -1,5 +1,5 @@
 import { ObjectId } from "mongoose";
-import { formatAddressImage } from "../../utils/utils.file"
+import { formatAddressImage } from "../../utils/file"
 
 export interface IListAllUsersRequestDTO {
   _id?: ObjectId | string;

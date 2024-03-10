@@ -1,5 +1,5 @@
 import status from 'http-status';
-import ErrorGeneric from './erros.generic-error';
+import ErrorGeneric from './ErrorGeneric';
 
 const defaultMessage = 'User is not allowed';
 

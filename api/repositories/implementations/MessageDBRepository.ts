@@ -1,7 +1,7 @@
 import { Message } from '../../entities/Message'
 import { IMessageRepository } from '../IMessageRepository'
-import messageSchema from '../../database/schemas/schemas.message'
-import conversationSchema from '../../database/schemas/schemas.conversation'
+import messageSchema from '../../database/schemas/SchemaMessage'
+import conversationSchema from '../../database/schemas/SchemaConversation'
 
 export class MessageDBRepository implements IMessageRepository {
   async createMessage(dataProduct: Message): Promise<Message> {

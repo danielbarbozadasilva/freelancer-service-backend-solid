@@ -11,7 +11,7 @@ export class DeleteProductController {
 
       return response
         .status(200)
-        .send({ message: 'Product deleted successfully!' })
+        .send({ message: 'Service deleted successfully!' })
     } catch (error) {
       return response
         .status(400)

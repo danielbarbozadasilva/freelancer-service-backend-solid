@@ -14,7 +14,6 @@
       "description": "Api de teste"
     }
   ],
-
   "paths": {
     "/auth": {
       "post": {
@@ -82,7 +81,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/List_Categories"
+                  "$ref": "#/components/schemas/List_Categories_Product"
                 }
               }
             }
@@ -111,36 +110,14 @@
           "content": {
             "multipart/form-data": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "example": "teste"
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "teste"
-                  },
-                  "files": {
-                    "type": "string",
-                    "format": "binary"
-                  }
-                }
+                "$ref": "#/components/schemas/Register_Category"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Category successfully created!",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "$ref": "#/components/schemas/List_Categories"
-                }
-              }
-            }
+            "description": "Category successfully created!"
           },
           "400": {
             "description": "Unexpected error."
@@ -207,21 +184,7 @@
           "content": {
             "multipart/form-data": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "example": "Desenvolver códigof"
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "Desenvolver códigof"
-                  },
-                  "files": {
-                    "type": "string",
-                    "format": "binary"
-                  }
-                }
+                "$ref": "#/components/schemas/Register_Category"
               }
             }
           }
@@ -267,33 +230,36 @@
         }
       }
     },
-    "/rating/product/659802bcfed9f7066576ca77": {
+    "/rating/product/{id}": {
       "get": {
+        "summary": "Listar avaliações pelo Id do produto",
+        "description": "Essa rota lista as avaliações de um produto",
         "tags": [
-          "rating"
-        ],
-        "summary": "rating.listById",
-        "security": [
-          {
-            "bearerAuth": []
-          }
+          "Avaliação"
         ],
         "parameters": [
           {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id do produto",
+            "required": true
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "List Rating successfully!",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List_rating"
+                }
+              }
             }
+          },
+          "400": {
+            "description": "Avaliação não existente!"
           }
         }
       }
@@ -301,9 +267,9 @@
     "/rating": {
       "post": {
         "tags": [
-          "rating"
+          "Avaliação"
         ],
-        "summary": "rating.create",
+        "summary": "Cadastrar avaliação",
         "requestBody": {
           "content": {
             "application/json": {
@@ -320,37 +286,32 @@
             }
           }
         },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
-          }
-        ],
         "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
+          "201": {
+            "description": "Rating successfully created!"
+          },
+          "400": {
+            "description": "Unexpected error."
           }
         }
       }
     },
-    "/rating/638a236a0ef44976d1687126": {
+    "/rating/{id}": {
       "put": {
+        "summary": "Listar avaliações pelo Id",
+        "description": "Essa rota lista as avaliações pelo ID",
         "tags": [
-          "rating"
+          "Avaliação"
         ],
-        "summary": "Atualizar avaliação",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id da avaliação",
+            "required": true
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -367,66 +328,56 @@
             }
           }
         },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
-          }
-        ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
+            "description": "Rating successfully Updated!"
+          },
+          "400": {
+            "description": "Unexpected error."
           }
         }
       },
       "delete": {
+        "summary": "Deleta a avaliação pelo Id",
+        "description": "Essa rota lista as avaliações pelo ID",
         "tags": [
-          "rating"
-        ],
-        "summary": "rating.delete",
-        "security": [
-          {
-            "bearerAuth": []
-          }
+          "Avaliação"
         ],
         "parameters": [
           {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id da avaliação",
+            "required": true
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
+            "description": "Rating deleted successfully!"
+          },
+          "400": {
+            "description": "Unexpected error."
           }
         }
       }
     },
     "/conversation": {
       "post": {
-        "tags": [
-          "conversation"
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "type": "string",
+            "description": "token",
+            "required": true
+          }
         ],
-        "summary": "conversation.create",
+        "summary": "Criar uma conversa",
+        "description": "Essa rota cria uma conversa",
+        "tags": [
+          "Conversa"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -437,107 +388,135 @@
                   "userId": "65883a7bc89918015e25e52e",
                   "to": "65883ab3c89918015e25e532",
                   "readBySeller": false,
-                  "readByBuyer": false,
-                  "sellerId": "222",
-                  "buyerId": "3333"
+                  "readByBuyer": false
                 }
               }
             }
           }
         },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
-          }
-        ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
+            "description": "Conversation successfully created!"
+          },
+          "400": {
+            "description": "Unexpected error."
           }
         }
       }
     },
-    "/conversation/userid/65a5002f9d9b340e62d233b4/isseller/false": {
+    "/conversation/userid/{id}/isseller/{isseller}": {
       "get": {
+        "summary": "Listar conversa",
+        "description": "Essa rota lista uma conversa",
         "tags": [
-          "conversation"
-        ],
-        "summary": "conversation.listAll",
-        "security": [
-          {
-            "bearerAuth": []
-          }
+          "Conversa"
         ],
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id do usuário",
+            "required": true
+          },
+          {
+            "name": "isseller",
+            "in": "path",
+            "type": "boolean",
+            "description": "Freelancer",
+            "required": true
+          },
+          {
             "name": "token",
             "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
+            "type": "string",
+            "description": "token",
+            "required": true
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Conversation successfully listed!",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List_conversation"
+                }
+              }
             }
           }
         }
       }
     },
-    "/conversation/userId/65883ab3c89918015e25e532/buyerId/65a5002f9d9b340e62d233b4": {
+    "/conversation/userId/{userId}/buyerId/{buyerId}": {
       "get": {
+        "summary": "Listar conversa",
+        "description": "Essa rota lista uma conversa entre o freelancer e o usuário",
         "tags": [
-          "conversation"
-        ],
-        "summary": "conversation.listById",
-        "security": [
-          {
-            "bearerAuth": []
-          }
+          "Conversa"
         ],
         "parameters": [
           {
+            "name": "userId",
+            "in": "path",
+            "type": "integer",
+            "description": "Id do usuário",
+            "required": true
+          },
+          {
+            "name": "buyerId",
+            "in": "path",
+            "type": "integer",
+            "description": "Id do freelancer",
+            "required": true
+          },
+          {
             "name": "token",
             "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
+            "type": "string",
+            "description": "token",
+            "required": true
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "Conversation successfully listed!",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List_conversation_Buyer"
+                }
+              }
             }
           }
         }
       }
     },
-    "/conversation/65883a7bc89918015e25e52e65883ab3c89918015e25e532": {
+    "/conversation/{id}": {
       "put": {
+        "summary": "Atualizar conversa",
+        "description": "Essa rota atualiza uma conversa",
         "tags": [
-          "conversation"
+          "Conversa"
         ],
-        "summary": "conversation.update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id da conversa",
+            "required": true
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "type": "string",
+            "description": "token",
+            "required": true
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -550,27 +529,12 @@
             }
           }
         },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
-          }
-        ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
+            "description": "Conversation successfully updated!"
+          },
+          "400": {
+            "description": "Unexpected error."
           }
         }
       }
@@ -578,29 +542,38 @@
     "/product": {
       "get": {
         "tags": [
-          "product"
+          "Produto"
         ],
-        "summary": "product.listAll",
-        "security": [
-          {
-            "noauthAuth": []
-          }
-        ],
+        "summary": "Listar produto",
         "parameters": [
           {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
+            "name": "order",
+            "in": "query",
+            "description": "Ordenar por ordem alfabetica_a-z, alfabetica_z-a, price-crescente e price-decrescente",
+            "type": "string",
+            "example": "alfabetica_a-z"
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Id da categoria",
+            "type": "string",
+            "example": "6591ac5bf9877e3170d90c48"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "Id do usuário",
+            "type": "string",
+            "example": "65883ab3c89918015e25e532"
           },
           {
             "name": "search",
             "in": "query",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": " "
           },
           {
             "name": "offset",
@@ -621,18 +594,23 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "List all services successfully!",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List_Products"
+                }
+              }
             }
           }
         }
       },
       "post": {
         "tags": [
-          "product"
+          "Produto"
         ],
-        "summary": "product.create",
+        "summary": "Cadastrar produto",
         "requestBody": {
           "content": {
             "multipart/form-data": {
@@ -670,76 +648,65 @@
                   "features": {
                     "type": "string",
                     "example": "Desenvolvimento web,APIs RESTful,React,Node.js,Express"
-                  },
-                  "sales": {
-                    "type": "integer",
-                    "example": "0"
                   }
                 }
               }
             }
           }
         },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
         "parameters": [
           {
             "name": "token",
             "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
+            "type": "string",
+            "description": "token",
+            "required": true
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
+          "201": {
+            "description": "Service successfully created!"
+          },
+          "400": {
+            "description": "Unexpected error."
           }
         }
       }
     },
-    "/product/659802bcfed9f7066576ca79": {
+    "/product/{id}": {
       "get": {
         "tags": [
-          "product"
+          "Produto"
         ],
-        "summary": "product.listById",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "summary": "Listar produto pelo Id",
         "parameters": [
           {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id do produto",
+            "required": true
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "List all services successfully!",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List_ProductsById"
+                }
+              }
             }
           }
         }
       },
       "put": {
         "tags": [
-          "product"
+          "Produto"
         ],
-        "summary": "product.update",
+        "summary": "Atualizar produto",
         "requestBody": {
           "content": {
             "multipart/form-data": {
@@ -752,7 +719,7 @@
                   },
                   "title": {
                     "type": "string",
-                    "example": "Desenvolvedor Full Stackffff"
+                    "example": "Desenvolver API"
                   },
                   "description": {
                     "type": "string",
@@ -777,437 +744,438 @@
                   "features": {
                     "type": "string",
                     "example": "Desenvolvimento web,APIs RESTful,React,Node.js,Express"
-                  },
-                  "sales": {
-                    "type": "integer",
-                    "example": "0"
-                  },
-                  "rating": {
-                    "type": "string"
                   }
                 }
               }
             }
           }
         },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
         "parameters": [
           {
             "name": "token",
             "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
+            "type": "string",
+            "description": "token",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id do produto",
+            "required": true
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
+            "description": "Service successfully updated!"
+          },
+          "400": {
+            "description": "Unexpected error."
           }
         }
-      }
-    },
-    "/product/659d2ed15f92db58033fd0ed": {
+      },
       "delete": {
         "tags": [
-          "product"
+          "Produto"
         ],
-        "summary": "product.delete",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "summary": "Deletar produto",
         "parameters": [
           {
             "name": "token",
             "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
+            "type": "string",
+            "description": "token",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id do produto",
+            "required": true
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
+            "description": "Service deleted successfully!"
+          },
+          "400": {
+            "description": "Unexpected error."
           }
         }
       }
     },
-    "/product/recommended": {
+    "/message/{id}": {
       "get": {
         "tags": [
-          "product"
+          "Mensagem"
         ],
-        "summary": "product.listRecommended",
-        "security": [
+        "summary": "Listar mensagens pelo Id da conversa",
+        "parameters": [
           {
-            "noauthAuth": []
+            "name": "token",
+            "in": "header",
+            "type": "string",
+            "description": "token",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "conversationId",
+            "required": true
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "List message successfully!",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List_Messsage"
+                }
+              }
             }
+          },
+          "400": {
+            "description": "Unexpected error."
           }
         }
       }
     },
     "/message": {
-      "get": {
-        "tags": [
-          "message"
-        ],
-        "summary": "message.listAll",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      }
-    },
-    "/message/65883a7bc89918015e25e52e/65883ab3c89918015e25e532": {
-      "get": {
-        "tags": [
-          "message"
-        ],
-        "summary": "message.listById",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      }
-    },
-    "/message/65883a7bc89918015e25e52e/to/65883ab3c89918015e25e532": {
       "post": {
         "tags": [
-          "message"
+          "Mensagem"
         ],
-        "summary": "message.create",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "example": {
-                  "text": "Oi, tudo bem?"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "summary": "Criar uma mensagem",
         "parameters": [
           {
             "name": "token",
             "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
+            "type": "string",
+            "description": "token",
+            "required": true
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Params_Messsage"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
+            "description": "Message successfully created!"
+          },
+          "400": {
+            "description": "Unexpected error."
           }
         }
       }
     },
-    "/message/65883a7bc89918015e25e52e": {
-      "put": {
+    "/user": {
+      "get": {
+        "summary": "Listar os usuários",
+        "description": "Essa rota lista os usuários",
         "tags": [
-          "message"
+          "Usuário"
         ],
-        "summary": "message.update",
+        "responses": {
+          "200": {
+            "description": "Users successfully listed!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List_Users"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unexpected error."
+          }
+        }
+      }
+    },
+    "/user/{id}": {
+      "put": {
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "type": "string",
+            "description": "token",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id do usuário",
+            "required": true
+          }
+        ],
+        "summary": "Atualizar dados do Usuário (Cliente / Freelancer)",
+        "description": "Essa rota atualiza os dados de um usuário",
+        "tags": [
+          "Usuário"
+        ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "example": {
-                  "text": "Oi, tudo bem?"
-                }
+                "$ref": "#/components/schemas/Register_User"
               }
             }
           }
         },
-        "security": [
-          {
-            "bearerAuth": []
+        "responses": {
+          "200": {
+            "description": "User successfully updated!"
+          },
+          "400": {
+            "description": "Unexpected error."
           }
+        }
+      },
+      "get": {
+        "summary": "Listar os usuários pelo Id",
+        "description": "Essa rota lista o usuário pelo Id",
+        "tags": [
+          "Usuário"
         ],
         "parameters": [
           {
             "name": "token",
             "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
+            "type": "string",
+            "description": "token",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id do usuário",
+            "required": true
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "User listed!",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List_Users"
+                }
+              }
             }
+          },
+          "400": {
+            "description": "Unexpected error."
           }
         }
       },
       "delete": {
+        "summary": "Excluir usuário",
+        "description": "Essa rota exclui um usuário",
         "tags": [
-          "message"
-        ],
-        "summary": "message.delete",
-        "security": [
-          {
-            "bearerAuth": []
-          }
+          "Usuário"
         ],
         "parameters": [
           {
             "name": "token",
             "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
+            "type": "string",
+            "description": "token",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id do usuário",
+            "required": true
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      }
-    },
-    "/client": {
-      "get": {
-        "tags": [
-          "client"
-        ],
-        "summary": "client.listAll",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      }
-    },
-    "/client/65883a7bc89918015e25e52e": {
-      "get": {
-        "tags": [
-          "client"
-        ],
-        "summary": "client.listById",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
+            "description": "User deleted!"
+          },
+          "400": {
+            "description": "Unexpected error."
           }
         }
       }
     },
     "/order": {
+      "parameters": [
+        {
+          "name": "token",
+          "in": "header",
+          "type": "string",
+          "description": "token",
+          "required": true
+        }
+      ],
       "get": {
+        "summary": "Listar os pedidos",
+        "description": "Essa rota lista os pedidos",
         "tags": [
-          "order"
+          "Pedido"
         ],
-        "summary": "order.listAll",
-        "security": [
-          {
-            "bearerAuth": []
+        "responses": {
+          "200": {
+            "description": "List all orders successfully!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List_Orders"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unexpected error."
           }
+        }
+      }
+    },
+    "/order/{id}": {
+      "put": {
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "type": "string",
+            "description": "token",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Payment intent",
+            "exemple": "pi_3OrgiFDlLXsk0gPs1UHz2bsx",
+            "required": true
+          }
+        ],
+        "summary": "Atualizar dados do pedido",
+        "description": "Essa rota atualiza os dados de um pedido",
+        "tags": [
+          "Pedido"
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully updated!"
+          },
+          "400": {
+            "description": "Unexpected error."
+          }
+        }
+      }
+    },
+    "/order/{id}/isSeller/{isSeller}": {
+      "get": {
+        "summary": "Listar o pedido pelo Id",
+        "description": "Essa rota lista o pedido pelo Id",
+        "tags": [
+          "Pedido"
         ],
         "parameters": [
           {
             "name": "token",
             "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
+            "type": "string",
+            "description": "token",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id do usuário",
+            "required": true
+          },
+          {
+            "name": "isSeller",
+            "in": "path",
+            "type": "boolean",
+            "description": "Usuário é freelancer (true/false)",
+            "required": true
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
+            "description": "List order successfully!",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/List_Orders"
+                }
+              }
             }
+          },
+          "400": {
+            "description": "Unexpected error."
           }
         }
-      },
+      }
+    },
+    "/order/create-payment-intent/{id}": {
       "post": {
+        "summary": "Criar pedido",
+        "description": "Essa rota cria um pedido",
         "tags": [
-          "order"
+          "Pedido"
         ],
-        "summary": "order.create",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "type": "string",
+            "description": "token",
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "Id do produto",
+            "required": true
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "example": {
-                  "productId": "659802bcfed9f7066576ca79",
-                  "userId": "65883a7bc89918015e25e52e",
-                  "quantity": 2,
-                  "total": 100
+                  "buyerId": "65a5002f9d9b340e62d233b4",
+                  "description": "teste"
                 }
               }
             }
           }
         },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
-          }
-        ],
         "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      }
-    },
-    "/order/65883a7bc89918015e25e52e": {
-      "get": {
-        "tags": [
-          "order"
-        ],
-        "summary": "order.listById",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "{{token}}"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
+          "201": {
+            "description": "Payment intent successfully created!"
+          },
+          "400": {
+            "description": "Unexpected error."
           }
         }
       }
@@ -1255,7 +1223,881 @@
           }
         }
       },
+      "List_Products": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "userId": {
+            "type": "string",
+            "required": true
+          },
+          "title": {
+            "type": "string",
+            "required": true
+          },
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "orders": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "required": true
+              },
+              "title": {
+                "type": "string",
+                "required": true
+              },
+              "description": {
+                "type": "string",
+                "required": true
+              },
+              "price": {
+                "type": "string",
+                "required": true
+              },
+              "isCompleted": {
+                "type": "boolean",
+                "required": true
+              },
+              "status": {
+                "type": "string",
+                "required": true
+              },
+              "payment_intent": {
+                "type": "string",
+                "required": true
+              },
+              "createdAt": {
+                "type": "string",
+                "required": true
+              }
+            }
+          },
+          "category": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "required": true
+              },
+              "name": {
+                "type": "string",
+                "required": true
+              },
+              "description": {
+                "type": "string",
+                "required": true
+              },
+              "picture": {
+                "type": "string",
+                "required": true
+              }
+            }
+          },
+          "price": {
+            "type": "integer",
+            "required": true
+          },
+          "priceFormated": {
+            "type": "string",
+            "required": true
+          },
+          "images": {
+            "type": "array",
+            "required": true
+          },
+          "deliveryTime": {
+            "type": "integer",
+            "required": true
+          },
+          "features": {
+            "type": "array",
+            "required": true
+          },
+          "sales": {
+            "type": "integer",
+            "required": true
+          },
+          "rating": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "required": true
+              },
+              "name": {
+                "type": "string",
+                "required": true
+              },
+              "text": {
+                "type": "string",
+                "required": true
+              },
+              "score": {
+                "type": "integer",
+                "required": true
+              },
+              "productId": {
+                "type": "string",
+                "required": true
+              },
+              "userId": {
+                "type": "string",
+                "required": true
+              }
+            }
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "required": true
+              },
+              "name": {
+                "type": "string",
+                "required": true
+              },
+              "username": {
+                "type": "string",
+                "required": true
+              },
+              "email": {
+                "type": "string",
+                "required": true
+              },
+              "cpf": {
+                "type": "string",
+                "required": true
+              },
+              "birthDate": {
+                "type": "string",
+                "required": true
+              },
+              "picture": {
+                "type": "string",
+                "required": true
+              },
+              "country": {
+                "type": "string",
+                "required": true
+              },
+              "phone": {
+                "type": "string",
+                "required": true
+              },
+              "description": {
+                "type": "string",
+                "required": true
+              },
+              "permissions": {
+                "type": "array",
+                "required": false
+              },
+              "isSeller": {
+                "type": "boolean",
+                "required": true
+              }
+            }
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "required": true
+              },
+              "name": {
+                "type": "string",
+                "required": true
+              },
+              "username": {
+                "type": "string",
+                "required": true
+              },
+              "email": {
+                "type": "string",
+                "required": true
+              },
+              "cpf": {
+                "type": "string",
+                "required": true
+              },
+              "birthDate": {
+                "type": "string",
+                "required": true
+              },
+              "picture": {
+                "type": "string",
+                "required": true
+              },
+              "country": {
+                "type": "string",
+                "required": true
+              },
+              "phone": {
+                "type": "string",
+                "required": true
+              },
+              "description": {
+                "type": "string",
+                "required": true
+              },
+              "permissions": {
+                "type": "array",
+                "required": false
+              },
+              "isSeller": {
+                "type": "boolean",
+                "required": true
+              }
+            }
+          }
+        }
+      },
+      "Register_Category": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "required": true,
+            "example": "teste"
+          },
+          "description": {
+            "type": "string",
+            "required": true,
+            "example": "teste"
+          },
+          "files": {
+            "type": "string",
+            "required": true,
+            "format": "binary"
+          }
+        }
+      },
+      "List_Users": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "username": {
+            "type": "string",
+            "required": true
+          },
+          "email": {
+            "type": "string",
+            "required": true
+          },
+          "cpf": {
+            "type": "string",
+            "required": true
+          },
+          "birthDate": {
+            "type": "string",
+            "required": true
+          },
+          "picture": {
+            "type": "string",
+            "required": true
+          },
+          "country": {
+            "type": "string",
+            "required": true
+          },
+          "phone": {
+            "type": "string",
+            "required": true
+          },
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "permissions": {
+            "type": "array",
+            "required": false
+          },
+          "isSeller": {
+            "type": "boolean",
+            "required": true
+          }
+        }
+      },
+      "List_ProductsById": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "title": {
+            "type": "string",
+            "required": true
+          },
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "category": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "required": true
+              },
+              "name": {
+                "type": "string",
+                "required": true
+              },
+              "description": {
+                "type": "string",
+                "required": true
+              },
+              "picture": {
+                "type": "string",
+                "required": true
+              }
+            }
+          },
+          "price": {
+            "type": "integer",
+            "required": true
+          },
+          "priceFormated": {
+            "type": "string",
+            "required": true
+          },
+          "images": {
+            "type": "array",
+            "required": true
+          },
+          "deliveryTime": {
+            "type": "integer",
+            "required": true
+          },
+          "features": {
+            "type": "array",
+            "required": true
+          },
+          "sales": {
+            "type": "integer",
+            "required": true
+          },
+          "userId": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "required": true
+              },
+              "name": {
+                "type": "string",
+                "required": true
+              },
+              "username": {
+                "type": "string",
+                "required": true
+              },
+              "email": {
+                "type": "string",
+                "required": true
+              },
+              "cpf": {
+                "type": "string",
+                "required": true
+              },
+              "birthDate": {
+                "type": "string",
+                "required": true
+              },
+              "picture": {
+                "type": "string",
+                "required": true
+              },
+              "country": {
+                "type": "string",
+                "required": true
+              },
+              "phone": {
+                "type": "string",
+                "required": true
+              },
+              "description": {
+                "type": "string",
+                "required": true
+              },
+              "permissions": {
+                "type": "array",
+                "required": false
+              },
+              "isSeller": {
+                "type": "boolean",
+                "required": true
+              }
+            }
+          }
+        }
+      },
+      "List_Orders": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "required": true
+          },
+          "title": {
+            "type": "string",
+            "required": true
+          },
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "price": {
+            "type": "string",
+            "required": true
+          },
+          "isCompleted": {
+            "type": "boolean",
+            "required": true
+          },
+          "status": {
+            "type": "string",
+            "required": true
+          },
+          "payment_intent": {
+            "type": "string",
+            "required": true
+          },
+          "createdAt": {
+            "type": "string",
+            "required": true
+          },
+          "product": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "required": true
+              },
+              "title": {
+                "type": "string",
+                "required": true
+              },
+              "description": {
+                "type": "string",
+                "required": true
+              },
+              "category": {
+                "type": "string",
+                "required": true
+              },
+              "deliveryTime": {
+                "type": "integer",
+                "required": true
+              },
+              "features": {
+                "type": "array",
+                "required": true
+              },
+              "rating": {
+                "type": "object",
+                "properties": {
+                  "_id": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "name": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "text": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "score": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "productId": {
+                    "type": "string",
+                    "required": false
+                  },
+                  "userId": {
+                    "type": "string",
+                    "required": false
+                  }
+                }
+              }
+            }
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "required": true
+              },
+              "name": {
+                "type": "string",
+                "required": true
+              },
+              "username": {
+                "type": "string",
+                "required": true
+              },
+              "email": {
+                "type": "string",
+                "required": true
+              },
+              "cpf": {
+                "type": "string",
+                "required": true
+              },
+              "birthDate": {
+                "type": "string",
+                "required": true
+              },
+              "picture": {
+                "type": "string",
+                "required": true
+              },
+              "country": {
+                "type": "string",
+                "required": true
+              },
+              "phone": {
+                "type": "string",
+                "required": true
+              },
+              "description": {
+                "type": "string",
+                "required": true
+              },
+              "permissions": {
+                "type": "array",
+                "required": false
+              },
+              "isSeller": {
+                "type": "boolean",
+                "required": true
+              }
+            }
+          },
+          "buyer": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "required": true
+              },
+              "name": {
+                "type": "string",
+                "required": true
+              },
+              "username": {
+                "type": "string",
+                "required": true
+              },
+              "email": {
+                "type": "string",
+                "required": true
+              },
+              "cpf": {
+                "type": "string",
+                "required": true
+              },
+              "birthDate": {
+                "type": "string",
+                "required": true
+              },
+              "picture": {
+                "type": "string",
+                "required": true
+              },
+              "country": {
+                "type": "string",
+                "required": true
+              },
+              "phone": {
+                "type": "string",
+                "required": true
+              },
+              "description": {
+                "type": "string",
+                "required": true
+              },
+              "permissions": {
+                "type": "array",
+                "required": false
+              },
+              "isSeller": {
+                "type": "boolean",
+                "required": true
+              }
+            }
+          }
+        }
+      },
+      "List_conversation_Buyer": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "65e6f28c6d4a0222d0f51f67"
+          },
+          "id": {
+            "type": "string",
+            "example": "65883a7bc89918015e25e52e65883ab3c89918015e25e532"
+          },
+          "sellerId": {
+            "type": "string",
+            "example": "65883a7bc89918015e25e52e"
+          },
+          "buyerId": {
+            "type": "string",
+            "example": "65883ab3c89918015e25e532"
+          },
+          "readBySeller": {
+            "type": "boolean",
+            "example": true
+          },
+          "readByBuyer": {
+            "type": "boolean",
+            "example": true
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2024-03-05T10:23:08.923Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "example": "2024-03-05T10:23:08.923Z"
+          },
+          "__v": {
+            "type": "integer",
+            "example": 0
+          }
+        }
+      },
+      "List_conversation": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "65e6f28c6d4a0222d0f51f67"
+          },
+          "id": {
+            "type": "string",
+            "example": "65883a7bc89918015e25e52e65883ab3c89918015e25e532"
+          },
+          "sellerId": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "example": "65883a7bc89918015e25e52e"
+              },
+              "name": {
+                "type": "string",
+                "example": "Daniel Silva"
+              },
+              "username": {
+                "type": "string",
+                "example": "daniel123"
+              },
+              "email": {
+                "type": "string",
+                "example": "daniel80barboza@gmail.com"
+              },
+              "cpf": {
+                "type": "string",
+                "example": "333.333.333-33"
+              },
+              "birthDate": {
+                "type": "string",
+                "example": "2000-03-01T05:36:40.303Z"
+              },
+              "picture": {
+                "type": "string",
+                "example": "files-1704052453988.jpg"
+              },
+              "country": {
+                "type": "string",
+                "example": "brasil"
+              },
+              "phone": {
+                "type": "string",
+                "example": "(21)99999-9999"
+              },
+              "description": {
+                "type": "string",
+                "example": "Escritor, Tradutor, Redator, Especialista em SEO, Gestor de Tráfego e Marketing Digital."
+              },
+              "permissions": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": [
+                    "freelancer"
+                  ]
+                },
+                "isSeller": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2021-01-28T06:39:34.330Z"
+                }
+              }
+            }
+          },
+          "buyerId": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "example": "65883ab3c89918015e25e532"
+              },
+              "name": {
+                "type": "string",
+                "example": "Daniel Barboza"
+              },
+              "username": {
+                "type": "string",
+                "example": "daniel098"
+              },
+              "email": {
+                "type": "string",
+                "example": "danielbarboza58@hotmail.com"
+              },
+              "cpf": {
+                "type": "string",
+                "example": "111.222.333-33"
+              },
+              "birthDate": {
+                "type": "string",
+                "example": "2001-03-01T05:36:40.404Z"
+              },
+              "picture": {
+                "type": "string",
+                "example": "files-1704052453989.jpg"
+              },
+              "country": {
+                "type": "string",
+                "example": "brasil"
+              },
+              "phone": {
+                "type": "string",
+                "example": "(21)99999-9999"
+              },
+              "description": {
+                "type": "string",
+                "example": "Sou graduado em Tecnologia da informação, com mais de 10 anos de experiência no desenvolvimento de sistemas."
+              },
+              "permissions": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": [
+                    "freelancer"
+                  ]
+                },
+                "isSeller": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "readBySeller": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "readByBuyer": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2024-03-05T10:23:08.923Z"
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2024-03-05T10:23:08.923Z"
+                },
+                "__v": {
+                  "type": "integer",
+                  "example": 0
+                }
+              }
+            }
+          }
+        }
+      },
+      "List_rating": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "required": true
+          },
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "text": {
+            "type": "string",
+            "required": true
+          },
+          "score": {
+            "type": "string",
+            "required": true
+          },
+          "productId": {
+            "type": "string",
+            "required": false
+          },
+          "userId": {
+            "type": "string",
+            "required": false
+          }
+        }
+      },
       "List_Categories": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "required": true
+          },
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "description": {
+            "type": "string",
+            "required": true
+          },
+          "picture": {
+            "type": "string",
+            "required": true
+          }
+        }
+      },
+      "List_Categories_Product": {
         "type": "object",
         "properties": {
           "id": {
@@ -1275,8 +2117,108 @@
             "required": true
           },
           "product": {
-            "type": "array",
-            "required": false
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "required": true
+              },
+              "title": {
+                "type": "string",
+                "required": true
+              },
+              "description": {
+                "type": "string",
+                "required": true
+              },
+              "category": {
+                "type": "string",
+                "required": true
+              },
+              "deliveryTime": {
+                "type": "integer",
+                "required": true
+              },
+              "features": {
+                "type": "array",
+                "required": true
+              }
+            }
+          }
+        }
+      },
+      "Params_Messsage": {
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "required": true,
+            "example": "65e9bcd38eed24488db56bbb"
+          },
+          "userId": {
+            "type": "string",
+            "required": true,
+            "example": "65883ab3c89918015e25e532"
+          },
+          "description": {
+            "type": "string",
+            "required": true,
+            "example": "Olá!"
+          },
+          "readBySeller": {
+            "type": "boolean",
+            "required": true,
+            "example": true
+          },
+          "readByBuyer": {
+            "type": "boolean",
+            "required": true,
+            "example": true
+          },
+          "lastMessage": {
+            "type": "string",
+            "required": true,
+            "example": "Olá!"
+          }
+        }
+      },
+      "List_Messsage": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "required": true,
+            "example": "65e852dde4bbc83846c55c41"
+          },
+          "conversationId": {
+            "type": "string",
+            "required": true,
+            "example": "65e852dde4bbc83846c55c3f"
+          },
+          "userId": {
+            "type": "string",
+            "required": true,
+            "example": "65883a7bc89918015e25e52e"
+          },
+          "description": {
+            "type": "string",
+            "required": true,
+            "example": "Olá! Bem vindo ao chat, aqui você pode interagir melhor com o Freelancer e tirar todas as suas dúvidas."
+          },
+          "createdAt": {
+            "type": "string",
+            "required": true,
+            "example": "2024-03-06T11:26:21.151Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "required": true,
+            "example": "2024-03-06T11:26:21.151Z"
+          },
+          "__v": {
+            "type": "number",
+            "required": true,
+            "example": 0
           }
         }
       },
@@ -1304,7 +2246,7 @@
             "example": "141.444.444-44"
           },
           "birthDate": {
-            "type": "date",
+            "type": "string",
             "required": true,
             "example": "2000-03-01T05:36:40.303Z"
           },

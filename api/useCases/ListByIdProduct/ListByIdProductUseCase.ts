@@ -6,7 +6,7 @@ export class ListByIdProductUseCase {
   async execute(id: string) {
     const productExists = await this.productRepository.verifyIdProductExists(id)
     if(!productExists){
-      throw new Error('Produto não existe!');
+      throw new Error('Serviço não existe!');
     }
     return this.productRepository.findByIdProduct(id)
   }

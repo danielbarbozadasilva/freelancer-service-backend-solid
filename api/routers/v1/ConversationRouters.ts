@@ -3,7 +3,7 @@ import { createConversationController } from '../../useCases/CreateConversation'
 import { listAllConversationController } from '../../useCases/ListAllConversation'
 import { listByIdConversationController } from '../../useCases/ListSingleConversation'
 import { updateConversationController } from '../../useCases/UpdateConversation'
-import authenticationMiddleware from '../../utils/middlewares/middlewares.authentication'
+import authenticationMiddleware from '../../utils/middlewares/AuthenticationMiddleware'
 
 export default (router: Router): void => {
   router.route('/conversation').post((request, response) => {

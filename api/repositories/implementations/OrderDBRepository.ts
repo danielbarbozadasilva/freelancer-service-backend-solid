@@ -1,7 +1,7 @@
 import { Order } from '../../entities/Order'
 import { IOrderRepository } from '../IOrderRepository'
-import orderSchema from '../../database/schemas/schemas.order'
-import productschemas from '../../database/schemas/schemas.product'
+import orderSchema from '../../database/schemas/SchemaOrder'
+import productschemas from '../../database/schemas/SchemaProduct'
 import Stripe from 'stripe'
 import mongoose from 'mongoose'
 
@@ -11,11 +11,7 @@ interface IListOrder {
 }
 
 export class OrderDBRepository implements IOrderRepository {
-  async createPaymentIntent(
-    productId: string,
-    buyerId: string,
-    description: string
-  ): Promise<any> {
+  async createPaymentIntent(productId: string, buyerId: string, description: string): Promise<any> {
     const stripe = new Stripe(process.env.STRIPE)
     const product = await productschemas.findById(productId)
     const paymentIntent = await stripe.paymentIntents.create({
@@ -87,7 +83,8 @@ export class OrderDBRepository implements IOrderRepository {
     const { userId, isSeller } = data
 
     let query: any = { isCompleted: true }
-    if (isSeller == true) {
+    
+    if (isSeller) {
       query.userId = new mongoose.Types.ObjectId(userId)
     } else {
       query.buyerId = new mongoose.Types.ObjectId(userId)
@@ -114,6 +111,7 @@ export class OrderDBRepository implements IOrderRepository {
         }
       }
     )
+    
     const dataProduct = await productschemas.findOne({ _id: resultOrder.productId })
     await productschemas.updateOne(
       {

@@ -7,8 +7,7 @@ export class UpdateProfileController {
 
   async handle(request: Request, response: Response) {
     try {
-      const salt = Cryptography.createSalt()
-      
+      const salt = Cryptography.createSalt()      
       const data = {
         name: request.body.name,
         username: request.body.username,

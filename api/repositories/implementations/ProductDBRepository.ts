@@ -1,7 +1,7 @@
 import { Product } from '../../entities/Product'
 import { IProductRepository } from '../IProductRepository'
-import productschemas from '../../database/schemas/schemas.product'
-import userSchema from '../../database/schemas/schemas.user'
+import productschemas from '../../database/schemas/SchemaProduct'
+import userSchema from '../../database/schemas/SchemaUser'
 import mongoose from 'mongoose'
 
 interface ISearchProduct {
@@ -100,7 +100,7 @@ export class ProductDBRepository implements IProductRepository {
       }
     }
     
-    if (search.userId !== 'undefined') {      
+    if (search.userId) {      
       const userId = new mongoose.Types.ObjectId(search.userId);
       matchStage = {
         ...matchStage,

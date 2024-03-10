@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongoose'
-import { formatCurrency, formatarData, formatarDataHora } from '../../utils/utils.format'
+import { formatCurrency, formatarData, formatarDataHora } from '../../utils/format'
 
 export interface IOrdersRequestDTO {
   _id: ObjectId
@@ -67,6 +67,7 @@ export const ordersDTO = (data: IOrdersRequestDTO[]) => {
       description: item.description,
       price: formatCurrency(item.price),
       isCompleted: item.isCompleted,
+      status: item.isCompleted ? 'Finalizada' : 'Em andamento',
       isSeller: item.isSeller,
       payment_intent: item.payment_intent,
       createdAt: formatarDataHora(item.createdAt),
@@ -94,7 +95,7 @@ export const ordersDTO = (data: IOrdersRequestDTO[]) => {
         description: item.user?.description,
         permissions: item.user?.permissions,
         isSeller: item.user?.isSeller,
-        createdAt: formatarDataHora(item.user?.createdAt),
+        createdAt: item.user?.createdAt ? formatarDataHora(item.user?.createdAt) : null,
       },
       buyer: {
         id: item.buyer?._id,
@@ -102,14 +103,14 @@ export const ordersDTO = (data: IOrdersRequestDTO[]) => {
         username: item.buyer?.username,
         email: item.buyer?.email,
         cpf: item.buyer?.cpf,
-        birthDate: formatarData(item.buyer?.birthDate),
+        birthDate: item.buyer?.birthDate ? formatarData(item.buyer?.birthDate) : null,
         picture: item.buyer?.picture,
         country: item.buyer?.country,
         phone: item.buyer?.phone,
         description: item.buyer?.description,
         permissions: item.buyer?.permissions,
         isSeller: item.buyer?.isSeller,
-        createdAt: formatarDataHora(item.buyer?.createdAt),
+        createdAt: item.buyer?.createdAt ? formatarDataHora(item.buyer?.createdAt) : null,
       }
     }
   })

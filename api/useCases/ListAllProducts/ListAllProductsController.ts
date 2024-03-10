@@ -11,7 +11,7 @@ export class ListAllProductController {
       const result = await this.listAllProductUseCase.execute(search)
       return response
         .status(200)
-        .send({ message: 'List all products successfully!', data: productDTO(result as any) })
+        .send({ message: 'List all services successfully!', data: productDTO(result as any) })
     } catch (error) {
       return response
         .status(400)

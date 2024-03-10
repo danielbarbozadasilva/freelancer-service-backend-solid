@@ -1,8 +1,8 @@
 import { ISignInRepository } from '../ISignInRepository'
-import clientSchema from '../../database/schemas/schemas.user'
+import clientSchema from '../../database/schemas/SchemaUser'
 import jwt from 'jsonwebtoken'
 import Cryptography from '../../utils/cryptography'
-import { formatAddressImage } from '../../utils/utils.file'
+import { formatAddressImage } from '../../utils/file'
 
 export class SignInRepository implements ISignInRepository {
   async verifyCredentials(email: string, password: string): Promise<boolean> {

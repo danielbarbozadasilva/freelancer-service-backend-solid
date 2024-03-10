@@ -1,6 +1,6 @@
 import { ObjectId } from "mongoose"
-import { formatAddressImage } from "../../utils/utils.file"
-import { formatCurrency, formatarData } from "../../utils/utils.format";
+import { formatAddressImage } from "../../utils/file"
+import { formatCurrency, formatarData } from "../../utils/format";
 
 export interface IProductRequestDTO {
   _id?: ObjectId | string;

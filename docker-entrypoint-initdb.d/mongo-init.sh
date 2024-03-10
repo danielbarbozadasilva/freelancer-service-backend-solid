@@ -37,7 +37,7 @@ db.userschemas.insert([
     _id: ObjectId("65a5002f9d9b340e62d233b4"),
     name: "Marcos Junior",
     username: "marcos123",
-    email: "danielbarboza58@hotmail.com",
+    email: "daniel95barboza@gmail.com",
     cpf: "222.444.555-11",
     birthDate: "2000-03-01T05:36:40.303Z",
     picture: "files-1704052453987.jpg",
@@ -71,7 +71,7 @@ db.userschemas.insert([
     _id: ObjectId("65883ab3c89918015e25e532"),
     name: "Daniel Barboza",
     username: "daniel098",
-    email: "daniel95barboza@gmail.com",
+    email: "danielbarboza58@hotmail.com",
     cpf: "111.222.333-33",
     birthDate: "2001-03-01T05:36:40.404Z",
     picture: "files-1704052453989.jpg",
@@ -86,18 +86,6 @@ db.userschemas.insert([
   }
 ])
 
-db.createCollection("conversationschemas")
-db.conversationschemas.insert([
-  {
-    _id: ObjectId("658951d2e4e3a44b66725296"),
-    id: "65883a7bc89918015e25e52e65a5002f9d9b340e62d233b4",
-    sellerId: ObjectId("65883ab3c89918015e25e532"),
-    buyerId: ObjectId("65a5002f9d9b340e62d233b4"),
-    readBySeller: false,
-    readByBuyer: false,
-    lastMessage: "Ok, obrigado!",
-  }
-])
 
 db.createCollection("categoryschemas")
 db.categoryschemas.insert([
@@ -342,46 +330,5 @@ db.ratingschemas.insert([
     userId: ObjectId("65883a7bc89918015e25e52f")
   }
 ])
-
-db.createCollection("messageschemas")
-db.messageschemas.insert([
-  {
-    _id: ObjectId("65a1ad68bf2d29fd7c43ba50"),
-    conversationId: ObjectId("658951d2e4e3a44b66725296"),
-    userId: ObjectId("65883ab3c89918015e25e532"),
-    description: "Olá, seu pedido já será entregue...",
-    createdAt: "2024-01-12T21:11:44.607Z",
-    updatedAt: "2024-01-12T21:11:44.607Z"
-  },
-  {
-    _id: ObjectId("65acf30bd88db88257bfdd9e"),
-    conversationId: ObjectId("658951d2e4e3a44b66725296"),
-    userId: ObjectId("65a5002f9d9b340e62d233b4"),
-    description: "Ok, obrigado!",
-    createdAt: "2024-01-21T10:33:48.006Z",
-    updatedAt: "2024-01-21T10:33:48.006Z"
-}
-])
-
-db.createCollection("orderschemas")
-db.orderschemas.insert([
-  {
-    _id: ObjectId("65b60ca19588bfeca46e5c26"),
-    productId: ObjectId("659802bcfed9f7066576ca78"),
-    title: "Site WordPress",
-    description: "Site no formato onepage para confeitaria especializada em bolos e salgados.",
-    status: "Finalizada",
-    price: 200,
-    userId: ObjectId("65883ab3c89918015e25e532"),
-    buyerId: ObjectId("65a5002f9d9b340e62d233b4"),
-    isCompleted: true,
-    isSeller: true,
-    payment_intent: "pi_3OjgfsDlLXsk0gPs10nWI7hP",
-    createdAt: "2024-01-21T10:33:48.006Z",
-    updatedAt: "2024-01-21T10:33:48.006Z"
-  }
-])
-
-
 
 EOF

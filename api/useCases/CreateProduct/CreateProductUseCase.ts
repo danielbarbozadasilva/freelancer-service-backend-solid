@@ -8,10 +8,9 @@ export class CreateProductUseCase {
   async execute(data: ICreateProductRequestDTO) {
     const result = new Product(data)
     const userIsSeller = await this.productRepository.verifyUserIsSeller(data.userId)
-    console.log(data);
-    
-    if(!userIsSeller){
-      throw new Error('Apenas vendedores podem criar!');
+
+    if (!userIsSeller) {
+      throw new Error('Apenas vendedores podem criar!')
     }
     return this.productRepository.createProduct(result)
   }

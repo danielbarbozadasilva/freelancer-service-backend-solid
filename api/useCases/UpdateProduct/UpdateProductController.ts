@@ -24,7 +24,7 @@ export class UpdateProductController {
         features: Array.isArray(request.body.features)? request.body.features : request.body.features.split(','),
       })
       
-      return response.status(200).send({ message: 'Product successfully updated!' })
+      return response.status(200).send({ message: 'Service successfully updated!' })
     } catch (error) {
       return response
         .status(400)

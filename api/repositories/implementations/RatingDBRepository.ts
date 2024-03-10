@@ -1,6 +1,6 @@
 import { IRatingRepository } from '../IRatingRepository'
 import { Rating } from '../../entities/Rating'
-import ratingSchema from '../../database/schemas/schemas.rating'
+import ratingSchema from '../../database/schemas/SchemaRating'
 
 export class RatingDBRepository implements IRatingRepository {
   async createRating(dataRating: Rating): Promise<boolean> {

@@ -1,5 +1,5 @@
-import { formatAddressImage } from '../../utils/utils.file'
-import { formatCurrency } from '../../utils/utils.format'
+import { formatAddressImage } from '../../utils/file'
+import { formatCurrency } from '../../utils/format'
 
 interface Rating {
   _id: string
@@ -100,10 +100,10 @@ export const productDTO = (data: DataItem[]): any[] => {
           title: item.title,
           description: item.description,
           category: {
-            id: item.category._id,
-            name: item.category.name,
-            description: item.category.description,
-            picture: item.category.picture
+            id: item.category?._id,
+            name: item.category?.name,
+            description: item.category?.description,
+            picture: item.category?.picture
           },
           price: item.price,
           priceFormated: formatCurrency(item.price),
@@ -120,18 +120,18 @@ export const productDTO = (data: DataItem[]): any[] => {
             userId: item.rating?.userId
           },
           user: {
-            id: item.user._id,
-            name: item.user.name,
-            username: item.user.username,
-            email: item.user.email,
-            cpf: item.user.cpf,
-            birthDate: item.user.birthDate,
-            picture: item.user.picture,
-            country: item.user.country,
-            phone: item.user.phone,
-            description: item.user.description,
-            permissions: item.user.permissions,
-            isSeller: item.user.isSeller
+            id: item.user?._id,
+            name: item.user?.name,
+            username: item.user?.username,
+            email: item.user?.email,
+            cpf: item.user?.cpf,
+            birthDate: item.user?.birthDate,
+            picture: item.user?.picture,
+            country: item.user?.country,
+            phone: item.user?.phone,
+            description: item.user?.description,
+            permissions: item.user?.permissions,
+            isSeller: item.user?.isSeller
           },
           client: {
             id: item.client?._id,

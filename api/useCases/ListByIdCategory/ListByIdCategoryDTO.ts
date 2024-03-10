@@ -1,4 +1,4 @@
-import { formatAddressImage } from "../../utils/utils.file"
+import { formatAddressImage } from "../../utils/file"
 
 export interface ICategoryRequestDTO {
   _id?: string

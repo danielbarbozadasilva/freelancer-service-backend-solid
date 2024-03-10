@@ -7,9 +7,10 @@ export class ListByIdOrderController {
 
   async handle(request: Request, response: Response) {
     try {
+      
       const result = await this.listByIdOrderUseCase.execute({
         userId: request.params.id,
-        isSeller: request.params.isSeller
+        isSeller: request.params.isSeller.toLowerCase() === 'true'
       })
 
       return response

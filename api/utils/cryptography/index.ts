@@ -1,7 +1,7 @@
 import crypto from 'crypto'
 import jwt from 'jsonwebtoken'
-import ErrorNotAuthenticatedUser from '../exceptions/errors.user-not-authenticated'
-import ErrorGeneric from '../exceptions/erros.generic-error'
+import ErrorNotAuthenticatedUser from '../exceptions/ErrorsUserNotAuthenticated'
+import ErrorGeneric from '../exceptions/ErrorGeneric'
 require('dotenv').config()
 const jwtHashSecret = process.env.JWT_SECRET
 

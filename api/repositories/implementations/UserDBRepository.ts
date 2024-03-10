@@ -1,6 +1,6 @@
 import { User } from '../../entities/User'
 import { IUserRepository } from '../IUsersRepository'
-import userschemas from '../../database/schemas/schemas.user'
+import userschemas from '../../database/schemas/SchemaUser'
 
 export class UserDBRepository implements IUserRepository {
   async save(dataUser: User): Promise<User> {
