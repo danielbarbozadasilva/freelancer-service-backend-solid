@@ -333,7 +333,7 @@
             "description": "Rating successfully Updated!"
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Avaliação inexistente!"
           }
         }
       },
@@ -357,7 +357,7 @@
             "description": "Rating deleted successfully!"
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Essa avaliação não existe!"
           }
         }
       }
@@ -665,7 +665,7 @@
         ],
         "responses": {
           "201": {
-            "description": "Service successfully created!"
+            "description": "Product successfully created!"
           },
           "400": {
             "description": "Unexpected error."
@@ -768,10 +768,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Service successfully updated!"
+            "description": "Product successfully updated!"
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Produto não existe!"
           }
         }
       },
@@ -801,7 +801,7 @@
             "description": "Service deleted successfully!"
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Produto não existe!"
           }
         }
       }
@@ -886,6 +886,15 @@
         "description": "Essa rota lista os usuários",
         "tags": [
           "Usuário"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "type": "string",
+            "description": "token",
+            "required": true
+          }
         ],
         "responses": {
           "200": {
@@ -1081,7 +1090,7 @@
             "description": "User successfully updated!"
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Código de pagamento inexistente!"
           }
         }
       }
@@ -1349,59 +1358,6 @@
               },
               "userId": {
                 "type": "string",
-                "required": true
-              }
-            }
-          },
-          "user": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "required": true
-              },
-              "name": {
-                "type": "string",
-                "required": true
-              },
-              "username": {
-                "type": "string",
-                "required": true
-              },
-              "email": {
-                "type": "string",
-                "required": true
-              },
-              "cpf": {
-                "type": "string",
-                "required": true
-              },
-              "birthDate": {
-                "type": "string",
-                "required": true
-              },
-              "picture": {
-                "type": "string",
-                "required": true
-              },
-              "country": {
-                "type": "string",
-                "required": true
-              },
-              "phone": {
-                "type": "string",
-                "required": true
-              },
-              "description": {
-                "type": "string",
-                "required": true
-              },
-              "permissions": {
-                "type": "array",
-                "required": false
-              },
-              "isSeller": {
-                "type": "boolean",
                 "required": true
               }
             }

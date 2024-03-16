@@ -1,7 +1,5 @@
-import { ObjectId } from "mongoose";
-
 export class User {
-  public _id?: ObjectId | string;
+  public _id?: string
   public name: string
   public username: string
   public email: string
@@ -15,7 +13,7 @@ export class User {
   public hash?: string
   public salt?: string
   public recovery?: {
-    token: string,
+    token: string
     date: Date
   }
   public isSeller: boolean

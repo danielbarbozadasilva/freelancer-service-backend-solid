@@ -8,6 +8,6 @@ export class ListByIdCategoryUseCase {
     if(!categoryExists){
       throw new Error('Essa categoria não existe!');
     }
-    return this.categoryRepository.findByIdCategory(id)
+    return await this.categoryRepository.findByIdCategory(id)
   }
 }

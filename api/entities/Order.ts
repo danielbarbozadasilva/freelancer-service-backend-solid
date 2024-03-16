@@ -1,7 +1,5 @@
-import { ObjectId } from "mongoose";
-
 export class Order {
-  public _id: ObjectId
+  public _id: string
   public productId: string
   public title: string
   public price: number
@@ -14,9 +12,8 @@ export class Order {
   public payment_intent: string
   public createdAt: Date
   public updatedAt: Date
-    
-    constructor(props: Order) {
-      Object.assign(this, props)
-    }
+
+  constructor(props: Order) {
+    Object.assign(this, props)
   }
-  
+}

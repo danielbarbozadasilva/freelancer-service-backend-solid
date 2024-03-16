@@ -1,6 +1,6 @@
 import { User } from '../../entities/User'
 import { IUserRepository } from '../IUsersRepository'
-import userschemas from '../../database/schemas/SchemaUser'
+import userschemas from '../../database/schemas/user'
 
 export class UserDBRepository implements IUserRepository {
   async save(dataUser: User): Promise<User> {
@@ -89,5 +89,9 @@ export class UserDBRepository implements IUserRepository {
   async listByIdUser(id: string): Promise<User> {
     const result = await userschemas.findById(id, { hash: 0, salt: 0, recovery: 0 })
     return result
+  }
+  async verifyIdUserExists(id: string): Promise<boolean> {
+    const result = await userschemas.findById(id)
+    return !!result
   }
 }

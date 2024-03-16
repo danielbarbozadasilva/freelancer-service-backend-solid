@@ -12,6 +12,6 @@ export class CreateProductUseCase {
     if (!userIsSeller) {
       throw new Error('Apenas vendedores podem criar!')
     }
-    return this.productRepository.createProduct(result)
+    return await this.productRepository.createProduct(result)
   }
 }

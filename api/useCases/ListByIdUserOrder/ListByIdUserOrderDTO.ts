@@ -1,4 +1,3 @@
-import { ObjectId } from 'mongoose'
 import { formatCurrency, formatarData, formatarDataHora } from '../../utils/format'
 
 export interface IOrderRequestDTO {
@@ -7,7 +6,7 @@ export interface IOrderRequestDTO {
 }
 
 export interface IOrderResultDTO {
-  _id: ObjectId
+  _id: string
   description: string
   productId: {
     _id: string

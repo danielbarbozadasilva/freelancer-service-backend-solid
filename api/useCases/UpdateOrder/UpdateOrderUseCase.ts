@@ -11,8 +11,15 @@ export class UpdateOrderUseCase {
   ) {}
 
   async execute(data: any) {
-    const result = new Order(data)    
+    const result = new Order(data)
+    const paymentExists: boolean = await this.orderRepository.verifyPaymentIntent(data.payment_intent)
+    
+    if (!paymentExists) {
+      throw new Error('Código de pagamento inexistente!')
+    }
+    
     const response: OrderData = await this.orderRepository.updateOrder(result)
+
     const recipients = [
       {
         name: response.userId.name,
@@ -23,6 +30,7 @@ export class UpdateOrderUseCase {
         email: response.buyerId.email
       }
     ]
+
     await this.mailProvider.sendMail({
       to: recipients,
       from: {

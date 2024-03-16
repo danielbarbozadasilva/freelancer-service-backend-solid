@@ -10,4 +10,5 @@ export interface IUserRepository {
   listByIdUser(idUser: String): Promise<User>
   updateProfile(idUser: String, user: User): Promise<boolean>
   updateSeller(id: string, isSeller: boolean): Promise<boolean>
+  verifyIdUserExists(id: string): Promise<boolean>
 }

@@ -11,13 +11,13 @@ export class UpdateProductUseCase {
     const userIsSeller = await this.productRepository.verifyUserIsSeller(data.userId)
     
     if(!productExists){
-      throw new Error('Não existe!');
+      throw new Error('Produto não existe!');
     }
 
     if(!userIsSeller){
-      throw new Error('Apenas vendedores podem atualizar!');
+      throw new Error('Apenas Freelancers podem atualizar!');
     }
 
-    return this.productRepository.updateProduct(productCreate)
+    return await this.productRepository.updateProduct(productCreate)
   }
 }

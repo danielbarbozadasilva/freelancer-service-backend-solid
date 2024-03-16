@@ -8,6 +8,6 @@ export class ListByIdRatingUseCase {
     if (!result) {
       throw new Error('Avaliação não existente!')
     }
-    return this.ratingRepository.findByIdRating(id)
+    return await this.ratingRepository.findByIdRating(id)
   }
 }

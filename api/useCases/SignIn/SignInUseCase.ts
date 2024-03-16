@@ -14,6 +14,6 @@ export class SignInUseCase {
       throw new Error('Invalid email or password.')
     }
 
-    return this.signInRepository.authenticate(data.email)
+    return await this.signInRepository.authenticate(data.email)
   }
 }

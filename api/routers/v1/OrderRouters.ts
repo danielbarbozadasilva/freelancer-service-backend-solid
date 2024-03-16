@@ -4,10 +4,12 @@ import { updateOrderController } from '../../useCases/UpdateOrder'
 import { createPaymentIntentController } from '../../useCases/CreatePaymentIntent'
 import { listByIdOrderController } from '../../useCases/ListByIdUserOrder'
 import authenticationMiddleware from '../../utils/middlewares/AuthenticationMiddleware'
+import { orderValidation } from '../../validations'
 
 export default (router: Router): void => {
   router.route('/order/create-payment-intent/:id').post((request, response) => {
     authenticationMiddleware(request)
+    orderValidation.orderValidation(request)
     createPaymentIntentController.handle(request, response)
   })
   router.route('/order/:id').put((request, response) => {

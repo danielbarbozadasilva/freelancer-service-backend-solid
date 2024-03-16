@@ -1,7 +1,7 @@
 import { Order } from '../../entities/Order'
 import { IOrderRepository } from '../IOrderRepository'
-import orderSchema from '../../database/schemas/SchemaOrder'
-import productschemas from '../../database/schemas/SchemaProduct'
+import orderSchema from '../../database/schemas/order'
+import productschemas from '../../database/schemas/product'
 import Stripe from 'stripe'
 import mongoose from 'mongoose'
 
@@ -111,7 +111,7 @@ export class OrderDBRepository implements IOrderRepository {
         }
       }
     )
-    
+
     const dataProduct = await productschemas.findOne({ _id: resultOrder.productId })
     await productschemas.updateOne(
       {
@@ -132,4 +132,14 @@ export class OrderDBRepository implements IOrderRepository {
 
     return result?.length ? result[0] : result
   }
+
+  async verifyPaymentIntent(payment: string): Promise<boolean> {
+    const resultOrder = await orderSchema.find(
+      {
+        payment_intent: payment
+      }
+    )
+    return !!resultOrder?.length
+  }
+
 }

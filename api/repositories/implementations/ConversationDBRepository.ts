@@ -1,6 +1,6 @@
 import { Conversation } from '../../entities/Conversation'
 import { IConversationRepository } from '../IConversationRepository'
-import conversationSchema from '../../database/schemas/SchemaConversation'
+import conversationSchema from '../../database/schemas/conversation'
 
 export class ConversationDBRepository implements IConversationRepository {
   async save(dataUser: Conversation): Promise<Conversation> {

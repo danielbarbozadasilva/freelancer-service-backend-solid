@@ -303,18 +303,18 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Desenvolver código1",
+									"value": "dddddd",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Desenvolver código",
+									"value": "dddddd",
 									"type": "text"
 								},
 								{
 									"key": "files",
 									"type": "file",
-									"src": "/C:/Users/pc-02/Downloads/ilya-pavlov-OqtafYT5kTw-unsplash.jpg"
+									"src": "/C:/Users/pc-02/Downloads/pankaj-patel-_SgRNwAVNKw-unsplash.jpg"
 								}
 							]
 						},
@@ -1109,7 +1109,7 @@
 								{
 									"key": "files",
 									"type": "file",
-									"src": "/C:/Users/pc-02/Downloads/IMG_20240207_161952041.jpg"
+									"src": "/C:/Users/pc-02/Downloads/pankaj-patel-_SgRNwAVNKw-unsplash.jpg"
 								},
 								{
 									"key": "deliveryTime",
@@ -1189,7 +1189,7 @@
 								},
 								{
 									"key": "title",
-									"value": "Desenvolvedor Full Stackffff",
+									"value": "Desenvolvedor Full Stack",
 									"type": "text"
 								},
 								{
@@ -1210,7 +1210,7 @@
 								{
 									"key": "files",
 									"type": "file",
-									"src": "/C:/Users/pc-02/Downloads/IMG_20240207_161935460.jpg"
+									"src": "/C:/Users/pc-02/Downloads/pankaj-patel-_SgRNwAVNKw-unsplash.jpg"
 								},
 								{
 									"key": "deliveryTime",
@@ -1221,17 +1221,6 @@
 									"key": "features",
 									"value": "Desenvolvimento web,APIs RESTful,React,Node.js,Express",
 									"type": "text"
-								},
-								{
-									"key": "sales",
-									"value": "0",
-									"type": "text"
-								},
-								{
-									"key": "rating",
-									"value": "",
-									"type": "text",
-									"disabled": true
 								}
 							]
 						},

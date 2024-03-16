@@ -1,7 +1,5 @@
-import { ObjectId } from "mongoose"
-
 export interface IListConversationRequestDTO {
-  _id?: ObjectId
+  _id?: string
   sellerId?: string
   buyerId?: string
   readBySeller?: boolean

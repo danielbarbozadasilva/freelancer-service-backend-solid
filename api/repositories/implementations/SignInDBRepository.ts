@@ -1,5 +1,5 @@
 import { ISignInRepository } from '../ISignInRepository'
-import clientSchema from '../../database/schemas/SchemaUser'
+import clientSchema from '../../database/schemas/user'
 import jwt from 'jsonwebtoken'
 import Cryptography from '../../utils/cryptography'
 import { formatAddressImage } from '../../utils/file'

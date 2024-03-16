@@ -11,6 +11,7 @@ export class UpdateCategoryUseCase {
     if(!categoryExists){
       throw new Error('Essa categoria não existe!');
     }
-    return this.categoryRepository.updateCategory(categoryCreate)
+
+    return await this.categoryRepository.updateCategory(categoryCreate)
   }
 }

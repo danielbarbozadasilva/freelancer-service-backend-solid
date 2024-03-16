@@ -10,4 +10,5 @@ export interface IOrderRepository {
   listAllOrders(): Promise<Order[]>
   listByIdUserOrders(data: IListOrder): Promise<any>
   updateOrder(order: Order): Promise<any>
+  verifyPaymentIntent(payment: string): Promise<boolean>
 }

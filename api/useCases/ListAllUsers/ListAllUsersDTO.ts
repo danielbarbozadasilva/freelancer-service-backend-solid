@@ -1,8 +1,7 @@
-import { ObjectId } from "mongoose";
 import { formatAddressImage } from "../../utils/file"
 
 export interface IListAllUsersRequestDTO {
-  _id?: ObjectId | string;
+  _id?: string;
   name: string
   username: string
   email: string

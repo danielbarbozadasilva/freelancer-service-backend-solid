@@ -6,14 +6,17 @@ import { createProductController } from '../../useCases/CreateProduct'
 import { deleteProductController} from '../../useCases/DeleteProduct'
 import fileUpload from '../../utils/file'
 import authenticationMiddleware from '../../utils/middlewares/AuthenticationMiddleware'
+import { productValidation } from '../../validations'
 
 export default (router: Router): void => {
   router.route('/product').post(fileUpload.array('files', 5), (request, response) => {
     authenticationMiddleware(request)
+    productValidation.productValidation(request)
     createProductController.handle(request, response)
   })
   router.route('/product/:id').put(fileUpload.array('files', 5), (request, response) => {
     authenticationMiddleware(request)
+    productValidation.productValidation(request)
     updateProductController.handle(request, response)
   })
   router.route('/product').get((request, response) => {

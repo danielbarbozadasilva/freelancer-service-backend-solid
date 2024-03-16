@@ -6,25 +6,27 @@ import { listByIdCategoryController } from '../../useCases/ListByIdCategory'
 import { deleteCategoryController } from '../../useCases/DeleteCategory'
 import fileUpload from '../../utils/file'
 import { categoryValidation } from '../../validations'
+import authenticationMiddleware from '../../utils/middlewares/AuthenticationMiddleware'
 
 export default (router: Router): void => {
   router.route('/category').post(fileUpload.single('files'), (request, response) => {
-    categoryValidation.createCategoryValidation(request)
+    authenticationMiddleware(request)
+    categoryValidation.categoryValidation(request)
     createCategoryController.handle(request, response)
   })
   router.route('/category/:id').put(fileUpload.single('files'), (request, response) => {
-    categoryValidation.idCategoryValidation(request)
+    authenticationMiddleware(request)
+    categoryValidation.categoryValidation(request)
     updateCategoryController.handle(request, response)
   })
   router.route('/category').get((request, response) => {
     listAllCategoriesController.handle(request, response)
   })
   router.route('/category/:id').get((request, response) => {
-    categoryValidation.idCategoryValidation(request)
     listByIdCategoryController.handle(request, response)
   })
   router.route('/category/:id').delete((request, response) => {
-    categoryValidation.idCategoryValidation(request)
+    authenticationMiddleware(request)
     deleteCategoryController.handle(request, response)
   })
 }

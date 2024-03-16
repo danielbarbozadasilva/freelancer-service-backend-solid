@@ -1,7 +1,7 @@
 import { Product } from '../../entities/Product'
 import { IProductRepository } from '../IProductRepository'
-import productschemas from '../../database/schemas/SchemaProduct'
-import userSchema from '../../database/schemas/SchemaUser'
+import productschemas from '../../database/schemas/product'
+import userSchema from '../../database/schemas/user'
 import mongoose from 'mongoose'
 
 interface ISearchProduct {

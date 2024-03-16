@@ -7,6 +7,6 @@ export class CreateMessageUseCase {
 
   async execute(data: ICreateMessageRequestDTO) {
     const result = new Message(data)
-    return this.messageRepository.createMessage(result)
+    return await this.messageRepository.createMessage(result)
   }
 }

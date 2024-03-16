@@ -1,10 +1,8 @@
-import { ObjectId } from "mongoose";
 import { formatAddressImage } from "../../utils/file"
 import { capitalizeFirstLetter } from "../../utils/format";
-import moment from 'moment'
 
 export interface IListAllUsersRequestDTO {
-  _id?: ObjectId | string;
+  _id?: string;
   name: string
   username: string
   email: string

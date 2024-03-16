@@ -7,6 +7,6 @@ export class CreateCategoryUseCase {
 
   async execute(data: ICategoryRequestDTO) {
     const categoryCreate = new Category(data)
-    return this.categoryRepository.createCategory(categoryCreate)
+    return await this.categoryRepository.createCategory(categoryCreate)
   }
 }

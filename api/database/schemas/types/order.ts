@@ -1,7 +1,7 @@
-import { Document, ObjectId } from 'mongoose'
+import { Document } from 'mongoose'
 
 export interface OrderInterface extends Document {
-  _id: ObjectId
+  _id: string
   productId: string
   title: string
   description: string

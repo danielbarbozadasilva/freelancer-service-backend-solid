@@ -4,10 +4,12 @@ import { listAllConversationController } from '../../useCases/ListAllConversatio
 import { listByIdConversationController } from '../../useCases/ListSingleConversation'
 import { updateConversationController } from '../../useCases/UpdateConversation'
 import authenticationMiddleware from '../../utils/middlewares/AuthenticationMiddleware'
+import { conversationValidation } from '../../validations'
 
 export default (router: Router): void => {
   router.route('/conversation').post((request, response) => {
     authenticationMiddleware(request)
+    conversationValidation.conversationValidation(request)
     createConversationController.handle(request, response)
   })
   router.route('/conversation/userid/:userId/isseller/:isSeller').get((request, response) => {
