@@ -40,6 +40,11 @@ export class OrderDBRepository implements IOrderRepository {
   async listAllOrders(): Promise<Order[]> {
     const result = await orderSchema.aggregate([
       {
+        $match: {
+          status: "Finalizada"
+        }
+      },
+      {
         $lookup: {
           from: 'productschemas',
           localField: 'productId',
@@ -74,9 +79,9 @@ export class OrderDBRepository implements IOrderRepository {
           'buyer.salt': 0
         }
       }
-    ])
+    ]);
     
-    return result
+    return result;
   }
 
   async listByIdUserOrders(data: IListOrder): Promise<any> {

@@ -2,7 +2,7 @@ import { ISignInRepository } from '../ISignInRepository'
 import clientSchema from '../../database/schemas/user'
 import jwt from 'jsonwebtoken'
 import Cryptography from '../../utils/cryptography'
-import { formatAddressImage } from '../../utils/file'
+import { formatAddressImage } from '../../utils/multer'
 
 export class SignInRepository implements ISignInRepository {
   async verifyCredentials(email: string, password: string): Promise<boolean> {
@@ -21,7 +21,7 @@ export class SignInRepository implements ISignInRepository {
       email: result.email,
       isSeller: result.isSeller,
       permissions: result.permissions,
-      picture: formatAddressImage(result.picture)
+      picture: await formatAddressImage(result.picture)
     }
     const token = jwt.sign(
       {

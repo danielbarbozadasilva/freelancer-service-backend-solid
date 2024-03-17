@@ -20,7 +20,7 @@ export function formatarDataHora(data: any): string {
   return dataFormatada;
 }
 
-export function formatCurrency(value: number): string {
+export function formatCurrency(value: any): string {
   const formattedValue = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL'

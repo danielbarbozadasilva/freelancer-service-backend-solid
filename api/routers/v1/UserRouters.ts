@@ -4,7 +4,7 @@ import { listByIdUserController } from '../../useCases/ListByIdUser'
 import { deleteUserController } from '../../useCases/DeleteUser'
 import { updateProfileController } from '../../useCases/UpdateProfile'
 import { updateSellerController } from '../../useCases/UpdateSeller'
-import fileUpload from '../../utils/file'
+import fileUpload from '../../utils/multer'
 import { registerValidation } from '../../validations'
 import authenticationMiddleware from '../../utils/middlewares/AuthenticationMiddleware'
 

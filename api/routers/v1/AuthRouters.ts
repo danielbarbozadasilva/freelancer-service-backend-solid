@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { registerController } from '../../useCases/Register'
 import { signInController } from '../../useCases/SignIn'
-import fileUpload from '../../utils/file'
+import fileUpload from '../../utils/multer'
 import { authValidation, registerValidation } from '../../validations'
 
 export default (router: Router): void => {

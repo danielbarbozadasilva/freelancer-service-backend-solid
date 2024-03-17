@@ -1,7 +1,7 @@
-import { formatAddressImage } from "../../utils/file"
+import { formatAddressImage } from '../../utils/multer'
 
 export interface IListAllUsersRequestDTO {
-  _id?: string;
+  _id?: string
   name: string
   username: string
   email: string
@@ -15,9 +15,9 @@ export interface IListAllUsersRequestDTO {
   hash?: string
   salt?: string
   recovery?: {
-    token: string,
+    token: string
     date: Date
-  },
+  }
   isSeller: boolean
 }
 
@@ -25,14 +25,14 @@ function formatarData(data: string): string {
   const dataFormatada = new Date(data).toLocaleDateString('pt-BR', {
     day: '2-digit',
     month: '2-digit',
-    year: 'numeric',
-  });
+    year: 'numeric'
+  })
 
-  return dataFormatada;
+  return dataFormatada
 }
 
-export const listClientDTO = (data: IListAllUsersRequestDTO[]) => {
-  return data.map((item) => {
+export const listUserDTO = async (data: IListAllUsersRequestDTO[]): Promise<IListAllUsersRequestDTO[]> => {
+  const formattedData = await Promise.all(data.map(async (item) => {
       if (item.permissions[0] !== 'admin') {
         return {
           id: item._id,
@@ -41,15 +41,17 @@ export const listClientDTO = (data: IListAllUsersRequestDTO[]) => {
           email: item.email,
           cpf: item.cpf,
           birthDate: formatarData(item.birthDate),
-          picture: formatAddressImage(item.picture),
+          picture: await formatAddressImage(item.picture),
           country: item.country,
           phone: item.phone,
           description: item.description,
           permissions: item.permissions,
-          isSeller: item.isSeller,
-        };
+          isSeller: item.isSeller
+        }
       }
-      return null;
+      return null
     })
-    .filter((item) => item !== null);
-};
+  )
+
+  return formattedData.filter((item) => item !== null)
+}

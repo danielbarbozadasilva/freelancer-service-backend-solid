@@ -12,8 +12,8 @@ const categorySchema = new Schema(
       required: true,
     },
     picture: { 
-      type: Array, 
-      default: [] 
+      type: String,
+      required: true,
     },
   },
   {

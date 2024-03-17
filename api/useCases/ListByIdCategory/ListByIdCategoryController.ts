@@ -12,7 +12,7 @@ export class ListByIdCategoryController {
 
       return response
       .status(200)
-      .send({ message: 'List category successfully!', data: categoryDTO(result) })
+      .send({ message: 'List category successfully!', data: await categoryDTO(result) })
     } catch (error) {
       return response
         .status(400)

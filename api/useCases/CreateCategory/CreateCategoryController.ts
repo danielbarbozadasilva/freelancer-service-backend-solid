@@ -11,7 +11,7 @@ export class CreateCategoryController {
         description: request.body.description,
         picture: request?.file?.filename,
        })
-
+       
       return response
         .status(201)
         .send({ message: 'Category successfully created!' })

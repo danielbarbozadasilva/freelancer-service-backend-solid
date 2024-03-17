@@ -11,7 +11,7 @@ export class ListAllCategoriesController {
       
       return response
         .status(200)
-        .send({ message: 'List all categories successfully!', data: productByCategoryDTO(result) })
+        .send({ message: 'List all categories successfully!', data: await productByCategoryDTO(result) })
     } catch (error) {
       return response
         .status(400)

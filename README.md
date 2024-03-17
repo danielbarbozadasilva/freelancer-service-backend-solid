@@ -1,6 +1,6 @@
 # **API SOLID Freelancer**
 ## **Escopo do produto**
-O Projeto Freelancer consiste em um sistema web onde um profissional pode oferece seus serviços aos clientes da plataforma. Todas as  funcionalidades do Sistema foram pensadas e elaboradas para proporcionar facilidade e comodidade aos usuários da plataforma.
+O Projeto Freelancer consiste em um sistema web onde profissionais freelancers podem oferecer seus serviços a clientes da plataforma. Todas as funcionalidades do Sistema foram pensadas e elaboradas para proporcionar facilidade e comodidade aos usuários da plataforma.
 
 O Sistema tem o objetivo de listar os serviços oferecidos pelos profissionais e efetuar o gerenciamento destes. Possibilitando ao profissional o controle dos mesmos. O cliente poderá consultar, adiquirir e avaliar serviços. O Sistema garante o total controle dos registros de solicitações, transações, avaliações e entregas. 
 
@@ -9,8 +9,8 @@ Os usuários do sistema são o Profissional Freelancer, o Cliente e o Administra
 A API foi desenvolvida utilizando os Principios do SOLID, utilizando TYPESCRIPT com NODEJS, EXPRESSJS e Banco de dados MONGODB. Foi realizada a integração com a plataforma de pagamentos STRIPE, documentação utilizando o SWAGGER e o JEST nos testes unitários.
 <br/>
 <br/>
+O Front-End foi desenvolvido utilizando o REACTJS em TYPESCRIPT com layout responsivo, Material UI, Styled-components e reduxjs/toolkit. E está disponível para consulta no link abaixo:
 
-O Front-End foi desenvolvido utilizando o REACTJS. E está disponível para consulta no link abaixo:
 ```
 https://github.com/danielbarbozadasilva/freelancer-service-frontend
 ```
@@ -123,7 +123,7 @@ docs -> API-FREELANCE.postman_collection.json
 
 RF001 – O sistema deve controlar a autenticação dos usuários.
 
-RF002 – O sistema deve manter cadastro de clientes.
+RF002 – O sistema deve manter cadastro de usuários.
 
 RF003 – O sistema deve manter solicitações.
 
@@ -137,7 +137,7 @@ RF007 – O sistema deve alterar o status do usuário.
 
 RF008 – O sistema deve filtrar os serviços.
 
-RF009 – O sistema deve manter clientes.
+RF009 – O sistema deve manter usuários.
 
 RF010 – O sistema deve manter serviços.
 
@@ -180,8 +180,9 @@ RF015 – O sistema deve listar os serviços por ordem alfabética ou ordem de p
 |RN003   |Controle de veracidade      | Para que um serviço possa ser adquirido, este deverá estar cadastrado no sistema.   |
 |RN004   |Limite de ação     | Somente o Administrador terá permissão para incluir e alterar as categorias no sistema.    |
 |RN005   |Limite de ação     | Somente o Freelancer terá permissão para incluir e alterar os seus serviços no sistema.   |
-|RN006   |Limite de ação     | O Cliente poderá visualizar apenas os dados da sua conta. Tais como: pedidos e mensagens.  |
-|RN007   |Limite de ação     | Apenas o Administrador poderá visualizar informações de todos os clientes, suas respectivas contas, solicitações e histórico de aquisições.    |
+|RN006   |Limite de ação     | Somente o Cliente poderá solicitar serviços no sistema.   |
+|RN007   |Limite de ação     | O Cliente poderá visualizar apenas os dados da sua conta. Tais como: pedidos e mensagens.  |
+|RN008   |Limite de ação     | Apenas o Administrador poderá visualizar informações, solicitações e histórico de pedidos de todos os usuários    |
 |  |  |  |
 
 <br/>

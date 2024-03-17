@@ -91,7 +91,7 @@ export class ProductDBRepository implements IProductRepository {
     let matchStage: any = {
       $or: [{ title: { $regex: search.search, $options: 'i' } }]
     }
-
+  
     if (search.category) {
       const categoryId = new mongoose.Types.ObjectId(search.category)
       matchStage = {
@@ -128,17 +128,15 @@ export class ProductDBRepository implements IProductRepository {
       {
         $lookup: {
           from: 'orderschemas',
-          localField: '_id',
-          foreignField: 'productId',
+          let: { productId: '$_id' },
+          pipeline: [
+            {
+              $match: {
+                $expr: { $and: [{ $eq: ['$productId', '$$productId'] }, { $eq: ['$status', 'Finalizada'] }] }
+              }
+            }
+          ],
           as: 'orders'
-        }
-      },
-      {
-        $lookup: {
-          from: 'userschemas',
-          localField: 'orders.buyerId',
-          foreignField: '_id',
-          as: 'client'
         }
       },
       {
@@ -152,13 +150,10 @@ export class ProductDBRepository implements IProductRepository {
       { $unwind: { path: '$category', preserveNullAndEmptyArrays: true } },
       { $unwind: { path: '$rating', preserveNullAndEmptyArrays: true } },
       { $unwind: { path: '$user', preserveNullAndEmptyArrays: true } },
-      { $unwind: { path: '$client', preserveNullAndEmptyArrays: true } },
       {
         $project: {
           'user.hash': 0,
           'user.salt': 0,
-          'client.hash': 0,
-          'client.salt': 0,
         }
       },
       {
@@ -177,7 +172,7 @@ export class ProductDBRepository implements IProductRepository {
         }
       }
     ])
-
+  
     return result
   }
 

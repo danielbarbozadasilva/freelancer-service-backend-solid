@@ -4,9 +4,9 @@ import ErrorBusinessRule from '../utils/exceptions/ErrorBusinessRule'
 
 export class RegisterValidation {
   registerValidation(request: Request) {
-    if (!request?.file) {
-      throw new Error('Imagem é obrigatória!')
-    }
+    // if (!request?.file) {
+    //   throw new Error('Imagem é obrigatória!')
+    // }
 
     const registerSchema = Joi.object({
       name: Joi.string().min(5).max(30).required().messages({
@@ -55,12 +55,8 @@ export class RegisterValidation {
         'any.required': `"isSeller" é um campo obrigatório.`,
         'boolean.empty': `"isSeller" não deve ser vazio.`
       }),
-      password: Joi.string().min(5).max(20).required().messages({
-        'any.required': `"password" é um campo obrigatório.`,
-        'string.empty': `"password" não deve ser vazio.`,
-        'string.min': `"password" não deve ter menos que "{#limit}" caracteres.`,
-        'string.max': `"password" não deve ter mais que "{#limit}" caracteres.`
-      })
+      password: Joi.any().optional(),
+      files: Joi.any().optional()
     })
 
     const resultValidade = registerSchema.validate(request.body)

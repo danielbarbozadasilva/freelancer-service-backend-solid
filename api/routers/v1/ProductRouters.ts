@@ -4,7 +4,7 @@ import { updateProductController } from '../../useCases/UpdateProduct'
 import { listByIdProductController } from '../../useCases/ListByIdProduct'
 import { createProductController } from '../../useCases/CreateProduct'
 import { deleteProductController} from '../../useCases/DeleteProduct'
-import fileUpload from '../../utils/file'
+import fileUpload from '../../utils/multer'
 import authenticationMiddleware from '../../utils/middlewares/AuthenticationMiddleware'
 import { productValidation } from '../../validations'
 

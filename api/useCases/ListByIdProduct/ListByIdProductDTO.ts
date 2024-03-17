@@ -1,12 +1,13 @@
-import { formatAddressImage } from '../../utils/file'
+import { formatAddressImage } from '../../utils/multer'
 import { formatCurrency, formatarData } from '../../utils/format'
 
 export interface IProductRequestDTO {
   _id?: string
+  id?: string
   title: string
   description: string
   category: string
-  price: number
+  price: string
   images: string[]
   deliveryTime: number
   features: string[]
@@ -21,21 +22,21 @@ interface User {
   username: string
   email: string
   cpf: string
-  birthDate: Date
-  picture: string[]
+  birthDate: string
+  picture: string
   country: string
   phone: string
   description: string
   permissions: string[]
   isSeller: boolean
-  createdAt: Date
+  createdAt: string
 }
 
-export const productDTO = (data: IProductRequestDTO) => {
+export const productDTO = async (data: IProductRequestDTO): Promise<IProductRequestDTO> => {
   let arrayImagesProduct = []
 
-  data.images.map((item) => {
-    arrayImagesProduct.push(formatAddressImage(item))
+  data.images.map(async (item) => {
+    arrayImagesProduct.push(await formatAddressImage(item))
   })
 
   return {
@@ -47,7 +48,7 @@ export const productDTO = (data: IProductRequestDTO) => {
       email: data.userId.email,
       cpf: data.userId.cpf,
       birthDate: formatarData(data.userId.birthDate),
-      picture: formatAddressImage(data.userId.picture),
+      picture: await formatAddressImage(data.userId.picture),
       country: data.userId.country,
       phone: data.userId.phone,
       description: data.userId.description,
