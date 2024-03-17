@@ -3,12 +3,7 @@ import Joi from 'joi'
 import ErrorBusinessRule from '../utils/exceptions/ErrorBusinessRule'
 
 export class ProductValidation {
-  productValidation(request: Request) {
-        
-    if (!request?.files?.length) {
-      throw new Error('Imagem é obrigatória!')
-    }
-
+  productValidation(request: Request) {    
     const productSchema = Joi.object({
       userId: Joi.string()
         .regex(/^[0-9a-fA-F]{24}$/)
@@ -46,10 +41,11 @@ export class ProductValidation {
         'any.required': `"deliveryTime" é um campo obrigatório.`,
         'number.empty': `"deliveryTime" não deve ser vazio.`
       }),
-      features: Joi.required().messages({
+      features: Joi.string().required().messages({
         'any.required': `"features" é um campo obrigatório.`,
         'string.empty': `"features" não deve ser vazio.`
-      })
+      }),
+      files: Joi.any().optional()
     })
 
     const resultValidade = productSchema.validate(request.body)

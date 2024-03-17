@@ -3,11 +3,13 @@ import { IMailProvider } from '../../providers/IMailProvider'
 import { registerTemplate } from '../../providers/model/register'
 import { IUserRepository } from '../../repositories/IUsersRepository'
 import { IRegisterRequestDTO } from './RegisterDTO'
+import S3Storage from '../../providers/implementations/S3Storage'
 
 export class RegisterUseCase {
   constructor(
     private userRepository: IUserRepository,
-    private mailProvider: IMailProvider
+    private mailProvider: IMailProvider,
+    private s3: S3Storage
   ) {}
 
   async execute(data: IRegisterRequestDTO) {
@@ -24,6 +26,8 @@ export class RegisterUseCase {
     if (userNameAlreadyExists) {
       throw new Error('Username already exists.')
     }
+    
+    await this.s3.saveFile(data.picture)
 
     const userCreate = new User(data)
 

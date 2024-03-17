@@ -5,9 +5,9 @@ export class UpdateProductController {
   constructor(private updateProductUseCase: UpdateProductUseCase) {}
 
   async handle(request: Request, response: Response) {
-    try {      
+    try {            
       const image = request.files
-      let dataImage
+      let dataImage: string[] = []
       if (Array.isArray(image)) {
         dataImage = image.map((item) => item.filename)
       }

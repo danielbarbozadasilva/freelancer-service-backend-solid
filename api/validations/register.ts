@@ -4,10 +4,6 @@ import ErrorBusinessRule from '../utils/exceptions/ErrorBusinessRule'
 
 export class RegisterValidation {
   registerValidation(request: Request) {
-    // if (!request?.file) {
-    //   throw new Error('Imagem é obrigatória!')
-    // }
-
     const registerSchema = Joi.object({
       name: Joi.string().min(5).max(30).required().messages({
         'any.required': `"name" é um campo obrigatório.`,
