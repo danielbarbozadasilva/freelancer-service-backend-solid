@@ -121,6 +121,12 @@
           },
           "400": {
             "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -195,6 +201,12 @@
           },
           "400": {
             "description": "Essa categoria não existe!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       },
@@ -226,6 +238,12 @@
           },
           "400": {
             "description": "Essa categoria não existe!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -269,7 +287,17 @@
         "tags": [
           "Avaliação"
         ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "type": "string",
+            "description": "token",
+            "required": true
+          }
+        ],
         "summary": "Cadastrar avaliação",
+        "description": "Essa rota cadastra uma avaliação",
         "requestBody": {
           "content": {
             "application/json": {
@@ -292,14 +320,20 @@
           },
           "400": {
             "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
     },
     "/rating/{id}": {
       "put": {
-        "summary": "Listar avaliações pelo Id",
-        "description": "Essa rota lista as avaliações pelo ID",
+        "summary": "Atualizar avaliação pelo Id",
+        "description": "Essa rota atualiza uma avaliação pelo Id",
         "tags": [
           "Avaliação"
         ],
@@ -309,6 +343,13 @@
             "in": "path",
             "type": "integer",
             "description": "Id da avaliação",
+            "required": true
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "type": "string",
+            "description": "token",
             "required": true
           }
         ],
@@ -334,12 +375,18 @@
           },
           "400": {
             "description": "Avaliação inexistente!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       },
       "delete": {
         "summary": "Deleta a avaliação pelo Id",
-        "description": "Essa rota lista as avaliações pelo ID",
+        "description": "Essa rota exclui uma avaliação pelo ID",
         "tags": [
           "Avaliação"
         ],
@@ -350,6 +397,13 @@
             "type": "integer",
             "description": "Id da avaliação",
             "required": true
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "type": "string",
+            "description": "token",
+            "required": true
           }
         ],
         "responses": {
@@ -358,6 +412,12 @@
           },
           "400": {
             "description": "Essa avaliação não existe!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -386,9 +446,7 @@
                 "example": {
                   "isSeller": true,
                   "userId": "65883a7bc89918015e25e52e",
-                  "to": "65883ab3c89918015e25e532",
-                  "readBySeller": false,
-                  "readByBuyer": false
+                  "to": "65883ab3c89918015e25e532"
                 }
               }
             }
@@ -400,6 +458,12 @@
           },
           "400": {
             "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -423,7 +487,7 @@
             "name": "isseller",
             "in": "path",
             "type": "boolean",
-            "description": "Freelancer",
+            "description": "Freelancer(true/false)",
             "required": true
           },
           {
@@ -445,6 +509,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -490,6 +563,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -535,6 +617,12 @@
           },
           "400": {
             "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -669,6 +757,12 @@
           },
           "400": {
             "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -772,6 +866,12 @@
           },
           "400": {
             "description": "Produto não existe!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       },
@@ -802,6 +902,12 @@
           },
           "400": {
             "description": "Produto não existe!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -842,6 +948,12 @@
           },
           "400": {
             "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -876,6 +988,12 @@
           },
           "400": {
             "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -910,6 +1028,12 @@
           },
           "400": {
             "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -953,6 +1077,12 @@
           },
           "400": {
             "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       },
@@ -992,6 +1122,12 @@
           },
           "400": {
             "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       },
@@ -1023,6 +1159,12 @@
           },
           "400": {
             "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -1057,6 +1199,12 @@
           },
           "400": {
             "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -1091,6 +1239,12 @@
           },
           "400": {
             "description": "Código de pagamento inexistente!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -1139,6 +1293,12 @@
           },
           "400": {
             "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -1185,6 +1345,12 @@
           },
           "400": {
             "description": "Ocorreu um erro inesperado!"
+          },
+          "401": {
+            "description": "Usuário não autenticado!"
+          },
+          "403": {
+            "description": "Usuário não autorizado!"
           }
         }
       }
@@ -2121,20 +2287,9 @@
             "required": true,
             "example": "Olá!"
           },
-          "readBySeller": {
+          "isSeller": {
             "type": "boolean",
-            "required": true,
-            "example": true
-          },
-          "readByBuyer": {
-            "type": "boolean",
-            "required": true,
-            "example": true
-          },
-          "lastMessage": {
-            "type": "string",
-            "required": true,
-            "example": "Olá!"
+            "required": true
           }
         }
       },
