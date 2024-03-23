@@ -14,11 +14,11 @@ export class CreateCategoryController {
        
       return response
         .status(201)
-        .send({ message: 'Category successfully created!' })
+        .send({ message: 'Categoria criada com sucesso!' })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

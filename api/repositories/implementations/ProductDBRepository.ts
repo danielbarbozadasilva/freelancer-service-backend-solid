@@ -120,8 +120,8 @@ export class ProductDBRepository implements IProductRepository {
       {
         $lookup: {
           from: 'ratingschemas',
-          localField: 'rating',
-          foreignField: '_id',
+          localField: '_id',
+          foreignField: 'productId',
           as: 'rating'
         }
       },
@@ -142,6 +142,14 @@ export class ProductDBRepository implements IProductRepository {
       {
         $lookup: {
           from: 'userschemas',
+          localField: 'orders.buyerId',
+          foreignField: '_id',
+          as: 'client'
+        }
+      },
+      {
+        $lookup: {
+          from: 'userschemas',
           localField: 'userId',
           foreignField: '_id',
           as: 'user'
@@ -150,10 +158,13 @@ export class ProductDBRepository implements IProductRepository {
       { $unwind: { path: '$category', preserveNullAndEmptyArrays: true } },
       { $unwind: { path: '$rating', preserveNullAndEmptyArrays: true } },
       { $unwind: { path: '$user', preserveNullAndEmptyArrays: true } },
+      { $unwind: { path: '$client', preserveNullAndEmptyArrays: true } },
       {
         $project: {
           'user.hash': 0,
           'user.salt': 0,
+          'client.hash': 0,
+          'client.salt': 0,
         }
       },
       {

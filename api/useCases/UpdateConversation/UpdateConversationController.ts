@@ -11,11 +11,11 @@ export class UpdateConversationController {
 
       return response
         .status(200)
-        .send({ message: 'Conversation successfully updated!', data: result })
+        .send({ message: 'Conversa atualizada com sucesso!', data: result })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

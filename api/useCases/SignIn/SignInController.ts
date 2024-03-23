@@ -13,11 +13,11 @@ export class SignInController {
 
       return response
         .status(200)
-        .send({ message: 'Successfully authenticated user!', data: result })
+        .send({ message: 'Seja Bem-vindo', data: result })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

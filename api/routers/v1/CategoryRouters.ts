@@ -16,7 +16,7 @@ export default (router: Router): void => {
   })
   router.route('/category/:id').put(fileUpload.single('files'), (request, response) => {
     authenticationMiddleware(request)
-    // categoryValidation.categoryValidation(request)
+    categoryValidation.categoryValidation(request)
     updateCategoryController.handle(request, response)
   })
   router.route('/category').get((request, response) => {

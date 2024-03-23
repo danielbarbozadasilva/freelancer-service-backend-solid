@@ -12,11 +12,11 @@ export class ListByIdUserController {
 
       return response
         .status(200)
-        .send({ message: 'User listed!', data: await listUserDTO(data) })
+        .send({ message: 'Usuário listado com sucesso!', data: await listUserDTO(data) })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

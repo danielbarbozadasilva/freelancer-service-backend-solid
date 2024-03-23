@@ -56,6 +56,10 @@ export class RegisterValidation {
     })
 
     const resultValidade = registerSchema.validate(request.body)
+    
+    if (!request?.file && !request?.body?.files) {      
+      throw new Error('Imagem é obrigatória!')
+    }
 
     if (resultValidade?.error) {
       throw new ErrorBusinessRule(resultValidade.error.details[0].message)

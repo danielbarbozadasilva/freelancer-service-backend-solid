@@ -3,7 +3,7 @@ import Joi from 'joi'
 import ErrorBusinessRule from '../utils/exceptions/ErrorBusinessRule'
 
 export class ProductValidation {
-  productValidation(request: Request) {    
+  productValidation(request: Request) {     
     const productSchema = Joi.object({
       userId: Joi.string()
         .regex(/^[0-9a-fA-F]{24}$/)
@@ -49,6 +49,10 @@ export class ProductValidation {
     })
 
     const resultValidade = productSchema.validate(request.body)
+     
+    if (!request?.files?.length && !request?.body?.files) {      
+      throw new Error('Imagem é obrigatória!')
+    }
 
     if (resultValidade?.error) {
       throw new ErrorBusinessRule(resultValidade.error.details[0].message)

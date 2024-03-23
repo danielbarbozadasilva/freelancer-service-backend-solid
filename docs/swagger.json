@@ -33,10 +33,10 @@
         },
         "responses": {
           "400": {
-            "description": "Invalid email or password."
+            "description": "E-mail ou senha inválidos!"
           },
           "200": {
-            "description": "Successfully authenticated user!"
+            "description": "Seja Bem-vindo!"
           }
         }
       }
@@ -59,10 +59,10 @@
         },
         "responses": {
           "400": {
-            "description": "Cpf already exists.\nEmail already exists.\nUsername already exists."
+            "description": "Cpf já existe\nEmail já existe\nUsername já existe"
           },
           "201": {
-            "description": "User successfully created!"
+            "description": "Usuário criado com sucesso!"
           }
         }
       }
@@ -76,7 +76,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List all categories successfully!",
+            "description": "Categorias listadas com sucesso!",
             "content": {
               "application/json": {
                 "schema": {
@@ -87,7 +87,7 @@
             }
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Ocorreu um erro inesperado!"
           }
         }
       },
@@ -117,10 +117,10 @@
         },
         "responses": {
           "201": {
-            "description": "Category successfully created!"
+            "description": "Categoria criada com sucesso!"
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Ocorreu um erro inesperado!"
           }
         }
       }
@@ -143,7 +143,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List category successfully!",
+            "description": "Categoria listada com sucesso!",
             "content": {
               "application/json": {
                 "schema": {
@@ -191,7 +191,7 @@
         },
         "responses": {
           "200": {
-            "description": "Category successfully updated!"
+            "description": "Categoria atualizada com sucesso!"
           },
           "400": {
             "description": "Essa categoria não existe!"
@@ -222,7 +222,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Category deleted successfully!"
+            "description": "Categoria excluída com sucesso!"
           },
           "400": {
             "description": "Essa categoria não existe!"
@@ -248,7 +248,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List Rating successfully!",
+            "description": "Avaliação listada com sucesso!",
             "content": {
               "application/json": {
                 "schema": {
@@ -288,10 +288,10 @@
         },
         "responses": {
           "201": {
-            "description": "Rating successfully created!"
+            "description": "Avaliação realizada com sucesso!"
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Ocorreu um erro inesperado!"
           }
         }
       }
@@ -330,7 +330,7 @@
         },
         "responses": {
           "200": {
-            "description": "Rating successfully Updated!"
+            "description": "Avaliação atualizada com sucesso!"
           },
           "400": {
             "description": "Avaliação inexistente!"
@@ -354,7 +354,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Rating deleted successfully!"
+            "description": "Avaliação excluída com sucesso!"
           },
           "400": {
             "description": "Essa avaliação não existe!"
@@ -396,10 +396,10 @@
         },
         "responses": {
           "200": {
-            "description": "Conversation successfully created!"
+            "description": "Conversa criada com sucesso!"
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Ocorreu um erro inesperado!"
           }
         }
       }
@@ -436,7 +436,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Conversation successfully listed!",
+            "description": "Conversa listada com sucesso!",
             "content": {
               "application/json": {
                 "schema": {
@@ -481,7 +481,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Conversation successfully listed!",
+            "description": "Conversa listada com sucesso!",
             "content": {
               "application/json": {
                 "schema": {
@@ -531,10 +531,10 @@
         },
         "responses": {
           "200": {
-            "description": "Conversation successfully updated!"
+            "description": "Conversa atualizada com sucesso!"
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Ocorreu um erro inesperado!"
           }
         }
       }
@@ -594,7 +594,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List all services successfully!",
+            "description": "Serviços listados com sucesso!",
             "content": {
               "application/json": {
                 "schema": {
@@ -665,10 +665,10 @@
         ],
         "responses": {
           "201": {
-            "description": "Product successfully created!"
+            "description": "Serviço criado com sucesso!"
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Ocorreu um erro inesperado!"
           }
         }
       }
@@ -690,7 +690,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List all services successfully!",
+            "description": "Serviço listado com sucesso!",
             "content": {
               "application/json": {
                 "schema": {
@@ -768,7 +768,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Product successfully updated!"
+            "description": "Serviço atualizado com sucesso!"
           },
           "400": {
             "description": "Produto não existe!"
@@ -798,7 +798,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Service deleted successfully!"
+            "description": "Serviço excluído com sucesso!"
           },
           "400": {
             "description": "Produto não existe!"
@@ -830,7 +830,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List message successfully!",
+            "description": "Mensagem listada com sucesso!",
             "content": {
               "application/json": {
                 "schema": {
@@ -841,7 +841,7 @@
             }
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Ocorreu um erro inesperado!"
           }
         }
       }
@@ -872,10 +872,10 @@
         },
         "responses": {
           "200": {
-            "description": "Message successfully created!"
+            "description": "Mensagem criada com sucesso!"
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Ocorreu um erro inesperado!"
           }
         }
       }
@@ -898,7 +898,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Users successfully listed!",
+            "description": "Usuários listados com sucesso!",
             "content": {
               "application/json": {
                 "schema": {
@@ -909,7 +909,7 @@
             }
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Ocorreu um erro inesperado!"
           }
         }
       }
@@ -949,10 +949,10 @@
         },
         "responses": {
           "200": {
-            "description": "User successfully updated!"
+            "description": "Usuário atualizado com sucesso!"
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Ocorreu um erro inesperado!"
           }
         }
       },
@@ -980,7 +980,7 @@
         ],
         "responses": {
           "200": {
-            "description": "User listed!",
+            "description": "Usuário listado com sucesso!",
             "content": {
               "application/json": {
                 "schema": {
@@ -991,7 +991,7 @@
             }
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Ocorreu um erro inesperado!"
           }
         }
       },
@@ -1019,10 +1019,10 @@
         ],
         "responses": {
           "200": {
-            "description": "User deleted!"
+            "description": "Usuário excluído com sucesso!"
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Ocorreu um erro inesperado!"
           }
         }
       }
@@ -1045,7 +1045,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List all orders successfully!",
+            "description": "Pedidos listados com sucesso!",
             "content": {
               "application/json": {
                 "schema": {
@@ -1056,7 +1056,7 @@
             }
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Ocorreu um erro inesperado!"
           }
         }
       }
@@ -1087,7 +1087,7 @@
         ],
         "responses": {
           "200": {
-            "description": "User successfully updated!"
+            "description": "Pedido atualizado com sucesso!"
           },
           "400": {
             "description": "Código de pagamento inexistente!"
@@ -1127,7 +1127,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List order successfully!",
+            "description": "Pedidos listados com sucesso!",
             "content": {
               "application/json": {
                 "schema": {
@@ -1138,7 +1138,7 @@
             }
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Ocorreu um erro inesperado!"
           }
         }
       }
@@ -1181,10 +1181,10 @@
         },
         "responses": {
           "201": {
-            "description": "Payment intent successfully created!"
+            "description": "Pagamento efetuado com sucesso!"
           },
           "400": {
-            "description": "Unexpected error."
+            "description": "Ocorreu um erro inesperado!"
           }
         }
       }

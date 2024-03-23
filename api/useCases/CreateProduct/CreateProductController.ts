@@ -27,11 +27,11 @@ export class CreateProductController {
 
       return response
         .status(201)
-        .send({ message: 'Product successfully created!' })
+        .send({ message: 'Serviço criado com sucesso!' })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

@@ -29,7 +29,7 @@ const usersSchema = new Schema(
     },
     picture: { 
       type: String, 
-      required: true 
+      required: false 
     },
     country: {
       type: String,

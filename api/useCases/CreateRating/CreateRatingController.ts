@@ -16,11 +16,11 @@ export class CreateRatingController {
 
       return response
         .status(201)
-        .send({ message: 'Rating successfully created!' })
+        .send({ message: 'Avaliação realizada com sucesso!' })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

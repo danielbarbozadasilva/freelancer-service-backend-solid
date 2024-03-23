@@ -18,13 +18,13 @@ export class RegisterUseCase {
     const userCpfAlreadyExists: boolean = await this.userRepository.findByCpf(data.cpf)
 
     if (userCpfAlreadyExists) {
-      throw new Error('Cpf already exists.')
+      throw new Error('Cpf já existe')
     }
     if (emailAlreadyExists) {
-      throw new Error('Email already exists.')
+      throw new Error('Email já existe')
     }
     if (userNameAlreadyExists) {
-      throw new Error('Username already exists.')
+      throw new Error('Username já existe')
     }
     
     await this.s3.saveFile(data.picture)

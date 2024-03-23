@@ -26,11 +26,11 @@ export class RegisterController {
 
       return response
         .status(201)
-        .send({ message: 'User successfully created!', data: result })
+        .send({ message: 'Usuário criado com sucesso!', data: result })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

@@ -17,11 +17,11 @@ export class UpdateRatingController {
 
       return response
         .status(200)
-        .send({ message: 'Rating successfully Updated!' })
+        .send({ message: 'Avaliação atualizada com sucesso!' })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

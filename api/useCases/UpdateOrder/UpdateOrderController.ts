@@ -12,11 +12,11 @@ export class UpdateOrderController {
 
       return response
         .status(200)
-        .send({ message: 'Order successfully updated!' })
+        .send({ message: 'Pedido atualizado com sucesso!' })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

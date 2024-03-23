@@ -10,7 +10,7 @@ export class UserDBRepository implements IUserRepository {
       email: dataUser.email,
       cpf: dataUser.cpf,
       birthDate: dataUser.birthDate,
-      picture: dataUser.picture,
+      picture: dataUser?.picture,
       country: dataUser.country,
       phone: dataUser.phone,
       description: dataUser.description,

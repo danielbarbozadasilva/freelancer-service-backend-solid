@@ -16,11 +16,11 @@ export class UpdateCategoryController {
 
       return response
         .status(200)
-        .send({ message: 'Category successfully updated!' })
+        .send({ message: 'Categoria atualizada com sucesso!' })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

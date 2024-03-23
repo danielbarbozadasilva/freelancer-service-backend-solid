@@ -3,7 +3,7 @@ import Joi from 'joi'
 import ErrorBusinessRule from '../utils/exceptions/ErrorBusinessRule'
 
 export class CategoryValidation {
-  categoryValidation(request: Request) {
+  categoryValidation(request: Request) {    
     const categorySchema = Joi.object({
       name: Joi.string().min(5).max(20).required().messages({
         'any.required': `"name" é um campo obrigatório.`,
@@ -16,10 +16,15 @@ export class CategoryValidation {
         'string.empty': `"description" não deve ser vazio.`,
         'string.min': `"description" não deve ter menos que "{#limit}" caracteres.`,
         'string.max': `"description" não deve ter mais que "{#limit}" caracteres.`
-      })
+      }),
+      files: Joi.any().optional()
     })
 
     const resultValidade = categorySchema.validate(request.body)
+
+    if (!request?.file && !request?.body?.files) {      
+      throw new Error('Imagem é obrigatória!')
+    }
 
     if (resultValidade?.error) {
       throw new ErrorBusinessRule(resultValidade.error.details[0].message)

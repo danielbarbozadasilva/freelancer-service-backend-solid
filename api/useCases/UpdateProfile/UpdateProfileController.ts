@@ -36,11 +36,11 @@ export class UpdateProfileController {
 
       return response
         .status(200)
-        .send({ message: 'User successfully updated!' })
+        .send({ message: 'Usuário atualizado com sucesso!' })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

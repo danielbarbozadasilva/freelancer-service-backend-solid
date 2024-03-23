@@ -12,11 +12,11 @@ export class ListByIdConversationController {
 
       return response
       .status(200)
-      .send({ message: 'List conversation successfully!', data })
+      .send({ message: 'Conversa listada com sucesso!', data })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

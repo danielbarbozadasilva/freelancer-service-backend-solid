@@ -11,11 +11,11 @@ export class DeleteProductController {
 
       return response
         .status(200)
-        .send({ message: 'Service deleted successfully!' })
+        .send({ message: 'Serviço excluído com sucesso!' })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

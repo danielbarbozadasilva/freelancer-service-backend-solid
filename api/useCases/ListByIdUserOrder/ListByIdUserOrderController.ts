@@ -15,11 +15,11 @@ export class ListByIdOrderController {
 
       return response
       .status(200)
-      .send({ message: 'List order successfully!', data: orderDTO(result) })
+      .send({ message: 'Pedidos listados com sucesso!', data: orderDTO(result) })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }
