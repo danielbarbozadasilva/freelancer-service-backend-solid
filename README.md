@@ -1,12 +1,12 @@
-# **API SOLID Freelancer**
+# **API rest SOLID Freelancer**
 ## **Escopo do produto**
-O Projeto Freelancer consiste em um sistema web onde profissionais freelancers podem oferecer seus serviços a clientes da plataforma. Todas as funcionalidades do Sistema foram pensadas e elaboradas para proporcionar facilidade e comodidade aos usuários da plataforma.
+O projeto Freelancer consiste em um sistema web que tem como intuito ajudar as pessoas a encontrarem profissionais freelancers para desenvolver uma solução de que precisão. Como também a auxiliar o profissional freelancer a encontrar novos clientes. Todas as funcionalidades do Sistema foram pensadas e elaboradas para proporcionar facilidade e comodidade aos usuários da plataforma.
 
-O Sistema tem o objetivo de listar os serviços oferecidos pelos profissionais e efetuar o gerenciamento destes. Possibilitando ao profissional o controle dos mesmos. O cliente poderá consultar, adiquirir e avaliar serviços. O Sistema garante o total controle dos registros de solicitações, transações, avaliações e entregas. 
+O Sistema tem como objetivo listar os serviços oferecidos pelos profissionais e efetuar o gerenciamento destes. Possibilitando ao profissional o controle dos mesmos. O cliente poderá também consultar, adiquirir e avaliar serviços. O Sistema garante o total controle dos registros de solicitações, transações e avaliações. 
 
-Os usuários do sistema são o Profissional Freelancer, o Cliente e o Administrador. Todos possuem acesso ao sistema e a seu respectivo espaço. Além disso, o Sistema conta com uma tela inicial que permite ao público navegar de modo simples através de filtros entre categorias e serviços.
+Os usuários do sistema são o Profissional Freelancer, o Cliente e o Administrador. Todos possuem acesso ao Sistema e a seu respectivo espaço. Além disso, o Sistema conta com uma tela inicial que permite ao público navegar de modo simples através de filtros entre categorias e serviços.
 
-A API foi desenvolvida utilizando os Principios do SOLID, utilizando TYPESCRIPT com NODEJS, EXPRESSJS e Banco de dados MONGODB. Foi realizada a integração com a plataforma de pagamentos STRIPE, documentação utilizando o SWAGGER e o JEST nos testes unitários.
+No backend foi desenvolvida uma API Rest utilizando os princípios do SOLID com TYPESCRIPT, NODEJS, EXPRESSJS e banco de dados MONGODB. Estou utilizando também o Docker. Integração com o Amazom S3, Emailtrap e com a plataforma de pagamentos Stripe. Documentação utilizando o Swagger e o Jest nos testes unitários.
 <br/>
 <br/>
 O Front-End foi desenvolvido utilizando o REACTJS em TYPESCRIPT com layout responsivo, Material UI, Styled-components e reduxjs/toolkit. E está disponível para consulta no link abaixo:
@@ -34,13 +34,13 @@ MONGO_HOST=localhost:27017
 MONGO_DB_NAME=freelancer-api
 MONGO_INITDB_DATABASE=freelancer-api
 
-JWT_SECRET=6a60c0b6-6a7d-11ed-a1eb-0242ac120002
-JWT_REFRESH_SECRET=825850e4-6a7d-11ed-a1eb-0242ac120002
-JWT_VALID_TIME=999999999999999
+JWT_SECRET=exemplo
+JWT_REFRESH_SECRET=exemplo
+JWT_VALID_TIME=exemplo
 
 URL=http://localhost:3000
 IMAGE_PATH=http://localhost:3011/static/
-EMAIL=daniel80barboza@gmail.com
+EMAIL=exemplo@gmail.com
 
 STRIPE=exemplo
 
@@ -48,8 +48,13 @@ NODEMAILER_HOST=exemplo
 NODEMAILER_PORT=exemplo
 NODEMAILER_USER=exemplo
 NODEMAILER_PASS=exemplo
-```
 
+AWS_ACCESS_KEY_ID=exemplo
+AWS_SECRET_ACCESS_KEY=exemplo
+AWS_BUCKET=exemplo
+AWS_BUCKET_REGION=exemplo
+
+```
 Abra a pasta do repositório clonado, e crie um arquivo ".env.test", exemplo:
 ```
 PORT=3011
@@ -61,13 +66,13 @@ MONGO_HOST=localhost:27017
 MONGO_DB_NAME=freelancer-api
 MONGO_INITDB_DATABASE=freelancer-api
 
-JWT_SECRET=6a60c0b6-6a7d-11ed-a1eb-0242ac120002
-JWT_REFRESH_SECRET=825850e4-6a7d-11ed-a1eb-0242ac120002
-JWT_VALID_TIME=999999999999999
+JWT_SECRET=exemplo
+JWT_REFRESH_SECRET=exemplo
+JWT_VALID_TIME=exemplo
 
 URL=http://localhost:3000
 IMAGE_PATH=http://localhost:3011/static/
-EMAIL=daniel80barboza@gmail.com
+EMAIL=exemplo
 
 STRIPE=exemplo
 
@@ -75,8 +80,12 @@ NODEMAILER_HOST=exemplo
 NODEMAILER_PORT=exemplo
 NODEMAILER_USER=exemplo
 NODEMAILER_PASS=exemplo
-```
 
+AWS_ACCESS_KEY_ID=exemplo
+AWS_SECRET_ACCESS_KEY=exemplo
+AWS_BUCKET=exemplo
+AWS_BUCKET_REGION=exemplo
+```
 
 Abra a pasta do repositório clonado, e instale as dependências do projeto através do comando:
 ```
@@ -160,7 +169,7 @@ RF015 – O sistema deve listar os serviços por ordem alfabética ou ordem de p
 | Identificação | Classificação | Descrição |
 | --- | --- | --- |
 |RNF001   |Implementação     | O back-end do sistema deve ser desenvolvido em TYPESCRIPT utilizando o NODEJS e EXPRESSJS.    |
-|RNF002   |Implementação     | O back-end do sistema deve ser desenvolvido utilizando os principios do SOLID.    |
+|RNF002   |Implementação     | A API do sistema deve ser desenvolvida utilizando os principios do SOLID.    |
 |RNF003   |Usabilidade     | O sistema deve integrar-se com a plataforma STRIPE.    |
 |RNF004   |Implementação     | O front-end do sistema deve ser desenvolvido em REACTJS.    |
 |RNF005   |Implementação     | O banco de dados a ser utilizado é o MONGODB.     |
@@ -205,11 +214,14 @@ RF015 – O sistema deve listar os serviços por ordem alfabética ou ordem de p
 <br/>
 
 > ## Bibliotecas e Ferramentas
+* Amazom S3
 * Docker
-* Mongoose
+* MailTrap
+* Multer
 * Stripe
 * Jest
 * Nodemailer
+* Mongoose
 * Swagger
 * Git
 * Crypto
@@ -220,70 +232,6 @@ RF015 – O sistema deve listar os serviços por ordem alfabética ou ordem de p
 * Express
 * Eslint
 * Prettier
-* Multer
-<br/>
-<br/>
-<br/>
-
-> ## **Transações**
-<br/>
-
-## **Processar pagamento - Cliente**
-Ao realizar uma compra o Sistema envia um e-mail notificando o Cliente sobre o processamento do pagamento.
-
-<br/>
-<img src="./docs/prints/1.jpg" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Processar pagamento - Administrador**
-Quando o Cliente realiza uma compra, o Sistema envia um e-mail notificando ao administrador sobre o pedido. 
-
-<br/>
-<img src="./docs/prints/2.jpg" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Pagamento aprovado - Cliente**
-Quando o cliente realiza o pagamento, e este é aprovado pelo PagSeguro. O Sistema envia um e-mail ao Cliente notificando que o pedido foi pago.
-
-<br/>
-<img src="./docs/prints/6.jpg" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Pagamento aprovado - Administrador**
-Quando o pagamento é aprovado pelo PagSeguro. O Sistema envia um e-mail ao Administrador para que este separe e envie os produtos referentes ao pedido.
-
-<br/>
-<img src="./docs/prints/3.jpg" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Pagamento cancelado - Cliente**
-Quando o cliente não realiza o pagamento, o Sistema envia um e-mail ao Cliente notificando que o seu pedido não foi pago, e por isso foi cancelado.
-
-<br/>
-<img src="./docs/prints/4.jpg" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Envio do pedido - Cliente**
-Quando o Administrador envia o pedido para a transportadora. O Sistema notifica o Cliente e informa o código de rastreamento.
-
-<br/>
-<img src="./docs/prints/5.jpg" alt=""/>
-<br/>
 <br/>
 <br/>
 <br/>
@@ -291,290 +239,478 @@ Quando o Administrador envia o pedido para a transportadora. O Sistema notifica 
 > ## **Telas**
 <br/>
 
+## **Swagger**
+<img src="./docs/prints/59.jpg" alt=""/>
+
 ## **Portal - Tela Inicial**
 <br/>
-<img src="./docs/prints/7.png" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Portal - Tela de login**
-<br/>
-<img src="./docs/prints/8.png" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Cliente - Recuperar senha**
-<br/>
-<img src="./docs/prints/20.png" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Portal - Redefinir senha**
-<br/>
-<img src="./docs/prints/21.png" alt=""/>
+<img src="./docs/prints/1.jpg" alt=""/>
+<img src="./docs/prints/2.jpg" alt=""/>
+<img src="./docs/prints/3.jpg" alt=""/>
+<img src="./docs/prints/5.jpg" alt=""/>
+<img src="./docs/prints/6.jpg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
 ## **Portal - Tela de cadastro**
+Todos os formulários do sistema contam com validação em tempo real.
 <br/>
-<img src="./docs/prints/9.png" alt=""/>
+<br/>
+<img src="./docs/prints/7.jpeg" alt=""/>
+<br/>
+<br/>
+<img src="./docs/prints/77.jpeg" alt=""/>
+<br/>
+<br/>
+Ao finalizar o preeenchimento das informações o usuário deverá clicar no botão "Cadastrar". Um e-mail será disparado para o usuário.
+<br/>
+<br/>
+<img src="./docs/prints/777.jpg" alt=""/>
+<br/>
+<br/>
+
+## **Portal - Tela de login**
+Logar como cliente.
+<br/>
+<br/>
+<img src="./docs/prints/8.jpeg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Portal - Tela detalhes do produto**
+## **Portal - Login efetuado**
 <br/>
-<img src="./docs/prints/10.png" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Portal - Tela de carrinho**
-<br/>
-<img src="./docs/prints/16.png" alt=""/>
+<img src="./docs/prints/9.jpg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Portal - Finalizar pedido**
+## **Portal - Categorias**
+Selecionar categoria: "Escrever conteúdo".
 <br/>
-<img src="./docs/prints/17.png" alt=""/>
+<br/>
+<img src="./docs/prints/10.jpg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
 
-## **Portal - Pedido concluído**
-<br/>
-<img src="./docs/prints/18.png" alt=""/>
-<br/>
+## **Portal - Categoria: "Escrever conteúdo"**
+Selecionar serviço: "Marketing Digital".
 <br/>
 <br/>
-<br/>
-
-## **Portal - Imprimir boleto**
-<br/>
-<img src="./docs/prints/19.png" alt=""/>
+<img src="./docs/prints/11.jpeg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Dashboard Cliente - Atualizar cadastro**
-<br/>
-<img src="./docs/prints/11.png" alt=""/>
-<br/>
+## **Portal - Tela Serviço: "Marketing Digital"**
+Clicar no botão "Confirmar".
 <br/>
 <br/>
-<br/>
-
-## **Dashboard Cliente - listar pedidos**
-<br/>
-<img src="./docs/prints/12.png" alt=""/>
+<img src="./docs/prints/12.jpeg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Dashboard Cliente - listar os produtos por pedido**
-<br/>
-<img src="./docs/prints/13.png" alt=""/>
-<br/>
+## **Portal - Tela Serviço: "Marketing Digital" - Modal de descrição do serviço**
+Informar a descrição do serviço, e clicar no botão "Confirmar".
 <br/>
 <br/>
-<br/>
-
-## **Dashboard Cliente - listar os dados de entrega por pedido**
-<br/>
-<img src="./docs/prints/14.png" alt=""/>
+<img src="./docs/prints/13.jpg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Dashboard Cliente - Buscar por pedidos**
-<br/>
-<img src="./docs/prints/15.png" alt=""/>
-<br/>
+## **Portal - Tela de Pagamento**
+Informar dados de pagamento.
 <br/>
 <br/>
-<br/>
-
-## **Dashboard Admin - Listar pedidos dos clientes**
-<br/>
-<img src="./docs/prints/22.png" alt=""/>
+<img src="./docs/prints/14.jpeg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Dashboard Admin - Listar produtos referentes aos pedidos**
-<br/>
-<img src="./docs/prints/23.png" alt=""/>
-<br/>
+## **Portal - Tela de Pagamento - Sucesso**
+Pagamento efetuado com sucesso.
 <br/>
 <br/>
-<br/>
-
-## **Dashboard Admin - Listar dados do cliente que efetuou o pedido**
-<br/>
-<img src="./docs/prints/24.png" alt=""/>
+<img src="./docs/prints/15.jpeg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Dashboard Admin - Listar dados de entrega do pedido**
-<br/>
-<img src="./docs/prints/25.png" alt=""/>
-<br/>
+## **E-mail - Transação efetuada com sucesso**
+Pagamento efetuado com sucesso.
 <br/>
 <br/>
-<br/>
-
-## **Dashboard Admin - Buscar por um pedido específico**
-<br/>
-<img src="./docs/prints/26.png" alt=""/>
+<img src="./docs/prints/151.jpg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Dashboard Admin - Listar categorias cadastradas**
-<br/>
-<img src="./docs/prints/27.png" alt=""/>
-<br/>
+## **Portal - Fazer login como cliente**
+Entrar no modal, e selecionar a opção "Pedidos".
 <br/>
 <br/>
-<br/>
-
-## **Dashboard Admin - Listar produtos referentes a categoria**
-<br/>
-<img src="./docs/prints/28.png" alt=""/>
+<img src="./docs/prints/16.jpg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Dashboard Admin - Cadastrar nova categoria**
-<br/>
-<img src="./docs/prints/30.png" alt=""/>
-<br/>
+## **Portal - Tela pedidos**
+São listados os pedidos feitos pelo cliente, com as informações do Freelancer, serviço contratado e dados da transação.
 <br/>
 <br/>
-<br/>
-
-## **Dashboard Admin - Editar categoria**
-<br/>
-<img src="./docs/prints/29.png" alt=""/>
+<img src="./docs/prints/17.jpeg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Dashboard Admin - Remover a categoria e os seus respectivos produtos**
-<br/>
-<img src="./docs/prints/31.png" alt=""/>
-<br/>
+## **Portal - Tela pedidos - Detalhes**
+Ao clicar no botão "Detalhes" são exibidas informações adicionais da transação.
 <br/>
 <br/>
-<br/>
-
-## **Dashboard Admin - Listar produtos cadastrados**
-<br/>
-<img src="./docs/prints/32.png" alt=""/>
+<img src="./docs/prints/18.jpg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Dashboard Admin - Cadastrar novo produto**
-<br/>
-<img src="./docs/prints/33.png" alt=""/>
-<br/>
+## **Portal - Tela pedidos - Chat**
+Ao clicar no botão "Chat" é iniciado um chat entre o Freelancer e o Cliente. No exemplo abaixo estou enviando uma mensagem.
 <br/>
 <br/>
-<br/>
-
-## **Dashboard Admin - Editar produto**
-<br/>
-<img src="./docs/prints/34.png" alt=""/>
+<img src="./docs/prints/19.jpg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Dashboard Admin - Excluir produto**
-<br/>
-<img src="./docs/prints/35.png" alt=""/>
-<br/>
+## **Portal - Tela de Login**
+Vou realizar o login como Freelancer.
 <br/>
 <br/>
-<br/>
-
-## **Dashboard Admin - Buscar por produto**
-<br/>
-<img src="./docs/prints/36.png" alt=""/>
+<img src="./docs/prints/20.jpeg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Dashboard Admin - Listar clientes cadastrados**
-<br/>
-<img src="./docs/prints/37.png" alt=""/>
-<br/>
+## **Portal - Tela Principal**
+Vou abrir o modal e selecionar a opção "Mensagens".
 <br/>
 <br/>
-<br/>
-
-## **Dashboard Admin - Listar endereço do cliente**
-<br/>
-<img src="./docs/prints/38.png" alt=""/>
+<img src="./docs/prints/21.jpg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Dashboard Admin - Excluir cliente**
-<br/>
-<img src="./docs/prints/39.png" alt=""/>
-<br/>
+## **Portal - Tela Mensagens**
+Podemos visualizar as mensagens recebidas. Assim como marcar a mensagem como lida. Em últimas mensagens vou clicar para abri-la.
 <br/>
 <br/>
-<br/>
-
-## **Dashboard Admin - Buscar por cliente**
-<br/>
-<img src="./docs/prints/40.png" alt=""/>
+<img src="./docs/prints/22.jpg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Dashboard Admin - Listar avaliações**
+## **Portal - Tela Mensagens**
+O chat abri e podemos visualizar as mensagens recebidas. Assim como responde-las.
 <br/>
-<img src="./docs/prints/41.png" alt=""/>
+<br/>
+<img src="./docs/prints/23.jpg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Dashboard Admin - Excluir avaliação**
+## **Portal - Tela Pedidos**
+Vou clicar no modal e selecionar a opção "Pedidos". São listados todos os pedidos contendo informações do cliente e detalhes da transação. O usuário Freelancer também pode iniciar um chat com o cliente.
 <br/>
-<img src="./docs/prints/42.png" alt=""/>
+<br/>
+<img src="./docs/prints/24.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Portal - Tela Serviços**
+Vou clicar no modal e selecionar a opção "Serviços". São listados todos os serviços prestados pelo Freelancer.
+<br/>
+<br/>
+<img src="./docs/prints/25.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Portal - Tela Serviços - Adicionar**
+Para adicionar um serviço basta clicar no botão "Adicionar serviço". E realizar as devidas alterações. Para concluir basta clicar no botão "Cadastrar".
+<br/>
+<br/>
+<img src="./docs/prints/26.jpg" alt=""/>
+<br/>
+<br/>
+<img src="./docs/prints/27.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+## **Portal - Tela Serviços - Editar**
+Agora para editar um serviço, basta clicar no ícone no formato de um "lápis". E realizar as devidas alterações. Para concluir basta clicar no botão "Salvar".
+<br/>
+<br/>
+<img src="./docs/prints/29.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Portal - Tela Serviços - Excluir**
+Agora para excluir um serviço, basta clicar no ícone no formato de uma "lixeira". E clicar no botão "Confirmar".
+<br/>
+<br/>
+<img src="./docs/prints/30.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Portal - Tela de Login**
+Vou realizar login como administrador do sistema.
+<br/>
+<br/>
+<img src="./docs/prints/32.jpeg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Usuários**
+Nesta tela são listados todos os usuários do Sistema.
+<br/>
+<br/>
+<img src="./docs/prints/33.jpeg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Usuários - Editar**
+Para editar um usuário basta clicar no ícone no formato de um "lápis". Realizar as devidas alterações e clicar no botão "Atualizar".
+<br/>
+<br/>
+<img src="./docs/prints/34.jpg" alt=""/>
+<br/>
+<br/>
+<img src="./docs/prints/35.jpg" alt=""/>
+<br/>
+<br/>
+
+
+## **Dashboard Admin - Tela Usuários - Excluir**
+Agora para excluir um serviço, basta clicar no ícone no formato de uma "lixeira". E clicar no botão "Confirmar".
+<br/>
+<br/>
+<img src="./docs/prints/37.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela Usuários**
+O administrador também pode utilizar a barra de pesquisa para procurar um usuário específico.
+<br/>
+<br/>
+<img src="./docs/prints/39.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela Usuários**
+O administrador também poderá aplicar filtro nas colunas.
+<br/>
+<br/>
+<img src="./docs/prints/40.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela Usuários**
+O administrador também poderá imprimir ou fazer o download em CSV.
+<br/>
+<br/>
+<img src="./docs/prints/41.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela Pedidos**
+O administrador tem acesso a lista de todos os pedidos, podendo buscar por um pedido especifico.
+<br/>
+<br/>
+<img src="./docs/prints/42.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela Pedidos**
+O administrador poderá visualizar o cliente que está envolvido na transação.
+<br/>
+<br/>
+<img src="./docs/prints/43.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela Pedidos**
+O administrador poderá visualizar o freelancer que está envolvido na transação.
+<br/>
+<br/>
+<img src="./docs/prints/44.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela Pedidos**
+O administrador poderá visualizar o serviço que está envolvido na transação.
+<br/>
+<br/>
+<img src="./docs/prints/45.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela categorias**
+O administrador poderá gerenciar todas as categorias.
+<br/>
+<br/>
+<img src="./docs/prints/46.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela categorias**
+O administrador tem acesso a lista de todos as categorias, podendo buscar por uma categoria especifica.
+<br/>
+<br/>
+<img src="./docs/prints/47.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela categorias - Serviços**
+No icone no formato de "três pontos" o administrador pode consultar os serviços ligados aquela categoria.
+<br/>
+<br/>
+<img src="./docs/prints/48.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela categorias - Cadastrar**
+Para cadastrar uma categoria basta clicar no botão "Novo". Preencher os dados e clicar no botão "Cadastrar".
+<br/>
+<br/>
+<img src="./docs/prints/481.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela categorias - Editar**
+Para editar uma categoria basta clicar no ícone no formato de um "lápis". Realizar as devidas alterações e clicar no botão "Atualizar".
+<br/>
+<br/>
+<img src="./docs/prints/49.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela categorias - Excluir**
+Para excluir uma categoria basta clicar no ícone no formato de uma "lixeira". E logo após, clicar no botão confirmar.
+<br/>
+<br/>
+<img src="./docs/prints/51.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela serviços**
+Na tela de serviços são listados todos os serviços cadastrados no sistema.
+<br/>
+<br/>
+<img src="./docs/prints/53.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela serviços - Cliente**
+O administrador pode visualizar os clientes que solicitaram o serviço.
+<br/>
+<br/>
+<img src="./docs/prints/54.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela serviços - Serviço**
+O administrador pode visualizar informações do freelancer que presta o serviço.
+<br/>
+<br/>
+<img src="./docs/prints/55.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela serviços - Pedido**
+O administrador pode visualizar os pedidos atrelados aquele serviço e o seu respectivo "status".
+<br/>
+<br/>
+<img src="./docs/prints/56.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard Admin - Tela serviços - Avaliação**
+O administrador pode visualizar as avaliações atrelados aquele serviço.
+<br/>
+<br/>
+<img src="./docs/prints/57.jpg" alt=""/>
 <br/>
 <br/>
 <br/>
