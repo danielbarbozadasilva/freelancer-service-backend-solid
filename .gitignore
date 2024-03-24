@@ -1,0 +1,7 @@
+node_modules
+node_modules/
+instruções.txt
+data
+.env
+.env.test
+dist
