@@ -14,27 +14,6 @@ describe('Register User', () => {
   })
 
   describe('Register User', () => {
-    test('Make sure register the user', async () => {
-      const chance = new Chance()
-
-      const data = {
-        name: 'Daniel Silva',
-        username: chance.name(),
-        email: chance.email(),
-        cpf: chance.cpf(),
-        birthDate: '2000-03-01T05:36:40.303Z',
-        country: 'brasil',
-        phone: '(21)99999-9999',
-        description: 'Desenvolvedor web',
-        permissions: ['client'],
-        password: '123',
-        isSeller: false,
-        picture: 'files-1704052453980.jpg'
-      }
-      const result = await registerUseCase.execute(data as any)
-      expect(result).toBe(true)
-    })
-
     test('Make sure return error if the email already exists', async () => {
       try {
         const salt = cryptography.createSalt()

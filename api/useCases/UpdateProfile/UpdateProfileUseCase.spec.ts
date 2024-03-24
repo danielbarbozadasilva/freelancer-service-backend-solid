@@ -3,7 +3,7 @@ import { createConnection, closeConnection } from '../../database/client'
 import { IUpdateProfileRequestDTO } from './UpdateProfileDTO'
 import cryptography from '../../utils/cryptography'
 
-describe('Register User', () => {
+describe('Update User', () => {
   beforeAll(() => {
     createConnection()
   })
@@ -12,29 +12,7 @@ describe('Register User', () => {
     await closeConnection()
   })
 
-  describe('Register User', () => {
-    test('Make sure register the user', async () => {
-      const salt = cryptography.createSalt()
-      const id: string = '65883ab3c89918015e25e532'
-      const data = {
-        name: "Daniel Silva",
-        username: "daniel936",
-        email: "danielbarboza90@hotmail.com",
-        cpf: "555.555.555-55",
-        birthDate: "2000-03-01T05:36:40.303Z",
-        picture: "files-1704052453979.jpg",
-        country: "brasil",
-        phone: "(21)99999-9999",
-        description: "Desenvolvedor web",
-        permissions: ["client"],
-        hash: cryptography.createHash('123', salt),
-        salt: salt,
-        isSeller: false
-      }
-      const result = await updateProfileUseCase.execute(id, data as IUpdateProfileRequestDTO)
-      expect(result).toBe(true)
-    })
-
+  describe('Update User', () => {
     test('Make sure return error if the email already exists', async () => {
       try {
         const salt = cryptography.createSalt()

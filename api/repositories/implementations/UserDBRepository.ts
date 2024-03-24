@@ -19,7 +19,7 @@ export class UserDBRepository implements IUserRepository {
       salt: dataUser.salt,
       isSeller: dataUser.isSeller
     })
-
+    
     return resultDB
   }
 
@@ -49,7 +49,7 @@ export class UserDBRepository implements IUserRepository {
       {_id: id },
       { ...data })
 
-      return resultDB.modifiedCount ? true : false
+      return !!resultDB
     }
 
   async updateSeller(id: string, isSeller: boolean): Promise<boolean> {
