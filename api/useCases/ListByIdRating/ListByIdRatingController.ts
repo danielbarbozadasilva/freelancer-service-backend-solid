@@ -11,11 +11,11 @@ export class ListByIdRatingController {
 
       return response
       .status(200)
-      .send({ message: 'List Rating successfully!', data: result })
+      .send({ message: 'Avaliação listada com sucesso!', data: result })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

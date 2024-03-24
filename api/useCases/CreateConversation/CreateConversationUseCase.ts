@@ -7,6 +7,6 @@ export class CreateConversationUseCase {
 
   async execute(data: ICreateConversationRequestDTO) {
     const conversationCreate = new Conversation(data)
-    return this.createConversationRepository.save(conversationCreate)
+    return await this.createConversationRepository.save(conversationCreate)
   }
 }

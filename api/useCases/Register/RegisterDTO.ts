@@ -12,9 +12,9 @@ export interface IRegisterRequestDTO {
   hash?: string
   salt?: string
   recovery?: {
-    token: string,
+    token: string
     date: Date
-  },
+  }
   isSeller: boolean
   files?: {}
 }

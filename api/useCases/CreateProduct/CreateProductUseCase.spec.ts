@@ -14,24 +14,20 @@ describe('Create Product', () => {
   describe('Create Product', () => {
     test('Make sure create Product', async () => {
       const data = {
-        userId: "65883ab3c89918015e25e532",
-        title: "Desenvolvedor Full Stack",
-        description: "Experiência em desenvolvimento web full stack",
-        category: "6591ac5bf9877e3170d90c48",
-        price: 50,
-        images: [
-          "files-1704052453982.jpg"
-        ],
+        userId: '65883ab3c89918015e25e532',
+        title: 'Desenvolvedor Web',
+        description: 'Experiência em Desenvolvedor Web',
+        category: '6591ac5bf9877e3170d90c48',
+        price: 110,
+        images: [ 'files-1709295638097.jpg' ],
         deliveryTime: 7,
         features: [
-          "Desenvolvimento web",
-          "APIs RESTful",
-          "React",
-          "Node.js", 
-          "Express"
-        ],
-        sales: 0,
-        rating: "638a22b10ef44976d168711e",
+          'Desenvolvimento web',
+          'APIs RESTful',
+          'React',
+          'Node.js',
+          'Express'
+        ]
       }
 
       const result = await createProductUseCase.execute(data as ICreateProductRequestDTO)

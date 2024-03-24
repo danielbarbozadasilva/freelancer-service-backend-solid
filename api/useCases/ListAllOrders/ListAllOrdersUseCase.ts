@@ -4,6 +4,6 @@ export class ListAllOrdersUseCase {
   constructor(private orderRepository: IOrderRepository) {}
 
     async execute() {
-      return this.orderRepository.listAllOrders()
+      return await this.orderRepository.listAllOrders()
   }
 }

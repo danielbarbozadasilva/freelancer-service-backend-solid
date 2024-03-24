@@ -7,6 +7,11 @@ export class UpdateRatingUseCase {
 
   async execute(data: IRatingRequestDTO) {
     const ratingUpdate = new Rating(data)
-    return this.ratingRepository.updateRating(ratingUpdate)
+    const result = await this.ratingRepository.verifyIdRatingExists(data.id)
+    
+    if(!result){
+      throw new Error('Avaliação inexistente!');
+    }
+    return await this.ratingRepository.updateRating(ratingUpdate)
   }
 }

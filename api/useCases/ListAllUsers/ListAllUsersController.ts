@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { ListAllUsersUseCase } from './ListAllUsersUseCase'
-import { listClientDTO } from './ListAllUsersDTO'
+import { listUserDTO } from './ListAllUsersDTO'
 
 export class ListAllUsersController {
   constructor(private listAllUsersUseCase: ListAllUsersUseCase) {}
@@ -11,12 +11,12 @@ export class ListAllUsersController {
 
       return response
       .status(200)
-      .send({ message: 'Users successfully listed!', data: listClientDTO(result) })
+      .send({ message: 'Usuários listados com sucesso!', data: await listUserDTO(result) })
 
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

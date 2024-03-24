@@ -1,13 +1,12 @@
-import { ObjectId } from 'mongoose'
-import { formatCurrency, formatarData, formatarDataHora } from '../../utils/utils.format'
+import { formatCurrency, formatarData, formatarDataHora } from '../../utils/format'
 
 export interface IOrderRequestDTO {
   userId: string
-  isSeller: boolean
+  isSeller: any
 }
 
 export interface IOrderResultDTO {
-  _id: ObjectId
+  _id: string
   description: string
   productId: {
     _id: string
@@ -72,7 +71,7 @@ export const orderDTO = (data: IOrderResultDTO[]) => {
       isSeller: item.isSeller,
       payment_intent: item.payment_intent,
       createdAt: formatarDataHora(item.createdAt),
-      updatedAt: formatarData(item.updatedAt),
+      updatedAt: item.updatedAt,
       product: item.productId,
       user: {
         _id: item.userId._id,

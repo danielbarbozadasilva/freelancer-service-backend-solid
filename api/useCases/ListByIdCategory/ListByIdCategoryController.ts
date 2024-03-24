@@ -12,11 +12,11 @@ export class ListByIdCategoryController {
 
       return response
       .status(200)
-      .send({ message: 'List category successfully!', data: categoryDTO(result) })
+      .send({ message: 'Categoria listada com sucesso!', data: await categoryDTO(result) })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

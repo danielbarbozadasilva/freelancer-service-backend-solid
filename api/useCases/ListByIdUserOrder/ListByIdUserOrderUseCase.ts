@@ -5,6 +5,6 @@ export class ListByIdOrderUseCase {
   constructor(private orderRepository: IOrderRepository) {}
 
   async execute(data: IOrderRequestDTO) {
-    return this.orderRepository.listByIdUserOrders(data)
+    return await this.orderRepository.listByIdUserOrders(data)
   }
 }

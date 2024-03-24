@@ -9,16 +9,16 @@ export class CreateCategoryController {
       await this.createCategoryUseCase.execute({
         name: request.body.name,
         description: request.body.description,
-        picture: request.file.originalname,
+        picture: request?.file?.filename,
        })
-
+       
       return response
         .status(201)
-        .send({ message: 'Category successfully created!' })
+        .send({ message: 'Categoria criada com sucesso!' })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

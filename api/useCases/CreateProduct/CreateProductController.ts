@@ -7,7 +7,7 @@ export class CreateProductController {
   async handle(request: Request, response: Response) {
     try {
       const image = request.files
-      let dataImage
+      let dataImage: string[] = []
       if (Array.isArray(image)) {
         dataImage = image.map((item) => item.filename)
       }
@@ -27,11 +27,11 @@ export class CreateProductController {
 
       return response
         .status(201)
-        .send({ message: 'Product successfully created!' })
+        .send({ message: 'Serviço criado com sucesso!' })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

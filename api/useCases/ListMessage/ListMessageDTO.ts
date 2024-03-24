@@ -1,7 +1,5 @@
-import { ObjectId } from "mongoose"
-
 export interface IMessageRequestDTO {
-  _id?: ObjectId | string
+  _id?: string
   conversationId: string
   userId: string
   description: string

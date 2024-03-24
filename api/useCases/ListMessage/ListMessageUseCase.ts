@@ -4,6 +4,6 @@ export class ListMessageUseCase {
   constructor(private messageRepository: IMessageRepository) {}
 
   async execute(id: string) {
-    return this.messageRepository.getMessages(id)
+    return await this.messageRepository.getMessages(id)
   }
 }

@@ -5,21 +5,22 @@ export class UpdateCategoryController {
   constructor(private updateCategoryUseCase: UpdateCategoryUseCase) {}
 
   async handle(request: Request, response: Response) {
-    try {
+    try {      
+      
       await this.updateCategoryUseCase.execute({
         _id: request.params.id,
         name: request.body.name,
         description: request.body.description,
-        picture: request?.file?.originalname,
+        picture: request?.file?.filename,
        })
 
       return response
         .status(200)
-        .send({ message: 'Category successfully updated!' })
+        .send({ message: 'Categoria atualizada com sucesso!' })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

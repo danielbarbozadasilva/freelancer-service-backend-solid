@@ -11,11 +11,11 @@ export class DeleteRatingController {
 
       return response
       .status(200)
-      .send({ message: 'Rating deleted successfully!' })
+      .send({ message: 'Avaliação excluída com sucesso!' })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

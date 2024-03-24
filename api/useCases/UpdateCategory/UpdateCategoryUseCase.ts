@@ -1,9 +1,13 @@
 import { Category } from '../../entities/Category'
 import { ICategoryRepository } from '../../repositories/ICategoryRepository'
 import { ICategoryRequestDTO } from './UpdateCategoryDTO'
+import S3Storage from '../../providers/implementations/S3Storage'
 
 export class UpdateCategoryUseCase {
-  constructor(private categoryRepository: ICategoryRepository) {}
+  constructor(
+    private categoryRepository: ICategoryRepository,
+    private s3: S3Storage
+    ) {}
 
   async execute(data: ICategoryRequestDTO) {
     const categoryCreate = new Category(data)
@@ -11,6 +15,9 @@ export class UpdateCategoryUseCase {
     if(!categoryExists){
       throw new Error('Essa categoria não existe!');
     }
-    return this.categoryRepository.updateCategory(categoryCreate)
+    
+    await this.categoryRepository.updateCategory(categoryCreate)
+    
+    await this.s3.saveFile(data.picture)
   }
 }

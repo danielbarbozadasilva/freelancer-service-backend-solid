@@ -1,6 +1,6 @@
 import { Conversation } from '../../entities/Conversation'
 import { IConversationRepository } from '../IConversationRepository'
-import conversationSchema from '../../database/schemas/schemas.conversation'
+import conversationSchema from '../../database/schemas/conversation'
 
 export class ConversationDBRepository implements IConversationRepository {
   async save(dataUser: Conversation): Promise<Conversation> {
@@ -32,8 +32,8 @@ export class ConversationDBRepository implements IConversationRepository {
 
   }
 
-  async getSingleConversation(id: string): Promise<Conversation> {
-    const resultDB = await conversationSchema.findById(id)
+  async getSingleConversation(data: { userId: string, buyerId: string }): Promise<Conversation[]> {
+    const resultDB = await conversationSchema.find({ sellerId: data.userId, buyerId: data.buyerId })
     return resultDB
   }
 

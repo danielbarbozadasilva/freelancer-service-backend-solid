@@ -10,11 +10,11 @@ export class ListAllOrdersController {
       const result = await this.listAllOrdersUseCase.execute()
       return response
         .status(200)
-        .send({ message: 'List all orders successfully!', data: ordersDTO(result) })
+        .send({ message: 'Pedidos listados com sucesso!', data: ordersDTO(result) })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

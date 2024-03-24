@@ -1,5 +1,5 @@
-import { formatAddressImage } from '../../utils/utils.file'
-import { formatCurrency } from '../../utils/utils.format'
+import { formatAddressImage } from '../../utils/multer'
+import { formatCurrency } from '../../utils/format'
 
 interface Rating {
   _id: string
@@ -77,7 +77,7 @@ export interface Product {
   rating: Rating
   user: User
   client: Client
-  orders: Order
+  orders: Order[]
 }
 
 interface Metadata {
@@ -89,9 +89,85 @@ export interface DataItem {
   data: Product[]
 }
 
-export const productDTO = (data: DataItem[]): any[] => {
-  return (
-    data[0]?.data.map((item: Product) => {
+export const productDTO = async (data: DataItem[]): Promise<any[]> => {
+  const formattedData = await Promise.all(
+    data[0]?.data.map(async (item: Product) => {
+      const formattedImages = await Promise.all(
+        item.images.map(
+          async (image: string) => await formatAddressImage(image)
+        )
+      )
+
+      const formattedCategory = item.category
+        ? {
+            id: item.category._id,
+            name: item.category.name,
+            description: item.category.description,
+            picture: await formatAddressImage(item.category.picture)
+          }
+        : null
+
+      const formattedRating = item.rating
+        ? {
+            id: item.rating._id,
+            name: item.rating.name,
+            text: item.rating.text,
+            score: item.rating.score,
+            productId: item.rating.productId,
+            userId: item.rating.userId
+          }
+        : null
+
+      const formattedUser = item.user
+        ? {
+            id: item.user._id,
+            name: item.user.name,
+            username: item.user.username,
+            email: item.user.email,
+            cpf: item.user.cpf,
+            birthDate: item.user.birthDate,
+            picture: await formatAddressImage(item.user.picture),
+            country: item.user.country,
+            phone: item.user.phone,
+            description: item.user.description,
+            permissions: item.user.permissions,
+            isSeller: item.user.isSeller
+          }
+        : null
+
+      const formattedClient = item.client
+        ? {
+            id: item.client._id,
+            name: item.client.name,
+            username: item.client.username,
+            email: item.client.email,
+            cpf: item.client.cpf,
+            birthDate: item.client.birthDate,
+            picture: await formatAddressImage(item.client.picture),
+            country: item.client.country,
+            phone: item.client.phone,
+            description: item.client.description,
+            permissions: item.client.permissions,
+            isSeller: item.client.isSeller
+          }
+        : null
+
+      const formattedOrders = item.orders.map((item2) => ({
+        id: item2._id,
+        productId: item2.productId,
+        title: item2.title,
+        description: item2.description,
+        status: item2.status,
+        price: item2.price,
+        userId: item2.userId,
+        buyerId: item2.buyerId,
+        isCompleted: item2.isCompleted,
+        isSeller: item2.isSeller,
+        payment_intent: item2.payment_intent,
+        createdAt: item2.createdAt,
+        updatedAt: item2.updatedAt
+      }))
+
       return {
         metadata: data[0]?.metadata[0]?.total,
         data: {
@@ -99,71 +175,21 @@ export const productDTO = (data: DataItem[]): any[] => {
           userId: item.userId,
           title: item.title,
           description: item.description,
-          category: {
-            id: item.category._id,
-            name: item.category.name,
-            description: item.category.description,
-            picture: item.category.picture
-          },
+          category: formattedCategory,
           price: item.price,
           priceFormated: formatCurrency(item.price),
-          images: item.images.map((image: string) => formatAddressImage(image)),
+          images: formattedImages,
           deliveryTime: item.deliveryTime,
           features: item.features,
           sales: item.sales,
-          rating: {
-            id: item.rating?._id,
-            name: item.rating?.name,
-            text: item.rating?.text,
-            score: item.rating?.score,
-            productId: item.rating?.productId,
-            userId: item.rating?.userId
-          },
-          user: {
-            id: item.user._id,
-            name: item.user.name,
-            username: item.user.username,
-            email: item.user.email,
-            cpf: item.user.cpf,
-            birthDate: item.user.birthDate,
-            picture: item.user.picture,
-            country: item.user.country,
-            phone: item.user.phone,
-            description: item.user.description,
-            permissions: item.user.permissions,
-            isSeller: item.user.isSeller
-          },
-          client: {
-            id: item.client?._id,
-            name: item.client?.name,
-            username: item.client?.username,
-            email: item.client?.email,
-            cpf: item.client?.cpf,
-            birthDate: item.client?.birthDate,
-            picture: item.client?.picture,
-            country: item.client?.country,
-            phone: item.client?.phone,
-            description: item.client?.description,
-            permissions: item.client?.permissions,
-            isSeller: item.client?.isSeller
-          },
-          orders: {
-            id: item.orders?._id,
-            productId: item.orders?.productId,
-            title: item.orders?.title,
-            description: item.orders?.description,
-            status: item.orders?.status,
-            price: item.orders?.price,
-            userId: item.orders?.userId,
-            buyerId: item.orders?.buyerId,
-            isCompleted: item.orders?.isCompleted,
-            isSeller: item.orders?.isSeller,
-            payment_intent: item.orders?.payment_intent,
-            createdAt: item.orders?.createdAt,
-            updatedAt: item.orders?.updatedAt,
-          }
+          rating: formattedRating,
+          user: formattedUser,
+          client: formattedClient,
+          orders: formattedOrders
         }
       }
-    }) || []
+    })
   )
+
+  return formattedData || []
 }

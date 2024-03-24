@@ -1,8 +1,7 @@
-import { ObjectId } from 'mongoose'
-import { formatCurrency, formatarData, formatarDataHora } from '../../utils/utils.format'
+import { formatCurrency, formatarData, formatarDataHora } from '../../utils/format'
 
 export interface IOrdersRequestDTO {
-  _id: ObjectId
+  _id: string
   productId: string
   title: string
   description: string
@@ -67,49 +66,50 @@ export const ordersDTO = (data: IOrdersRequestDTO[]) => {
       description: item.description,
       price: formatCurrency(item.price),
       isCompleted: item.isCompleted,
+      status: item.isCompleted ? 'Finalizada' : 'Em andamento',
       isSeller: item.isSeller,
       payment_intent: item.payment_intent,
       createdAt: formatarDataHora(item.createdAt),
       product: {
-        id: item.product._id,
-        title: item.product.title,
-        description: item.product.description,
-        category: item.product.category,
-        price: formatCurrency(item.product.price),
-        deliveryTime: item.product.deliveryTime,
-        features: item.product.features,
-        sales: item.product.sales,
-        rating: item.product.rating
+        id: item.product?._id,
+        title: item.product?.title,
+        description: item.product?.description,
+        category: item.product?.category,
+        price: formatCurrency(item.product?.price),
+        deliveryTime: item.product?.deliveryTime,
+        features: item.product?.features,
+        sales: item.product?.sales,
+        rating: item.product?.rating
       },
       user: {
-        id: item.user._id,
-        name: item.user.name,
-        username: item.user.username,
-        email: item.user.email,
-        cpf: item.user.cpf,
-        birthDate: item.user.birthDate,
-        picture: item.user.picture,
-        country: item.user.country,
-        phone: item.user.phone,
-        description: item.user.description,
-        permissions: item.user.permissions,
-        isSeller: item.user.isSeller,
-        createdAt: formatarDataHora(item.user.createdAt),
+        id: item.user?._id,
+        name: item.user?.name,
+        username: item.user?.username,
+        email: item.user?.email,
+        cpf: item.user?.cpf,
+        birthDate: item.user?.birthDate,
+        picture: item.user?.picture,
+        country: item.user?.country,
+        phone: item.user?.phone,
+        description: item.user?.description,
+        permissions: item.user?.permissions,
+        isSeller: item.user?.isSeller,
+        createdAt: item.user?.createdAt ? formatarDataHora(item.user?.createdAt) : null,
       },
       buyer: {
-        id: item.buyer._id,
-        name: item.buyer.name,
-        username: item.buyer.username,
-        email: item.buyer.email,
-        cpf: item.buyer.cpf,
-        birthDate: formatarData(item.buyer.birthDate),
-        picture: item.buyer.picture,
-        country: item.buyer.country,
-        phone: item.buyer.phone,
-        description: item.buyer.description,
-        permissions: item.buyer.permissions,
-        isSeller: item.buyer.isSeller,
-        createdAt: formatarDataHora(item.buyer.createdAt),
+        id: item.buyer?._id,
+        name: item.buyer?.name,
+        username: item.buyer?.username,
+        email: item.buyer?.email,
+        cpf: item.buyer?.cpf,
+        birthDate: item.buyer?.birthDate ? formatarData(item.buyer?.birthDate) : null,
+        picture: item.buyer?.picture,
+        country: item.buyer?.country,
+        phone: item.buyer?.phone,
+        description: item.buyer?.description,
+        permissions: item.buyer?.permissions,
+        isSeller: item.buyer?.isSeller,
+        createdAt: item.buyer?.createdAt ? formatarDataHora(item.buyer?.createdAt) : null,
       }
     }
   })

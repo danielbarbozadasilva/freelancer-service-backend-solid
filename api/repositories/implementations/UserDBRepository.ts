@@ -1,6 +1,6 @@
 import { User } from '../../entities/User'
 import { IUserRepository } from '../IUsersRepository'
-import userschemas from '../../database/schemas/schemas.user'
+import userschemas from '../../database/schemas/user'
 
 export class UserDBRepository implements IUserRepository {
   async save(dataUser: User): Promise<User> {
@@ -10,7 +10,7 @@ export class UserDBRepository implements IUserRepository {
       email: dataUser.email,
       cpf: dataUser.cpf,
       birthDate: dataUser.birthDate,
-      picture: dataUser.picture,
+      picture: dataUser?.picture,
       country: dataUser.country,
       phone: dataUser.phone,
       description: dataUser.description,
@@ -19,11 +19,11 @@ export class UserDBRepository implements IUserRepository {
       salt: dataUser.salt,
       isSeller: dataUser.isSeller
     })
-
+    
     return resultDB
   }
 
-  async updateProfile(id: string, dataUser: User): Promise<boolean> {
+  async updateProfile(id: string, dataUser: User): Promise<boolean> {  
     const data = {
         name: dataUser.name,
         username: dataUser.username,
@@ -49,8 +49,8 @@ export class UserDBRepository implements IUserRepository {
       {_id: id },
       { ...data })
 
-    return !!resultDB
-  }
+      return !!resultDB
+    }
 
   async updateSeller(id: string, isSeller: boolean): Promise<boolean> {
     const resultDB = await userschemas.updateOne(
@@ -89,5 +89,9 @@ export class UserDBRepository implements IUserRepository {
   async listByIdUser(id: string): Promise<User> {
     const result = await userschemas.findById(id, { hash: 0, salt: 0, recovery: 0 })
     return result
+  }
+  async verifyIdUserExists(id: string): Promise<boolean> {
+    const result = await userschemas.findById(id)
+    return !!result
   }
 }

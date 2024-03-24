@@ -9,6 +9,6 @@ export class ListAllConversationUseCase {
   constructor(private conversationRepository: IConversationRepository) {}
 
   async execute(data: IParamsConversation) {
-    return this.conversationRepository.listAllConversation(data)
+    return await this.conversationRepository.listAllConversation(data)
   }
 }

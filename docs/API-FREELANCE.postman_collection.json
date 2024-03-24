@@ -47,7 +47,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"daniel80barboza@gmail.com\",\n    \"password\": \"123\"\n}",
+							"raw": "{\n    \"email\": \"daniel80barboza@gmail.com\",\n    \"password\": \"daniel\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -64,65 +64,6 @@
 							"path": [
 								"v1",
 								"auth"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "auth.logout",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbEBnbWFpbC5jb20iLCJuYW1lIjoiRGFuaWVsIEJhcmJvemEiLCJ0eXBlIjoxLCJpYXQiOjE2NTQ0ODI5MjIsImV4cCI6MTY2MzQ4MjkyMn0.wwm5ffUkQjtISWJqQhxKy2xQ_VQfbOxJoV6QbN561h4",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\": \"daniel95barboza@gmail.com\",\n    \"password\": \"daniel\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3011/v1/logout",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3011",
-							"path": [
-								"v1",
-								"logout"
 							]
 						}
 					},
@@ -164,13 +105,64 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n        \"name\": \"Daniel Silva\",\r\n        \"username\": \"daniel171891\",\r\n        \"email\": \"danielbarboza1111@hotmail.com\",\r\n        \"cpf\": \"141.444.444-44\",\r\n        \"birthDate\": \"2000-03-01T05:36:40.303Z\",\r\n        \"country\": \"brasil\",\r\n        \"phone\": \"(21)99999-9999\",\r\n        \"description\": \"Desenvolvedor web\",\r\n        \"permissions\": [\"client\"],\r\n        \"password\": \"123\",\r\n        \"isSeller\": false\r\n      }",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Daniel Silva",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "daniel171891",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "danielbarboza1111@hotmail.com",
+									"type": "text"
+								},
+								{
+									"key": "cpf",
+									"value": "141.444.444-44",
+									"type": "text"
+								},
+								{
+									"key": "birthDate",
+									"value": "2000-03-01T05:36:40.303Z",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "brasil",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "(21)99999-9999",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Desenvolvedor web",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "daniel",
+									"type": "text"
+								},
+								{
+									"key": "isSeller",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/C:/Users/pc-02/Downloads/souvik-banerjee-E6Yg8ACZ2vw-unsplash.jpg"
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "http://localhost:3011/v1/register",
@@ -274,7 +266,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -283,7 +276,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -311,18 +305,18 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Desenvolver código1",
+									"value": "dddddd",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Desenvolver código",
+									"value": "dddddd",
 									"type": "text"
 								},
 								{
 									"key": "files",
 									"type": "file",
-									"src": "/C:/Users/pc-02/Downloads/ilya-pavlov-OqtafYT5kTw-unsplash.jpg"
+									"src": "/C:/Users/pc-02/Downloads/pankaj-patel-_SgRNwAVNKw-unsplash.jpg"
 								}
 							]
 						},
@@ -350,7 +344,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -359,7 +354,8 @@
 								"exec": [
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -398,7 +394,7 @@
 								{
 									"key": "files",
 									"type": "file",
-									"src": "/C:/Users/pc-02/Downloads/mark-cruz-VW2oU66mwbc-unsplash.jpg"
+									"src": "/C:/Users/pc-02/Downloads/adem-ay-Tk9m_HP4rgQ-unsplash.jpg"
 								}
 							]
 						},
@@ -820,7 +816,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3011/v1/conversation/userid/65a5002f9d9b340e62d233b4/isseller/false",
+							"raw": "http://localhost:3011/v1/conversation/userid/65883ab3c89918015e25e532/isseller/false",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -830,7 +826,7 @@
 								"v1",
 								"conversation",
 								"userid",
-								"65a5002f9d9b340e62d233b4",
+								"65883ab3c89918015e25e532",
 								"isseller",
 								"false"
 							]
@@ -863,16 +859,11 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"isSeller\": true,\r\n    \"userId\": \"65883a7bc89918015e25e52e\",\r\n    \"to\": \"65883ab3c89918015e25e532\",\r\n    \"readBySeller\": false,\r\n    \"readByBuyer\": false,\r\n    \"sellerId\": \"222\",\r\n    \"buyerId\": \"3333\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"mode": "formdata",
+							"formdata": []
 						},
 						"url": {
-							"raw": "http://localhost:3011/v1/conversation/single/658951d2e4e3a44b66725296",
+							"raw": "http://localhost:3011/v1/conversation/userId/65883a7bc89918015e25e52e/buyerId/65883ab3c89918015e25e532",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -881,8 +872,10 @@
 							"path": [
 								"v1",
 								"conversation",
-								"single",
-								"658951d2e4e3a44b66725296"
+								"userId",
+								"65883a7bc89918015e25e52e",
+								"buyerId",
+								"65883ab3c89918015e25e532"
 							],
 							"query": [
 								{
@@ -981,7 +974,7 @@
 							"query": [
 								{
 									"key": "category",
-									"value": "",
+									"value": "6591ac5bf9877e3170d90c48",
 									"disabled": true
 								},
 								{
@@ -1099,7 +1092,7 @@
 								},
 								{
 									"key": "title",
-									"value": "Desenvolvedor Webddddd",
+									"value": "Desenvolvedor Web",
 									"type": "text"
 								},
 								{
@@ -1120,7 +1113,7 @@
 								{
 									"key": "files",
 									"type": "file",
-									"src": "/C:/Users/pc-02/Downloads/files-1704052453990.jpg"
+									"src": "/C:/Users/pc-02/Downloads/pankaj-patel-_SgRNwAVNKw-unsplash.jpg"
 								},
 								{
 									"key": "deliveryTime",
@@ -1130,11 +1123,6 @@
 								{
 									"key": "features",
 									"value": "Desenvolvimento web,APIs RESTful,React,Node.js,Express",
-									"type": "text"
-								},
-								{
-									"key": "sales",
-									"value": "0",
 									"type": "text"
 								}
 							]
@@ -1205,7 +1193,7 @@
 								},
 								{
 									"key": "title",
-									"value": "Desenvolvedor Full Stackffff",
+									"value": "Desenvolvedor Full Stack",
 									"type": "text"
 								},
 								{
@@ -1226,7 +1214,7 @@
 								{
 									"key": "files",
 									"type": "file",
-									"src": "/C:/Users/pc-02/Downloads/IMG_20240207_161935460.jpg"
+									"src": "/C:/Users/pc-02/Downloads/pankaj-patel-_SgRNwAVNKw-unsplash.jpg"
 								},
 								{
 									"key": "deliveryTime",
@@ -1237,17 +1225,6 @@
 									"key": "features",
 									"value": "Desenvolvimento web,APIs RESTful,React,Node.js,Express",
 									"type": "text"
-								},
-								{
-									"key": "sales",
-									"value": "0",
-									"type": "text"
-								},
-								{
-									"key": "rating",
-									"value": "",
-									"type": "text",
-									"disabled": true
 								}
 							]
 						},
@@ -1362,7 +1339,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "http://localhost:3011/v1/message/65c92741fba2cacdf39fed4a",
+							"raw": "http://localhost:3011/v1/message/658951d2e4e3a44b66725296",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1371,7 +1348,7 @@
 							"path": [
 								"v1",
 								"message",
-								"65c92741fba2cacdf39fed4a"
+								"658951d2e4e3a44b66725296"
 							]
 						}
 					},
@@ -1445,10 +1422,10 @@
 			]
 		},
 		{
-			"name": "client",
+			"name": "user",
 			"item": [
 				{
-					"name": "client.listAll",
+					"name": "user.listAll",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1469,7 +1446,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "http://localhost:3011/v1/client",
+							"raw": "http://localhost:3011/v1/user",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1477,14 +1454,14 @@
 							"port": "3011",
 							"path": [
 								"v1",
-								"client"
+								"user"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "client.listById",
+					"name": "user.listById",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1505,7 +1482,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3011/v1/client/65a5002f9d9b340e62d233b4",
+							"raw": "http://localhost:3011/v1/user/65a5002f9d9b340e62d233b4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1513,7 +1490,7 @@
 							"port": "3011",
 							"path": [
 								"v1",
-								"client",
+								"user",
 								"65a5002f9d9b340e62d233b4"
 							]
 						}
@@ -1521,114 +1498,7 @@
 					"response": []
 				},
 				{
-					"name": "client.update",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg4M2E3YmM4OTkxODAxNWUyNWU1MmUiLCJ1c2VybmFtZSI6ImRhbmllbDkzNSIsImVtYWlsIjoiZGFuaWVsODBiYXJib3phQGdtYWlsLmNvbSIsInBlcm1pc3Npb25zIjpbImNsaWVudCJdLCJpYXQiOjE3MDQxNDY1NDEsImV4cCI6MTAwMTcwNDE0NjU0MH0.aRdzrx2VM27YIUE8_aDi4Y8q2s_Uagq_cc-vmO9352M",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "token",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "userId",
-									"value": "65883ab3c89918015e25e532",
-									"type": "text"
-								},
-								{
-									"key": "title",
-									"value": "Desenvolvedor Full Stackffff",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "Experiência em desenvolvimento web full stack",
-									"type": "text"
-								},
-								{
-									"key": "category",
-									"value": "6591ac5bf9877e3170d90c48",
-									"type": "text"
-								},
-								{
-									"key": "price",
-									"value": "50",
-									"type": "text"
-								},
-								{
-									"key": "files",
-									"type": "file",
-									"src": "/C:/Users/pc-02/Downloads/joseph-gonzalez-iFgRcqHznqg-unsplash.jpg"
-								},
-								{
-									"key": "deliveryTime",
-									"value": "7",
-									"type": "text"
-								},
-								{
-									"key": "features",
-									"value": "Desenvolvimento web,APIs RESTful,React,Node.js,Express",
-									"type": "text"
-								},
-								{
-									"key": "sales",
-									"value": "0",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:3011/v1/client/65a5002f9d9b340e62d233b4",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3011",
-							"path": [
-								"v1",
-								"client",
-								"65a5002f9d9b340e62d233b4"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "client.delete",
+					"name": "user.delete",
 					"event": [
 						{
 							"listen": "test",
@@ -1673,7 +1543,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "http://localhost:3011/v1/client/65a5002f9d9b340e62d233b4",
+							"raw": "http://localhost:3011/v1/user/65a5002f9d9b340e62d233b4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1681,7 +1551,120 @@
 							"port": "3011",
 							"path": [
 								"v1",
-								"client",
+								"user",
+								"65a5002f9d9b340e62d233b4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user.update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ODgzYTdiYzg5OTE4MDE1ZTI1ZTUyZSIsInVzZXJuYW1lIjoiZGFuaWVsMTIzIiwiZW1haWwiOiJkYW5pZWw4MGJhcmJvemFAZ21haWwuY29tIiwiaXNTZWxsZXIiOnRydWUsInBlcm1pc3Npb25zIjpbImZyZWVsYW5jZXIiXSwicGljdHVyZSI6Imh0dHBzOi8vdGVzdGUtZnJlZWxhbmNlci5zMy51cy1lYXN0LTIuYW1hem9uYXdzLmNvbS9maWxlcy0xNzA0MDUyNDUzOTg4LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1Db250ZW50LVNoYTI1Nj1VTlNJR05FRC1QQVlMT0FEJlgtQW16LUNyZWRlbnRpYWw9QUtJQVEzRUdSNzZNM0FJWEVVRk8lMkYyMDI0MDMxNyUyRnVzLWVhc3QtMiUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNDAzMTdUMjEwNjQ1WiZYLUFtei1FeHBpcmVzPTk5OTkmWC1BbXotU2lnbmF0dXJlPTgzZjhlMzA2ZWY5NzY1MmYzMzQ1MTEwYWJkZDZiYTJjZTk2ZGYyZGYwNTQyMjVhYTY3ZjMxOGViNGM5NTQyNmUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JngtaWQ9R2V0T2JqZWN0IiwiaWF0IjoxNzEwNzA5NjA1LCJleHAiOjEwMDE3MTA3MDk2MDR9.3xzpAt6uGensfiVHnTdFsJZufD_hlD_OnfUKa8j__8Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Daniel Silva",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "daniel171891",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "danielbarboza1111@hotmail.com",
+									"type": "text"
+								},
+								{
+									"key": "cpf",
+									"value": "141.444.444-44",
+									"type": "text"
+								},
+								{
+									"key": "birthDate",
+									"value": "2000-03-01T05:36:40.303Z",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "brasil",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "(21)99999-9999",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Desenvolvedor web",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "daniel",
+									"type": "text"
+								},
+								{
+									"key": "isSeller",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/C:/Users/pc-02/Downloads/IMG_20240207_161935460.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3011/v1/user/65a5002f9d9b340e62d233b4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3011",
+							"path": [
+								"v1",
+								"user",
 								"65a5002f9d9b340e62d233b4"
 							]
 						}
@@ -1775,7 +1758,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3011/v1/order/65883ab3c89918015e25e532/isSeller/true",
+							"raw": "http://localhost:3011/v1/order/65a5002f9d9b340e62d233b4/isSeller/false",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1784,9 +1767,9 @@
 							"path": [
 								"v1",
 								"order",
-								"65883ab3c89918015e25e532",
+								"65a5002f9d9b340e62d233b4",
 								"isSeller",
-								"true"
+								"false"
 							]
 						}
 					},
@@ -1835,7 +1818,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"buyerId\": \"65a5002f9d9b340e62d233b4\"\r\n}",
+							"raw": "{\r\n    \"buyerId\": \"65a5002f9d9b340e62d233b4\",\r\n    \"description\": \"teste\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1901,16 +1884,11 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"payment_intent\": 12321322\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"mode": "formdata",
+							"formdata": []
 						},
 						"url": {
-							"raw": "http://localhost:3011/v1/order/65b60ca19588bfeca46e5c26",
+							"raw": "http://localhost:3011/v1/order/pi_3OrgiFDlLXsk0gPs1UHz2bsx",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1919,7 +1897,7 @@
 							"path": [
 								"v1",
 								"order",
-								"65b60ca19588bfeca46e5c26"
+								"pi_3OrgiFDlLXsk0gPs1UHz2bsx"
 							]
 						}
 					},

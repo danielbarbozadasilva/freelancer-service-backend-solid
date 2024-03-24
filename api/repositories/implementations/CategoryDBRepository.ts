@@ -1,8 +1,8 @@
 import { Category } from '../../entities/Category'
 import { ICategoryRepository } from '../ICategoryRepository'
-import categorySchema from '../../database/schemas/schemas.category'
+import categorySchema from '../../database/schemas/category'
 
-export class CategoryDBRepository implements ICategoryRepository{
+export class CategoryDBRepository implements ICategoryRepository {
   async createCategory(dataCategory: Category): Promise<boolean> {
     const resultDB = await categorySchema.create({
       name: dataCategory.name,

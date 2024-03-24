@@ -11,11 +11,11 @@ export class DeleteUserController {
 
       return response
         .status(200)
-        .send({ message: 'User deleted!' })
+        .send({ message: 'Usuário excluído com sucesso!' })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

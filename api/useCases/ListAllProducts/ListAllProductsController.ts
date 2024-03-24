@@ -11,11 +11,11 @@ export class ListAllProductController {
       const result = await this.listAllProductUseCase.execute(search)
       return response
         .status(200)
-        .send({ message: 'List all products successfully!', data: productDTO(result as any) })
+        .send({ message: 'Serviços listados com sucesso!', data: await productDTO(result as any) })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

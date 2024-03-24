@@ -14,11 +14,11 @@ export class CreatePaymentIntentController {
 
       return response
         .status(201)
-        .send({ message: 'Payment intent successfully created!', data })
+        .send({ message: 'Pagamento efetuado com sucesso!', data })
     } catch (error) {
       return response
         .status(400)
-        .json({ message: error.message || 'Unexpected error.' })
+        .json({ message: error.message || 'Ocorreu um erro inesperado!' })
     }
   }
 }

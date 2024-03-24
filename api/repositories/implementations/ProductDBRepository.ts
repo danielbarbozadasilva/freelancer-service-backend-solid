@@ -1,7 +1,7 @@
 import { Product } from '../../entities/Product'
 import { IProductRepository } from '../IProductRepository'
-import productschemas from '../../database/schemas/schemas.product'
-import userSchema from '../../database/schemas/schemas.user'
+import productschemas from '../../database/schemas/product'
+import userSchema from '../../database/schemas/user'
 import mongoose from 'mongoose'
 
 interface ISearchProduct {
@@ -91,7 +91,7 @@ export class ProductDBRepository implements IProductRepository {
     let matchStage: any = {
       $or: [{ title: { $regex: search.search, $options: 'i' } }]
     }
-
+  
     if (search.category) {
       const categoryId = new mongoose.Types.ObjectId(search.category)
       matchStage = {
@@ -100,7 +100,7 @@ export class ProductDBRepository implements IProductRepository {
       }
     }
     
-    if (search.userId !== 'undefined') {      
+    if (search.userId) {      
       const userId = new mongoose.Types.ObjectId(search.userId);
       matchStage = {
         ...matchStage,
@@ -120,16 +120,22 @@ export class ProductDBRepository implements IProductRepository {
       {
         $lookup: {
           from: 'ratingschemas',
-          localField: 'rating',
-          foreignField: '_id',
+          localField: '_id',
+          foreignField: 'productId',
           as: 'rating'
         }
       },
       {
         $lookup: {
           from: 'orderschemas',
-          localField: '_id',
-          foreignField: 'productId',
+          let: { productId: '$_id' },
+          pipeline: [
+            {
+              $match: {
+                $expr: { $and: [{ $eq: ['$productId', '$$productId'] }, { $eq: ['$status', 'Finalizada'] }] }
+              }
+            }
+          ],
           as: 'orders'
         }
       },
@@ -152,7 +158,6 @@ export class ProductDBRepository implements IProductRepository {
       { $unwind: { path: '$category', preserveNullAndEmptyArrays: true } },
       { $unwind: { path: '$rating', preserveNullAndEmptyArrays: true } },
       { $unwind: { path: '$user', preserveNullAndEmptyArrays: true } },
-      { $unwind: { path: '$orders', preserveNullAndEmptyArrays: true } },
       { $unwind: { path: '$client', preserveNullAndEmptyArrays: true } },
       {
         $project: {
@@ -178,7 +183,7 @@ export class ProductDBRepository implements IProductRepository {
         }
       }
     ])
-
+  
     return result
   }
 
@@ -188,7 +193,7 @@ export class ProductDBRepository implements IProductRepository {
   }
 
   async verifyUserIsSeller(userid: string): Promise<boolean> {
-    const result = await userSchema.findById(userid)
+    const result = await userSchema.findById(userid)    
     return result?.isSeller
   }
 }

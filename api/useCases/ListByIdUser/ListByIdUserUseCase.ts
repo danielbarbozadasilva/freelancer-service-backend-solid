@@ -4,6 +4,6 @@ export class ListByIdUserUseCase {
   constructor(private userRepository: IUserRepository) {}
 
   async execute(id: string) {
-    return this.userRepository.listByIdUser(id)
+    return await this.userRepository.listByIdUser(id)
   }
 }

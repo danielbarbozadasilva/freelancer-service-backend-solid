@@ -14,6 +14,7 @@ describe('Update rating', () => {
   describe('Update rating', () => {
     test('Make sure update rating', async () => {
       const data = {
+        id: '638a236a0ef44976d1687126',
         name: 'teste',
         text: 'teste',
         score: '5',

@@ -7,6 +7,6 @@ export class CreateRatingUseCase {
 
   async execute(data: IRatingRequestDTO) {
     const ratingCreate = new Rating(data)
-    return this.ratingRepository.createRating(ratingCreate)
+    return await this.ratingRepository.createRating(ratingCreate)
   }
 }
