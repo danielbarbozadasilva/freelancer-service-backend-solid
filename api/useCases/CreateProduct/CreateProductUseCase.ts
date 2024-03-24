@@ -11,11 +11,6 @@ export class CreateProductUseCase {
 
   async execute(data: ICreateProductRequestDTO) {
     const result = new Product(data)
-    const userIsSeller = await this.productRepository.verifyUserIsSeller(data.userId)
-
-    if (!userIsSeller) {
-      throw new Error('Apenas vendedores podem criar!')
-    }
     
     await Promise.all(
       data.images.map(async (item: string)=>{

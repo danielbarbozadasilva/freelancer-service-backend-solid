@@ -12,14 +12,9 @@ export class UpdateProductUseCase {
   async execute(data: IProductRequestDTO) {
     const productCreate = new Product(data)
     const productExists = await this.productRepository.verifyIdProductExists(data._id)
-    const userIsSeller = await this.productRepository.verifyUserIsSeller(data.userId)
     
     if(!productExists){
       throw new Error('Produto não existe!');
-    }
-
-    if(!userIsSeller){
-      throw new Error('Apenas Freelancers podem atualizar!');
     }
  
     await Promise.all(

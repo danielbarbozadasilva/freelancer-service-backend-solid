@@ -22,7 +22,7 @@ export class CategoryDBRepository implements ICategoryRepository {
         picture: dataCategory.picture,
     })
 
-    return !!resultDB
+    return resultDB.modifiedCount ? true : false
   }
 
   async deleteCategory(id: string): Promise<boolean> {

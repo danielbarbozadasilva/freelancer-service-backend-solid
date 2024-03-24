@@ -193,7 +193,7 @@ export class ProductDBRepository implements IProductRepository {
   }
 
   async verifyUserIsSeller(userid: string): Promise<boolean> {
-    const result = await userSchema.findById(userid)
+    const result = await userSchema.findById(userid)    
     return result?.isSeller
   }
 }

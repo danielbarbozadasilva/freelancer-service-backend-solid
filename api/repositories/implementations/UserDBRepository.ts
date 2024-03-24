@@ -49,8 +49,8 @@ export class UserDBRepository implements IUserRepository {
       {_id: id },
       { ...data })
 
-    return !!resultDB
-  }
+      return resultDB.modifiedCount ? true : false
+    }
 
   async updateSeller(id: string, isSeller: boolean): Promise<boolean> {
     const resultDB = await userschemas.updateOne(

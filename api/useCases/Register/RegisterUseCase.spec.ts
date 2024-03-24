@@ -29,7 +29,7 @@ describe('Register User', () => {
         permissions: ['client'],
         password: '123',
         isSeller: false,
-        picture: 'files-1704052453981.jpg'
+        picture: 'files-1704052453980.jpg'
       }
       const result = await registerUseCase.execute(data as any)
       expect(result).toBe(true)

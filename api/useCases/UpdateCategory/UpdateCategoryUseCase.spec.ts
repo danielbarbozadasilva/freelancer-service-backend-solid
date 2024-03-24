@@ -17,7 +17,7 @@ describe('Update Category', () => {
         _id: '6591ac25f9877e3170d90c40',
         name: 'Desenvolver código',
         description: 'Desenvolver código',
-        picture: 'files-1704045582411.jpg'
+        picture: 'files-1704052453978.jpg'
       }
       const result = await updateCategoryUseCase.execute(
         data as ICategoryRequestDTO
@@ -31,7 +31,7 @@ describe('Update Category', () => {
           _id: '6591ac0ef9877e3170d90cff',
           name: 'Desenvolver código',
           description: 'Desenvolver código',
-          picture: 'files-1704045582411.jpg'
+          picture: 'files-1704052453978.jpg'
         }
         expect(
           await updateCategoryUseCase.execute(data as ICategoryRequestDTO)

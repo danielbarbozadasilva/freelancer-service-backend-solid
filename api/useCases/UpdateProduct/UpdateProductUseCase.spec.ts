@@ -43,8 +43,8 @@ describe('Update product', () => {
     test('ensure return error if the id is non-existent', async () => {
       try {
         const data = {
-          _id: "659802bcfed9f7066576ca77",
-          userId: "65883ab3c89918015e25e111",
+          _id: "659802bcfed9f7066576ca99",
+          userId: "65883ab3c89918015e25e532",
           title: "Desenvolvedor Full Stack",
           description: "Experiência em desenvolvimento web full stack",
           category: "6591ac5bf9877e3170d90c48",
